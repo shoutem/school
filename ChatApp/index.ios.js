@@ -11,7 +11,7 @@ import {
 
 import { Examples } from '@shoutem/ui';
 
-import ChatUI from './ChatUI';
+import ChatUI from './src/components/ChatUI';
 
 export default class ChatApp extends Component {
     render() {
