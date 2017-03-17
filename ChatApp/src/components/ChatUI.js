@@ -23,14 +23,10 @@ class ChatUI extends Component {
     }
 
     render() {
-        console.log(this.state.messages);
-
         return (
             <Screen>
-                <KeyboardAwareScrollView>
-                    <Messages messages={this.state.messages} />
-                    <Input onSubmit={this.onSubmit.bind(this)} />
-                </KeyboardAwareScrollView>
+                <Messages messages={this.state.messages} />
+                <Input onSubmit={this.onSubmit.bind(this)} />
             </Screen>
         );
     }
