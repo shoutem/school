@@ -8,11 +8,11 @@ const Message = ({ msg }) => (
     </Row>
 );
 
-const Messages = ({ messages }) => (
+const MessageList = ({ messages }) => (
     <ListView data={messages}
               autoHideHeader={true}
               renderRow={msg => <Message msg={msg} />}
               />
 );
 
-export default Messages;
+export default MessageList;

@@ -7,8 +7,11 @@ import { View } from '@shoutem/ui';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import * as firebase from 'firebase';
 
-import Messages from './Messages';
-import Input from './Input';
+//import Messages from './Messages';
+//import Input from './Input';
+
+import Messages from '../containers/Messages';
+import Input from '../containers/Input';
 
 class ChatUI extends Component {
     state = {

@@ -11,12 +11,12 @@ import {
 
 import { Examples } from '@shoutem/ui';
 
-import ChatUI from './src/components/ChatUI';
+import App from './src/App.js';
 
 export default class ChatApp extends Component {
     render() {
         return (
-            <ChatUI />
+            <App />
         );
     }
 }
