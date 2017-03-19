@@ -18,12 +18,18 @@ class Input extends Component {
         });
     }
 
+    onFocus = (event) => {
+        this.props.onFocus(this.refs.input);
+    }
+
     render() {
         return (
             <TextInput placeholder="Say something cool ..."
                        onChangeText={this.onChangeText}
                        onSubmitEditing={this.onSubmitEditing}
-                       value={this.state.text} />
+                       value={this.state.text}
+                       onFocus={this.onFocus}
+                       ref="input"/>
         )
     }
 }
