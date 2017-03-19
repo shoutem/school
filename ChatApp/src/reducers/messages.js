@@ -14,10 +14,16 @@ firebase.initializeApp(config);
 const message = (state, action) => {
     switch (action.type) {
         case 'ADD_MESSAGE':
-            return {
+            const msg = {
                 id: action.id,
                 text: action.text
-            }
+            };
+
+            firebase.database()
+                    .ref(`messages/${action.id}`)
+                    .set(msg);
+
+            return msg;
         default:
             return state
     }
