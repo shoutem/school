@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMessage } from '../actions';
+import { sendMessage } from '../actions';
 
 import { TextInput } from '@shoutem/ui';
 
@@ -14,7 +14,7 @@ class Input extends Component {
     onChangeText = text => this.setState({text: text});
 
     onSubmitEditing = () => {
-        this.props.dispatch(addMessage(this.state.text));
+        this.props.dispatch(sendMessage(this.state.text));
         this.setState({
             text: null
         });
