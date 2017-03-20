@@ -24,12 +24,14 @@ export const fetchMessages = () => {
     return function (dispatch) {
         dispatch(startFetchingMessages());
 
-        return firebase.database()
-                       .ref('messages')
-                       .once('value')
-                       .then((snapshot) => {
-                           dispatch(receiveMessages(snapshot.val()))
-                       });
+        firebase.database()
+                .ref('messages')
+                .on('value', (snapshot) => {
+                    // gets around Redux panicking about actions in reducers
+                    setTimeout(() => {
+                        dispatch(receiveMessages(snapshot.val()))
+                    }, 0);
+                });
     }
 }
 
