@@ -7,6 +7,7 @@ const message = (state, action) => {
             return {
                 id: action.id,
                 text: action.text,
+                time: action.time,
                 author: action.author
             }
         case 'SEND_MESSAGE':

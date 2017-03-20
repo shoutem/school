@@ -1,6 +1,10 @@
 
 import React from 'react';
-import { ListView, Text, Row, Image, View, Subtitle, Caption, Heading } from '@shoutem/ui';
+import {
+    ListView, Text, Row, Image,
+    View, Subtitle, Caption, Heading
+} from '@shoutem/ui';
+import moment from 'moment';
 
 const Message = ({ msg }) => (
     <Row>
@@ -9,7 +13,7 @@ const Message = ({ msg }) => (
         <View styleName="vertical">
             <View styleName="horizontal space-between">
                 <Subtitle>{msg.author.name}</Subtitle>
-                <Caption>{msg.time}</Caption>
+                <Caption>{moment(msg.time).from(Date.now())}</Caption>
             </View>
             <Text styleName="multiline">{msg.text}</Text>
         </View>
