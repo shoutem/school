@@ -6,10 +6,18 @@ export const addMessage = (msg) => ({
     ...msg
 });
 
-export const sendMessage = (text) => ({
-    type: 'SEND_MESSAGE',
-    text
-});
+export const sendMessage = (text, user) => {
+    console.log({
+        type: 'SEND_MESSAGE',
+        text,
+        user
+    });
+    return {
+        type: 'SEND_MESSAGE',
+        text,
+        user
+    }
+};
 
 export const startFetchingMessages = () => ({
     type: 'START_FETCHING_MESSAGES'
@@ -29,7 +37,9 @@ export const fetchMessages = () => {
                 .on('value', (snapshot) => {
                     // gets around Redux panicking about actions in reducers
                     setTimeout(() => {
-                        dispatch(receiveMessages(snapshot.val()))
+                        const messages = snapshot.val() || [];
+
+                        dispatch(receiveMessages(messages))
                     }, 0);
                 });
     }
@@ -50,7 +60,7 @@ export const setUserName = (name) => ({
 
 export const setUserAvatar = (avatar) => ({
     type: 'SET_USER_AVATAR',
-    avatar
+    avatar: avatar.length > 0 ? avatar : 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'
 });
 
 export const login = () => {

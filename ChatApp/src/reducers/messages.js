@@ -6,11 +6,17 @@ const message = (state, action) => {
         case 'ADD_MESSAGE':
             return {
                 id: action.id,
-                text: action.text
+                text: action.text,
+                author: action.author
             }
         case 'SEND_MESSAGE':
             let msg = {
-                text: action.text
+                text: action.text,
+                time: Date.now(),
+                author: {
+                    name: action.user.name,
+                    avatar: action.user.avatar
+                }
             };
 
             const newMsgRef = firebase.database()
