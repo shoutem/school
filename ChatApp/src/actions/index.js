@@ -42,3 +42,34 @@ export const receiveMessages = (messages) => {
         dispatch(receivedMessages());
     }
 }
+
+export const setUserName = (name) => ({
+    type: 'SET_USER_NAME',
+    name
+});
+
+export const setUserAvatar = (avatar) => ({
+    type: 'SET_USER_AVATAR',
+    avatar
+});
+
+export const login = () => {
+    return function (dispatch) {
+        dispatch(startAuthorizing());
+
+        firebase.auth()
+                .signInAnonymously()
+                .then(() => {
+                    dispatch(userAuthorized());
+                    dispatch(fetchMessages());
+                });
+    }
+}
+
+export const startAuthorizing = () => ({
+    type: 'USER_START_AUTHORIZING'
+});
+
+export const userAuthorized = () => ({
+    type: 'USER_AUTHORIZED'
+});

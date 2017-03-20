@@ -15,12 +15,14 @@ const Messages = connect(
 )(({ messages, isFetching }) => {
     if (isFetching) {
         return (
-            <View style={{paddingTop: 100}}>
+            <View style={{paddingTop: 50,
+                          paddingBottom: 50}}>
                 <Spinner />
             </View>
         )
     }else{
-        return <MessageList messages={messages} />
+        return <MessageList messages={messages}
+                            style={{minHeight: 100}}/>
     }
 });
 

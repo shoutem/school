@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sendMessage } from '../actions';
 
 import { TextInput } from '@shoutem/ui';
 
@@ -14,23 +13,37 @@ class Input extends Component {
     onChangeText = text => this.setState({text: text});
 
     onSubmitEditing = () => {
-        this.props.dispatch(sendMessage(this.state.text));
-        this.setState({
-            text: null
-        });
+        this.props.dispatch(
+            this.props.submitAction(this.state.text)
+        );
+
+        if (!this.props.noclear) {
+            this.setState({
+                text: null
+            });
+        }
     }
 
     onFocus = (event) => {
-        this.props.onFocus(this.refs.input);
+        if (this.props.onFocus) {
+            this.props.onFocus(this.refs.input);
+        }
+    }
+
+    onBlur = () => {
+        if (this.props.submitOnBlur) {
+            this.onSubmitEditing();
+        }
     }
 
     render() {
         return (
-            <TextInput placeholder="Say something cool ..."
+            <TextInput placeholder={this.props.placeholder}
                        onChangeText={this.onChangeText}
                        onSubmitEditing={this.onSubmitEditing}
                        value={this.state.text}
                        onFocus={this.onFocus}
+                       onBlur={this.onBlur}
                        ref="input"/>
         )
     }

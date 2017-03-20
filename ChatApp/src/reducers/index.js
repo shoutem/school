@@ -2,23 +2,11 @@
 import { combineReducers } from 'redux';
 
 import chatroom from './chatroom';
-import messages from './messages';
+import user from './user';
 
-/*
-{
-   chatroom: {
-      messages: [],
-   meta: {
-      isFetching: false,
-      lastFetched: ...
-   }
-    }
-   }
-}
-*/
-
-const chatApp = combineReducers({
-    chatroom
+const rootReducer = combineReducers({
+    chatroom,
+    user
 });
 
-export default chatApp;
+export default rootReducer;
