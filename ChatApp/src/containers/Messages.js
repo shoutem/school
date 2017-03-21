@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { View, Spinner } from '@shoutem/ui';
 
 import MessageList from '../components/MessageList';
+import { updateMessagesHeight } from '../actions';
 
 const mapStateToProps = (state) => ({
     messages: state.chatroom.messages,
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => ({
 
 const Messages = connect(
     mapStateToProps
-)(({ messages, isFetching }) => {
+)(({ messages, isFetching, dispatch }) => {
     if (isFetching) {
         return (
             <View style={{paddingTop: 50,
@@ -22,7 +23,8 @@ const Messages = connect(
         )
     }else{
         return <MessageList messages={messages}
-                            style={{minHeight: 100}}/>
+                            style={{minHeight: 100}}
+                            onLayout={(event) => dispatch(updateMessagesHeight(event))} />
     }
 });
 

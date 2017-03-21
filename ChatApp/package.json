@@ -7,14 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@shoutem/ui": "^0.11.0",
+    "@shoutem/ui": "^0.12.0",
     "firebase": "^3.7.2",
     "moment": "^2.18.0",
     "react": "15.4.2",
     "react-native": "0.42.0",
     "react-native-keyboard-aware-scroll-view": "^0.2.7",
-    "react-native-linear-gradient": "^2.0.0",
-    "react-native-vector-icons": "^4.0.0",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",

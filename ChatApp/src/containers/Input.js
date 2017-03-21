@@ -36,11 +36,18 @@ class Input extends Component {
         }
     }
 
+    onLayout = (event) => {
+        if (this.props.onLayout) {
+            this.props.onLayout(event);
+        }
+    }
+
     render() {
         return (
             <TextInput placeholder={this.props.placeholder}
                        onChangeText={this.onChangeText}
                        onSubmitEditing={this.onSubmitEditing}
+                       onLayout={this.onLayout}
                        value={this.state.text}
                        onFocus={this.onFocus}
                        onBlur={this.onBlur}

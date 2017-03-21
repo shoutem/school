@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
     ListView, Text, Row, Image,
     View, Subtitle, Caption, Heading
@@ -20,14 +20,12 @@ const Message = ({ msg }) => (
     </Row>
 );
 
-const MessageList = ({ messages }) => (
-    <View>
-        <Heading styleName="h-center" style={{paddingTop: 30}}>Global Chatroom</Heading>
-        <ListView data={messages}
-                  autoHideHeader={true}
-                  renderRow={msg => <Message msg={msg} />}
-                  />
-    </View>
+const MessageList = ({ messages, onLayout }) => (
+    <ListView data={messages}
+              autoHideHeader={true}
+              renderRow={msg => <Message msg={msg} />}
+              onLayout={onLayout}
+              />
 );
 
 export default MessageList;

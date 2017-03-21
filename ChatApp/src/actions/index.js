@@ -6,18 +6,11 @@ export const addMessage = (msg) => ({
     ...msg
 });
 
-export const sendMessage = (text, user) => {
-    console.log({
+export const sendMessage = (text, user) => ({
         type: 'SEND_MESSAGE',
         text,
         user
-    });
-    return {
-        type: 'SEND_MESSAGE',
-        text,
-        user
-    }
-};
+});
 
 export const startFetchingMessages = () => ({
     type: 'START_FETCHING_MESSAGES'
@@ -53,6 +46,21 @@ export const receiveMessages = (messages) => {
     }
 }
 
+export const updateMessagesHeight = (event) => {
+    const layout = event.nativeEvent.layout;
+
+    return {
+        type: 'UPDATE_MESSAGES_HEIGHT',
+        height: layout.height
+    }
+}
+
+
+
+//
+// User actions
+//
+
 export const setUserName = (name) => ({
     type: 'SET_USER_NAME',
     name
@@ -60,7 +68,7 @@ export const setUserName = (name) => ({
 
 export const setUserAvatar = (avatar) => ({
     type: 'SET_USER_AVATAR',
-    avatar: avatar.length > 0 ? avatar : 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'
+    avatar: avatar && avatar.length > 0 ? avatar : 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'
 });
 
 export const login = () => {

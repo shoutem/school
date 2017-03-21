@@ -5,7 +5,8 @@ import messages from './messages';
 
 const initialState = {
     isFetching: false,
-    lastFetched: null
+    lastFetched: null,
+    height: 0
 }
 
 const meta = (state = initialState, action) => {
@@ -18,6 +19,10 @@ const meta = (state = initialState, action) => {
             return Object.assign({}, state, {
                 isFetching: false,
                 lastFetched: action.receivedAt
+            });
+        case 'UPDATE_MESSAGES_HEIGHT':
+            return Object.assign({}, state, {
+                height: action.height
             });
         default:
             return state
