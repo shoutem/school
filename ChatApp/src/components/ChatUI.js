@@ -11,7 +11,7 @@ import Input from '../containers/Input';
 import { sendMessage } from '../actions';
 
 const mapStateToProps = (state) => ({
-    height: state.chatroom.meta.height,
+    chatHeight: state.chatroom.meta.height,
     user: state.user
 });
 
@@ -46,7 +46,10 @@ class ChatUI extends Component {
     }
 
     scrollToBottom(animate = true) {
-        const scrollTo = this.props.height - this.state.scrollViewHeight + this.state.inputHeight;
+        const { scrollViewHeight, inputHeight } = this.state,
+              { chatHeight } = this.props;
+
+        const scrollTo = chatHeight - scrollViewHeight + inputHeight;
 
         if (scrollTo > 0) {
            this.refs.scroll.scrollToPosition(0, scrollTo, animate)
