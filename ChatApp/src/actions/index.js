@@ -6,11 +6,26 @@ export const addMessage = (msg) => ({
     ...msg
 });
 
-export const sendMessage = (text, user) => ({
-        type: 'SEND_MESSAGE',
-        text,
-        user
-});
+export const sendMessage = (text, user) => {
+    return function (dispatch) {
+        let msg = {
+                text: text,
+                time: Date.now(),
+                author: {
+                    name: user.name,
+                    avatar: user.avatar
+                }
+            };
+
+        const newMsgRef = firebase.database()
+                                  .ref('messages')
+                                  .push();
+        msg.id = newMsgRef.key;
+        newMsgRef.set(msg);
+
+        dispatch(addMessage(msg));
+    };
+};
 
 export const startFetchingMessages = () => ({
     type: 'START_FETCHING_MESSAGES'
