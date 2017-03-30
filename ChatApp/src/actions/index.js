@@ -1,5 +1,6 @@
 
 import firebase from '../firebase';
+import DeviceInfo from 'react-native-device-info';
 
 export const addMessage = (msg) => ({
     type: 'ADD_MESSAGE',
@@ -89,14 +90,44 @@ export const setUserAvatar = (avatar) => ({
 });
 
 export const login = () => {
-    return function (dispatch) {
+    return function (dispatch, getState) {
         dispatch(startAuthorizing());
 
         firebase.auth()
                 .signInAnonymously()
                 .then(() => {
+                    const { name, avatar } = getState().user;
+
+                    firebase.database()
+                            .ref(`users/${DeviceInfo.getUniqueID()}`)
+                            .set({
+                                name,
+                                avatar
+                            })
+
                     dispatch(userAuthorized());
                     dispatch(fetchMessages());
+                });
+    }
+}
+
+export const checkUserExists = () => {
+    return function (dispatch) {
+        dispatch(startAuthorizing());
+
+        firebase.database()
+                .ref(`users/${DeviceInfo.getUniqueID()}`)
+                .once('value', (snapshot) => {
+                    const val = snapshot.val();
+
+                    if (val === null) {
+                        dispatch(userNoExist());
+                    }else{
+                        dispatch(setUserName(val.name));
+                        dispatch(setUserAvatar(val.avatar));
+                        dispatch(userAuthorized());
+                        dispatch(fetchMessages());
+                    }
                 });
     }
 }
@@ -107,4 +138,8 @@ export const startAuthorizing = () => ({
 
 export const userAuthorized = () => ({
     type: 'USER_AUTHORIZED'
+});
+
+export const userNoExist = () => ({
+    type: 'USER_NO_EXIST'
 });
