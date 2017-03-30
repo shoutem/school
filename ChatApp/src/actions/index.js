@@ -42,6 +42,8 @@ export const fetchMessages = () => {
 
         firebase.database()
                 .ref('messages')
+                .orderByKey()
+                .limitToLast(20)
                 .on('value', (snapshot) => {
                     // gets around Redux panicking about actions in reducers
                     setTimeout(() => {
