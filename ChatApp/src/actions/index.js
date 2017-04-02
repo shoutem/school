@@ -115,20 +115,23 @@ export const checkUserExists = () => {
     return function (dispatch) {
         dispatch(startAuthorizing());
 
-        firebase.database()
-                .ref(`users/${DeviceInfo.getUniqueID()}`)
-                .once('value', (snapshot) => {
-                    const val = snapshot.val();
+        firebase.auth()
+                .signInAnonymously()
+                .then(() => firebase.database()
+                                    .ref(`users/${DeviceInfo.getUniqueID()}`)
+                                    .once('value', (snapshot) => {
+                                        const val = snapshot.val();
 
-                    if (val === null) {
-                        dispatch(userNoExist());
-                    }else{
-                        dispatch(setUserName(val.name));
-                        dispatch(setUserAvatar(val.avatar));
-                        dispatch(userAuthorized());
-                        dispatch(fetchMessages());
-                    }
-                });
+                                        if (val === null) {
+                                            dispatch(userNoExist());
+                                        }else{
+                                            dispatch(setUserName(val.name));
+                                            dispatch(setUserAvatar(val.avatar));
+                                            dispatch(userAuthorized());
+                                            dispatch(fetchMessages());
+                                        }
+                                    }))
+                .catch(err => console.log(err))
     }
 }
 
