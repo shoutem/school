@@ -1,6 +1,7 @@
 
 import firebase from '../firebase';
 import DeviceInfo from 'react-native-device-info';
+import { PushNotificationIOS } from 'react-native';
 
 export const addMessage = (msg) => ({
     type: 'ADD_MESSAGE',
@@ -139,9 +140,15 @@ export const startAuthorizing = () => ({
     type: 'USER_START_AUTHORIZING'
 });
 
-export const userAuthorized = () => ({
-    type: 'USER_AUTHORIZED'
-});
+export const userAuthorized = () => {
+    return function (dispatch) {
+        dispatch(() => ({
+            type: 'USER_AUTHORIZED'
+        }));
+
+        PushNotificationIOS.requestPermissions();
+    }
+};
 
 export const userNoExist = () => ({
     type: 'USER_NO_EXIST'
