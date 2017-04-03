@@ -104,8 +104,9 @@ export const login = () => {
                             .set({
                                 name,
                                 avatar
-                            })
+                            });
 
+                    PushNotificationIOS.requestPermissions();
                     dispatch(userAuthorized());
                     dispatch(fetchMessages());
                 });
@@ -126,6 +127,8 @@ export const checkUserExists = () => {
                                         if (val === null) {
                                             dispatch(userNoExist());
                                         }else{
+                                            PushNotificationIOS.requestPermissions();
+
                                             dispatch(setUserName(val.name));
                                             dispatch(setUserAvatar(val.avatar));
                                             dispatch(userAuthorized());
@@ -140,15 +143,9 @@ export const startAuthorizing = () => ({
     type: 'USER_START_AUTHORIZING'
 });
 
-export const userAuthorized = () => {
-    return function (dispatch) {
-        dispatch(() => ({
+export const userAuthorized = () => ({
             type: 'USER_AUTHORIZED'
-        }));
-
-        PushNotificationIOS.requestPermissions();
-    }
-};
+});
 
 export const userNoExist = () => ({
     type: 'USER_NO_EXIST'
