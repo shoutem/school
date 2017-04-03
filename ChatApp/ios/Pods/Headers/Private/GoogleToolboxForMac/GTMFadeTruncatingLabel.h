@@ -1,0 +1,1 @@
+../../../GoogleToolboxForMac/iPhone/GTMFadeTruncatingLabel.h

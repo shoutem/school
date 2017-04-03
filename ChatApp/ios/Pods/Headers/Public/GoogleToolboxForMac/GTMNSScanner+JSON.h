@@ -1,0 +1,1 @@
+../../../GoogleToolboxForMac/Foundation/GTMNSScanner+JSON.h

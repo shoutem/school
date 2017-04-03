@@ -17,15 +17,95 @@ PODS:
     - FirebaseInstanceID (~> 1.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
+  - GoogleToolboxForMac (2.1.1):
+    - GoogleToolboxForMac/AddressBook (= 2.1.1)
+    - GoogleToolboxForMac/Core (= 2.1.1)
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/GeometryUtils (= 2.1.1)
+    - GoogleToolboxForMac/iPhone (= 2.1.1)
+    - GoogleToolboxForMac/KVO (= 2.1.1)
+    - GoogleToolboxForMac/Logger (= 2.1.1)
+    - GoogleToolboxForMac/NSData+zlib (= 2.1.1)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (= 2.1.1)
+    - GoogleToolboxForMac/NSFileHandle+UniqueName (= 2.1.1)
+    - GoogleToolboxForMac/NSScanner+JSON (= 2.1.1)
+    - GoogleToolboxForMac/NSString+HTML (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+    - GoogleToolboxForMac/NSString+XML (= 2.1.1)
+    - GoogleToolboxForMac/NSThread+Blocks (= 2.1.1)
+    - GoogleToolboxForMac/Regex (= 2.1.1)
+    - GoogleToolboxForMac/RoundedRectPath (= 2.1.1)
+    - GoogleToolboxForMac/StackTrace (= 2.1.1)
+    - GoogleToolboxForMac/StringEncoding (= 2.1.1)
+    - GoogleToolboxForMac/SystemVersion (= 2.1.1)
+    - GoogleToolboxForMac/UIFont+LineHeight (= 2.1.1)
+    - GoogleToolboxForMac/UnitTesting (= 2.1.1)
+    - GoogleToolboxForMac/UnitTestingAppLib (= 2.1.1)
+    - GoogleToolboxForMac/URLBuilder (= 2.1.1)
+  - GoogleToolboxForMac/AddressBook (2.1.1):
+    - GoogleToolboxForMac/Core (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Core (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/GeometryUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/iPhone (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/KVO (2.1.1):
+    - GoogleToolboxForMac/Core (= 2.1.1)
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
   - GoogleToolboxForMac/Logger (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSFileHandle+UniqueName (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSScanner+JSON (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSString+HTML (2.1.1):
+    - GoogleToolboxForMac/Core (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GoogleToolboxForMac/NSString+XML (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSThread+Blocks (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Regex (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/RoundedRectPath (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/StackTrace (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/StringEncoding (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/SystemVersion (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/UIFont+LineHeight (2.1.1)
+  - GoogleToolboxForMac/UnitTesting (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/Regex (= 2.1.1)
+    - GoogleToolboxForMac/SystemVersion (= 2.1.1)
+  - GoogleToolboxForMac/UnitTestingAppLib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/UnitTesting (= 2.1.1)
+  - GoogleToolboxForMac/URLBuilder (2.1.1):
+    - GoogleToolboxForMac/Core (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - Protobuf (3.2.0)
 
 DEPENDENCIES:
+  - Firebase/Core
   - Firebase/Messaging
+  - GoogleToolboxForMac
 
 SPEC CHECKSUMS:
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
@@ -36,6 +116,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
 
-PODFILE CHECKSUM: 202a172168fb297ddeadff04f6a15629f317e9db
+PODFILE CHECKSUM: 4801a1716b0bceb2b822c66116a50e8866a44733
 
 COCOAPODS: 1.2.0

@@ -1,0 +1,1 @@
+../../../GoogleToolboxForMac/Foundation/GTMStackTrace.h
