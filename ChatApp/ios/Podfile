@@ -1,0 +1,18 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, "6.0"
+
+target "ChatApp" do
+  pod 'Firebase/Messaging'
+end
+
+target "ChatAppTests" do
+
+end
+
+target "ChatApp-tvOS" do
+
+end
+
+target "ChatApp-tvOSTests" do
+
+end

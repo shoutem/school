@@ -1,7 +1,7 @@
 
 import firebase from '../firebase';
 import DeviceInfo from 'react-native-device-info';
-import { PushNotificationIOS } from 'react-native';
+import FCM, { FCMEvent, NotificationType } from 'react-native-fcm';
 
 export const addMessage = (msg) => ({
     type: 'ADD_MESSAGE',
@@ -106,9 +106,7 @@ export const login = () => {
                                 avatar
                             });
 
-                    PushNotificationIOS.requestPermissions();
-                    dispatch(userAuthorized());
-                    dispatch(fetchMessages());
+                    startChatting(dispatch);
                 });
     }
 }
@@ -127,16 +125,61 @@ export const checkUserExists = () => {
                                         if (val === null) {
                                             dispatch(userNoExist());
                                         }else{
-                                            PushNotificationIOS.requestPermissions();
-
                                             dispatch(setUserName(val.name));
                                             dispatch(setUserAvatar(val.avatar));
-                                            dispatch(userAuthorized());
-                                            dispatch(fetchMessages());
+                                            startChatting(dispatch);
                                         }
                                     }))
                 .catch(err => console.log(err))
     }
+}
+
+const startChatting = function (dispatch) {
+    dispatch(userAuthorized());
+    dispatch(fetchMessages());
+
+    FCM.requestPermissions();
+    FCM.getFCMToken()
+       .then(token => {
+           console.log(token)
+       });
+
+    FCM.on(FCMEvent.Notification, async (notif) => {
+        console.log(notif);
+
+        if (Platform.OS === 'ios') {
+            switch (notif._notificationType) {
+                case NotificationType.Remote:
+                    notif.finish(RemoteNotificationResult.NewData); //other types available: RemoteNotificationResult.NewData, RemoteNotificationResult.ResultFailed
+                    break;
+                case NotificationType.NotificationResponse:
+                    notif.finish();
+                    break;
+                case NotificationType.WillPresent:
+                    notif.finish(WillPresentNotificationResult.All); //other types available: WillPresentNotificationResult.None
+                    break;
+              }
+            }
+    });
+
+    FCM.on(FCMEvent.RefreshToken, token => {
+        console.log(token);
+    });
+
+
+
+    /* PushNotification.configure({
+       onRegister: function (token) {
+       console.log('registered!');
+       console.log('TOKEN:', token);
+       },
+
+       onNotification: function (notification) {
+       console.log('NOTIFICATION: ', notification);
+       },
+
+       requestPermissions: true
+       }); */
 }
 
 export const startAuthorizing = () => ({
@@ -144,7 +187,7 @@ export const startAuthorizing = () => ({
 });
 
 export const userAuthorized = () => ({
-            type: 'USER_AUTHORIZED'
+    type: 'USER_AUTHORIZED'
 });
 
 export const userNoExist = () => ({
