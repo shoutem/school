@@ -8,17 +8,15 @@
   },
   "dependencies": {
     "@shoutem/ui": "^0.12.0",
-    "firebase": "^3.7.2",
-    "moment": "^2.18.0",
+    "firebase": "^3.7.4",
+    "moment": "^2.18.1",
     "react": "15.4.2",
-    "react-native": "^0.42.3",
-    "react-native-device-info": "^0.10.1",
+    "react-native": "0.42.3",
     "react-native-fcm": "^6.2.0",
-    "react-native-keyboard-aware-scroll-view": "^0.2.7",
-    "react-native-push-notification": "^2.2.1",
+    "react-native-keyboard-aware-scroll-view": "^0.2.8",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
-    "redux-logger": "^2.8.2",
+    "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {

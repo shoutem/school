@@ -1,0 +1,33 @@
+{
+  "name": "ChatApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@shoutem/ui": "^0.12.0",
+    "firebase": "^3.7.2",
+    "moment": "^2.18.0",
+    "react": "15.4.2",
+    "react-native": "^0.42.3",
+    "react-native-device-info": "^0.10.1",
+    "react-native-fcm": "^6.2.0",
+    "react-native-keyboard-aware-scroll-view": "^0.2.7",
+    "react-native-push-notification": "^2.2.1",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.8.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-jest": "19.0.0",
+    "babel-preset-react-native": "1.9.1",
+    "jest": "19.0.2",
+    "react-test-renderer": "15.4.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

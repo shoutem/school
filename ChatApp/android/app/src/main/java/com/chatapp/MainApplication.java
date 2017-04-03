@@ -4,12 +4,10 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.evollu.react.fcm.FIRMessagingPackage;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.BV.LinearGradient.LinearGradientPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnative.photoview.PhotoViewPackage;
 import cl.json.RNSharePackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -31,12 +29,10 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new FIRMessagingPackage(),
-            new ReactNativePushNotificationPackage(),
-            new RNDeviceInfo(),
-            new LinearGradientPackage(),
-            new VectorIconsPackage(),
             new PhotoViewPackage(),
-            new RNSharePackage()
+            new RNSharePackage(),
+            new LinearGradientPackage(),
+            new VectorIconsPackage()
       );
     }
   };

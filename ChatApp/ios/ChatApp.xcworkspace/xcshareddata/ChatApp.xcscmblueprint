@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "011E7453AE59EBD61285E6D69A7BAC0DFF282E23",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "156B64B1EB492961344B06C5D34F5B22DD7ECD85" : 9223372036854775807,
+    "011E7453AE59EBD61285E6D69A7BAC0DFF282E23" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E2EB038A-438C-41B0-9FA9-0D8785BF6373",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "156B64B1EB492961344B06C5D34F5B22DD7ECD85" : "",
+    "011E7453AE59EBD61285E6D69A7BAC0DFF282E23" : "shoutem-school\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ChatApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ChatApp\/ios\/ChatApp.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:shoutem\/school.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "011E7453AE59EBD61285E6D69A7BAC0DFF282E23"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Swizec\/livecoding-project.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "156B64B1EB492961344B06C5D34F5B22DD7ECD85"
+    }
+  ]
+}
