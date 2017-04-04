@@ -37,6 +37,10 @@
 		2D79C1F6B4954AE4BB8D27E0 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A19BF3AD86D145D287C6A7A4 /* rubicon-icon-font.ttf */; };
 		2DCD954D1E0B4F2C00145EB5 /* ChatAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ChatAppTests.m */; };
 		380993971E936FBA00418B6B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993961E936FBA00418B6B /* FirebaseCore.framework */; };
+		380993E91E93714300418B6B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993C61E93707300418B6B /* GoogleToolboxForMac.framework */; };
+		380993EC1E93718E00418B6B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993EB1E93718E00418B6B /* CoreData.framework */; };
+		3853652E1E93731D00AF5416 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3853652D1E93731D00AF5416 /* libsqlite3.dylib */; };
+		385365301E9374E200AF5416 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3853652F1E9374E200AF5416 /* libz.tbd */; };
 		40A1489D1F8B4B8FB5963F7B /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6BB8E3DD8194B95A9AA6EC7 /* MaterialIcons.ttf */; };
 		47D58F6B34D54718B02AB1F3 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3531385F0ED14C6989FE0867 /* Ionicons.ttf */; };
 		4934FC09973E4B7A9989AB9B /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B86C05653094DB7A874C5D4 /* Rubik-Italic.ttf */; };
@@ -320,6 +324,14 @@
 		380993661E936F0500418B6B /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		380993841E936F3500418B6B /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		380993961E936FBA00418B6B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		380993C61E93707300418B6B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		380993E51E9370B100418B6B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		380993E71E9370B700418B6B /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		380993EB1E93718E00418B6B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		380993ED1E93719600418B6B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		3853650E1E93727700AF5416 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		3853652D1E93731D00AF5416 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		3853652F1E9374E200AF5416 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		385B96E21E9362D500A1E2FF /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ChatApp.entitlements; path = ChatApp/ChatApp.entitlements; sourceTree = "<group>"; };
 		41BC7BB425AE48D58B07FA2A /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-BoldItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
 		46ADE781DB264F409DA66311 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
@@ -357,6 +369,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385365301E9374E200AF5416 /* libz.tbd in Frameworks */,
+				3853652E1E93731D00AF5416 /* libsqlite3.dylib in Frameworks */,
+				380993EC1E93718E00418B6B /* CoreData.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -370,6 +385,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				7BE26A10CB954D60AF1E0163 /* libRNVectorIcons.a in Frameworks */,
 				380993971E936FBA00418B6B /* FirebaseCore.framework in Frameworks */,
+				380993E91E93714300418B6B /* GoogleToolboxForMac.framework in Frameworks */,
 				0F957C90FC88423196790EF7 /* libBVLinearGradient.a in Frameworks */,
 				6C1741EC263F4981B64A6B63 /* libRNShare.a in Frameworks */,
 				59F757A7401145349BFB8363 /* libRNDeviceInfo.a in Frameworks */,
@@ -513,6 +529,9 @@
 		1A52F97B1691466CB16320C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				380993E71E9370B700418B6B /* FirebaseInstanceID.framework */,
+				380993E51E9370B100418B6B /* FirebaseAnalytics.framework */,
+				380993C61E93707300418B6B /* GoogleToolboxForMac.framework */,
 				380993961E936FBA00418B6B /* FirebaseCore.framework */,
 				0869C71A602146649851D3E6 /* Entypo.ttf */,
 				986C06E8CFD643E79DED5CB0 /* EvilIcons.ttf */,
@@ -537,6 +556,18 @@
 				CA7C26A7AA3640D086CBF540 /* Rubik-Regular.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		380993EA1E93718E00418B6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3853652F1E9374E200AF5416 /* libz.tbd */,
+				3853652D1E93731D00AF5416 /* libsqlite3.dylib */,
+				3853650E1E93727700AF5416 /* libGoogleAnalyticsServices.a */,
+				380993ED1E93719600418B6B /* libsqlite3.tbd */,
+				380993EB1E93718E00418B6B /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		38B018F91E9243BC006CD07E /* Products */ = {
@@ -628,6 +659,7 @@
 				00E356EF1AD99517003FC87E /* ChatAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				1A52F97B1691466CB16320C4 /* Resources */,
+				380993EA1E93718E00418B6B /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -725,7 +757,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 610;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1220,6 +1252,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatApp.app/ChatApp";
 			};
@@ -1246,6 +1279,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatApp.app/ChatApp";
 			};
@@ -1272,6 +1306,10 @@
 				);
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1303,6 +1341,10 @@
 				);
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1439,15 +1481,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1480,8 +1526,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1489,6 +1537,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
