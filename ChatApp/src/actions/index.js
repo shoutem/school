@@ -144,6 +144,7 @@ const startChatting = function (dispatch) {
        .then(token => {
            console.log(token)
        });
+    FCM.subscribeToTopic('secret-chatroom');
 
     FCM.on(FCMEvent.Notification, async (notif) => {
         console.log(notif);
