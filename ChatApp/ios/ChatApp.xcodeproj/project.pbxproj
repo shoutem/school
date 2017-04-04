@@ -41,6 +41,10 @@
 		380993EC1E93718E00418B6B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993EB1E93718E00418B6B /* CoreData.framework */; };
 		3853652E1E93731D00AF5416 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3853652D1E93731D00AF5416 /* libsqlite3.dylib */; };
 		385365301E9374E200AF5416 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3853652F1E9374E200AF5416 /* libz.tbd */; };
+		38C916471E937868002C7724 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C916461E937868002C7724 /* Protobuf.framework */; };
+		38C916651E93788F002C7724 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993E51E9370B100418B6B /* FirebaseAnalytics.framework */; };
+		38C916661E9378A6002C7724 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993E71E9370B700418B6B /* FirebaseInstanceID.framework */; };
+		38C916681E9378BA002C7724 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C916671E9378BA002C7724 /* FirebaseMessaging.framework */; };
 		40A1489D1F8B4B8FB5963F7B /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6BB8E3DD8194B95A9AA6EC7 /* MaterialIcons.ttf */; };
 		47D58F6B34D54718B02AB1F3 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3531385F0ED14C6989FE0867 /* Ionicons.ttf */; };
 		4934FC09973E4B7A9989AB9B /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B86C05653094DB7A874C5D4 /* Rubik-Italic.ttf */; };
@@ -333,6 +337,8 @@
 		3853652D1E93731D00AF5416 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		3853652F1E9374E200AF5416 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		385B96E21E9362D500A1E2FF /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ChatApp.entitlements; path = ChatApp/ChatApp.entitlements; sourceTree = "<group>"; };
+		38C916461E937868002C7724 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Protobuf.framework; sourceTree = "<group>"; };
+		38C916671E9378BA002C7724 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = "<group>"; };
 		41BC7BB425AE48D58B07FA2A /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-BoldItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
 		46ADE781DB264F409DA66311 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		5E649FC7C86945F49BA8D4F2 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
@@ -369,9 +375,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C916661E9378A6002C7724 /* FirebaseInstanceID.framework in Frameworks */,
+				38C916651E93788F002C7724 /* FirebaseAnalytics.framework in Frameworks */,
 				385365301E9374E200AF5416 /* libz.tbd in Frameworks */,
 				3853652E1E93731D00AF5416 /* libsqlite3.dylib in Frameworks */,
+				38C916471E937868002C7724 /* Protobuf.framework in Frameworks */,
 				380993EC1E93718E00418B6B /* CoreData.framework in Frameworks */,
+				38C916681E9378BA002C7724 /* FirebaseMessaging.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -561,6 +571,8 @@
 		380993EA1E93718E00418B6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38C916671E9378BA002C7724 /* FirebaseMessaging.framework */,
+				38C916461E937868002C7724 /* Protobuf.framework */,
 				3853652F1E9374E200AF5416 /* libz.tbd */,
 				3853652D1E93731D00AF5416 /* libsqlite3.dylib */,
 				3853650E1E93727700AF5416 /* libGoogleAnalyticsServices.a */,
