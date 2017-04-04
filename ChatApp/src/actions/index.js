@@ -1,7 +1,8 @@
 
 import firebase from '../firebase';
 import DeviceInfo from 'react-native-device-info';
-import FCM, { FCMEvent, NotificationType } from 'react-native-fcm';
+import FCM, { FCMEvent, NotificationType, WillPresentNotificationResult, RemoteNotificationResult } from 'react-native-fcm';
+import { Platform } from 'react-native';
 
 export const addMessage = (msg) => ({
     type: 'ADD_MESSAGE',
@@ -165,21 +166,6 @@ const startChatting = function (dispatch) {
     FCM.on(FCMEvent.RefreshToken, token => {
         console.log(token);
     });
-
-
-
-    /* PushNotification.configure({
-       onRegister: function (token) {
-       console.log('registered!');
-       console.log('TOKEN:', token);
-       },
-
-       onNotification: function (notification) {
-       console.log('NOTIFICATION: ', notification);
-       },
-
-       requestPermissions: true
-       }); */
 }
 
 export const startAuthorizing = () => ({

@@ -9,7 +9,7 @@ import {
   AppRegistry
 } from 'react-native';
 
-import { Examples } from '@shoutem/ui';
+import FCM, { FCMEvent, NotificationType } from 'react-native-fcm';
 
 import App from './src/App.js';
 
