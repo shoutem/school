@@ -36,6 +36,7 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2D79C1F6B4954AE4BB8D27E0 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A19BF3AD86D145D287C6A7A4 /* rubicon-icon-font.ttf */; };
 		2DCD954D1E0B4F2C00145EB5 /* ChatAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ChatAppTests.m */; };
+		380993971E936FBA00418B6B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993961E936FBA00418B6B /* FirebaseCore.framework */; };
 		40A1489D1F8B4B8FB5963F7B /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6BB8E3DD8194B95A9AA6EC7 /* MaterialIcons.ttf */; };
 		47D58F6B34D54718B02AB1F3 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3531385F0ED14C6989FE0867 /* Ionicons.ttf */; };
 		4934FC09973E4B7A9989AB9B /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B86C05653094DB7A874C5D4 /* Rubik-Italic.ttf */; };
@@ -318,6 +319,7 @@
 		3531385F0ED14C6989FE0867 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		380993661E936F0500418B6B /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		380993841E936F3500418B6B /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		380993961E936FBA00418B6B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
 		385B96E21E9362D500A1E2FF /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ChatApp.entitlements; path = ChatApp/ChatApp.entitlements; sourceTree = "<group>"; };
 		41BC7BB425AE48D58B07FA2A /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-BoldItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
 		46ADE781DB264F409DA66311 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				7BE26A10CB954D60AF1E0163 /* libRNVectorIcons.a in Frameworks */,
+				380993971E936FBA00418B6B /* FirebaseCore.framework in Frameworks */,
 				0F957C90FC88423196790EF7 /* libBVLinearGradient.a in Frameworks */,
 				6C1741EC263F4981B64A6B63 /* libRNShare.a in Frameworks */,
 				59F757A7401145349BFB8363 /* libRNDeviceInfo.a in Frameworks */,
@@ -510,6 +513,7 @@
 		1A52F97B1691466CB16320C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				380993961E936FBA00418B6B /* FirebaseCore.framework */,
 				0869C71A602146649851D3E6 /* Entypo.ttf */,
 				986C06E8CFD643E79DED5CB0 /* EvilIcons.ttf */,
 				5E649FC7C86945F49BA8D4F2 /* FontAwesome.ttf */,
@@ -1255,6 +1259,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 7YJMKMYFZE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1282,6 +1290,10 @@
 				CODE_SIGN_ENTITLEMENTS = ChatApp/ChatApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7YJMKMYFZE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
