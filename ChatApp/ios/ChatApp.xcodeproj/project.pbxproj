@@ -39,6 +39,7 @@
 		380993971E936FBA00418B6B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993961E936FBA00418B6B /* FirebaseCore.framework */; };
 		380993E91E93714300418B6B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993C61E93707300418B6B /* GoogleToolboxForMac.framework */; };
 		380993EC1E93718E00418B6B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380993EB1E93718E00418B6B /* CoreData.framework */; };
+		382872DD1E9501EF00865DC3 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 382872DC1E9501EF00865DC3 /* libz.1.dylib */; };
 		3853652E1E93731D00AF5416 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3853652D1E93731D00AF5416 /* libsqlite3.dylib */; };
 		385365301E9374E200AF5416 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3853652F1E9374E200AF5416 /* libz.tbd */; };
 		387323081E937AED00A0BE07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 387323071E937AED00A0BE07 /* GoogleService-Info.plist */; };
@@ -342,6 +343,7 @@
 		380993E71E9370B700418B6B /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		380993EB1E93718E00418B6B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		380993ED1E93719600418B6B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		382872DC1E9501EF00865DC3 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 		3853650E1E93727700AF5416 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		3853652D1E93731D00AF5416 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		3853652F1E9374E200AF5416 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -387,6 +389,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382872DD1E9501EF00865DC3 /* libz.1.dylib in Frameworks */,
 				38C916661E9378A6002C7724 /* FirebaseInstanceID.framework in Frameworks */,
 				38C916651E93788F002C7724 /* FirebaseAnalytics.framework in Frameworks */,
 				385365301E9374E200AF5416 /* libz.tbd in Frameworks */,
@@ -585,6 +588,7 @@
 		380993EA1E93718E00418B6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				382872DC1E9501EF00865DC3 /* libz.1.dylib */,
 				38C916671E9378BA002C7724 /* FirebaseMessaging.framework */,
 				38C916461E937868002C7724 /* Protobuf.framework */,
 				3853652F1E9374E200AF5416 /* libz.tbd */,
