@@ -126,6 +126,7 @@ android {
 }
 
 dependencies {
+    compile project(':gl-react-native')
     compile project(':react-native-camera')
     compile project(':react-native-photo-view')
     compile project(':react-native-share')
