@@ -13,7 +13,7 @@ const shaders = Shaders.create({
 precision highp float;
 varying vec2 uv;
 void main() {
-  gl_FragColor = vec4(uv.x, uv.y, 0.5, 0.6);
+  gl_FragColor = vec4(uv.x, uv.y, 0.5, 0.4);
 }`
 // the main() function is called FOR EACH PIXELS
 // the varying uv is a vec2 where x and y respectively varying from 0.0 to 1.0.
@@ -22,14 +22,10 @@ void main() {
   }
 });
 
-export default class Example extends Component {
+export default class HelloGL extends Component {
     render() {
-        const { width, height } = this.props;
-
         return (
-            <Surface style={{ width, height }}>
-                <Node shader={shaders.helloGL} />
-            </Surface>
+            <Node shader={shaders.helloGL} />
         );
         // Surface creates the canvas, an area of pixels where you can draw.
         // Node instanciates a "shader program" with the fragment shader defined above.

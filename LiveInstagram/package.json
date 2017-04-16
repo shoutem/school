@@ -9,6 +9,7 @@
   "dependencies": {
     "@shoutem/ui": "^0.13.0",
     "gl-react": "next",
+    "gl-react-image": "0.0.2",
     "gl-react-native": "next",
     "raf": "^3.3.0",
     "react": "16.0.0-alpha.6",
