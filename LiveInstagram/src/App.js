@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Screen } from '@shoutem/ui';
+import { Screen, Button, Text } from '@shoutem/ui';
 import Camera from 'react-native-camera';
 import { Surface } from "gl-react-native";
 
@@ -10,7 +10,8 @@ import Saturate from './Saturate';
 export default class App extends Component {
     state = {
         width: null,
-        height: null
+        height: null,
+        path: "https://i.imgur.com/uTP9Xfr.jpg"
     }
 
     onLayout = (event) => {
@@ -20,6 +21,29 @@ export default class App extends Component {
             width,
             height
         });
+
+        this.start();
+    }
+
+    refreshPic = () => {
+        this.camera
+            .capture({
+                target: Camera.constants.CaptureTarget.temp,
+                jpegQuality: 70
+            })
+            .then(data => this.setState({
+                path: data.path
+            }))
+            .catch(err => console.error(err));
+    }
+
+    start() {
+        this.timer = setInterval(() => this.refreshPic(),
+                                 5);
+    }
+
+    onComponentWillUnmount() {
+        clearInterval(this.timer);
     }
 
     render() {
@@ -36,15 +60,17 @@ export default class App extends Component {
                 <Screen onLayout={this.onLayout}>
                     <Camera style={{flex: 1}}
                             ref={cam => this.camera=cam}
+                            captureQuality={Camera.constants.CaptureQuality["720p"]}
                             aspect={Camera.constants.Aspect.fill}>
 
                         <Surface style={{ width, height }}>
                             <Saturate {...filter}>
-                                {{ uri: "https://i.imgur.com/uTP9Xfr.jpg" }}
+                                {{ uri: this.state.path }}
                             </Saturate>
                         </Surface>
 
                     </Camera>
+
                 </Screen>
             );
         }else{
