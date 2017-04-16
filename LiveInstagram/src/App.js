@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Screen, Button, Text } from '@shoutem/ui';
 import Camera from 'react-native-camera';
 import { Surface } from "gl-react-native";
+import { PanResponder } from 'react-native';
+import { scaleLinear } from 'd3-scale';
 
 import HelloGL from './HelloGL';
 import Saturate from './Saturate';
@@ -11,7 +13,10 @@ export default class App extends Component {
     state = {
         width: null,
         height: null,
-        path: "https://i.imgur.com/uTP9Xfr.jpg"
+        path: "https://i.imgur.com/uTP9Xfr.jpg",
+        contrast: 1,
+        brightness: 1,
+        saturation: 1
     }
 
     onLayout = (event) => {
@@ -39,25 +44,58 @@ export default class App extends Component {
 
     start() {
         this.timer = setInterval(() => this.refreshPic(),
-                                 5);
+                                 8);
     }
 
-    onComponentWillUnmount() {
+    dragScaleX = scaleLinear()
+    dragScaleY = scaleLinear()
+
+    componentWillMount() {
+        this._panResponder = PanResponder.create({
+            onMoveShouldSetResponderCapture: () => true,
+            onMoveShouldSetPanResponderCapture: () => true,
+
+            onPanResponderGrant: (e, {x0, y0}) => {
+                const { width, height } = this.state;
+
+                this.dragScaleX
+                    .domain([-x0, width-x0])
+                    .range([-1, 1]);
+
+                this.dragScaleY
+                    .domain([-y0, height-y0])
+                    .range([1, -1]);
+            },
+
+            onPanResponderMove: (e, {dx, dy}) => {
+                this.setState({
+                    saturation: 1 + this.dragScaleX(dx),
+                    brightness: 1 + this.dragScaleY(dy)
+                });
+            },
+
+            onPanResponderRelease: (ev, {vx, vy}) => {
+                console.log('released');
+            }
+        });
+    }
+
+    componentWillUnmount() {
         clearInterval(this.timer);
     }
 
     render() {
-        const { width, height } = this.state;
+        const { width, height, brightness, contrast, saturation } = this.state;
 
         const filter = {
-            contrast: 1,
-            saturation: 1,
-            brightness: 1
+            brightness,
+            contrast,
+            saturation
         }
 
         if (width && height) {
             return (
-                <Screen onLayout={this.onLayout}>
+                <Screen onLayout={this.onLayout} {...this._panResponder.panHandlers}>
                     <Camera style={{flex: 1}}
                             ref={cam => this.camera=cam}
                             captureQuality={Camera.constants.CaptureQuality["720p"]}
