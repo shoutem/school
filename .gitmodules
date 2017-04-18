@@ -1,0 +1,6 @@
+[submodule "ImgurApp"]
+	path = ImgurApp
+	url = https://github.com/Swizec/ImgurApp
+[submodule "JustATributeApp"]
+	path = JustATributeApp
+	url = https://github.com/Swizec/JustATributeApp

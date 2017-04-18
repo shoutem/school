@@ -95,7 +95,8 @@ export default class App extends Component {
 
         if (width && height) {
             return (
-                <Screen onLayout={this.onLayout} {...this._panResponder.panHandlers}>
+                <Screen onLayout={this.onLayout}
+                        {...this._panResponder.panHandlers}>
                     <Camera style={{flex: 1}}
                             ref={cam => this.camera=cam}
                             captureQuality={Camera.constants.CaptureQuality["720p"]}
