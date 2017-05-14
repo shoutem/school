@@ -2,10 +2,8 @@
 import React, { Component } from 'react';
 import { Screen, Heading, NavigationBar, Title, Image } from '@shoutem/ui';
 
-import radio from './media/radio_icon.png';
-
 const Radio = () => (
-    <Image source={radio}
+    <Image source={require('./media/radio.png')}
            style={{width: 64, height: 64 }} />
 );
 
