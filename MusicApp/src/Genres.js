@@ -1,18 +1,51 @@
 
 import React, { Component } from 'react';
-import { ListView, GridView, GridRow, TouchableOpacity, Card, Image, View, Subtitle } from '@shoutem/ui';
+import { ListView, GridView, GridRow, TouchableOpacity, Card, Image, View, Subtitle, Spinner } from '@shoutem/ui';
 
-// <Image source={genre.image} styleName="medium-wide" />
+import Flickr from 'flickr-sdk';
+
+const flickr = new Flickr({
+    apiKey: "8dacb3c2a9b8ff4016fab4a76df1441c",
+    apiSecret: "47a16c5f9512dbf8"
+});
+
+class GenreArt extends Component {
+    state = {
+        uri: null
+    }
+
+    componentDidMount() {
+
+    }
+
+    render() {
+        const { uri } = this.state;
+
+        if (uri) {
+            return (
+                <Card styleName="flexible">
+                    <Image source={{uri: uri}} styleName="medium-wide" />
+                </Card>
+            );
+        }else{
+            return (
+                <Card styleName="flexible">
+                    <Spinner />
+                </Card>
+            );
+        }
+    }
+}
 
 class Genres extends Component {
     renderRow(rowData, sectionId, index) {
         const cellViews = rowData.map((genre, id) => (
             <TouchableOpacity key={id} styleName="flexible">
-                <Card styleName="flexible">
-                    <Image source={require('./media/alternative_rock.jpg')} styleName="medium-wide" />
-                </Card>
-                <View styleName="content">
-                    <Subtitle numberOfLines={1}>{genre.name}</Subtitle>
+                <View>
+                    <GenreArt />
+                    <View styleName="content">
+                        <Subtitle numberOfLines={1}>{genre.name}</Subtitle>
+                    </View>
                 </View>
             </TouchableOpacity>
         ));

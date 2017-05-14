@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@shoutem/ui": "^0.14.2",
+    "flickr-sdk": "^2.1.0",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.0"
   },
