@@ -2,12 +2,18 @@
 import React, { Component } from 'react';
 import { ListView, GridView, GridRow, TouchableOpacity, Card, Image, View, Subtitle, Spinner } from '@shoutem/ui';
 
-import Flickr from 'flickr-sdk';
 
-const flickr = new Flickr({
-    apiKey: "8dacb3c2a9b8ff4016fab4a76df1441c",
-    apiSecret: "47a16c5f9512dbf8"
-});
+const Flickr = function (search) {
+    return fetch(
+        `https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=true&api_key=8dacb3c2a9b8ff4016fab4a76df1441c&text=${search} music&license=2&sort=interestingness-desc`
+    ).then(res => res.json())
+     .then(json => {
+         return new Promise((resolve, reject) => {
+             const { farm, server, id, secret } = json.photos.photo[Math.round(Math.random()*10)];
+             resolve(`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_z.jpg`);
+         });
+     });
+}
 
 class GenreArt extends Component {
     state = {
@@ -15,7 +21,10 @@ class GenreArt extends Component {
     }
 
     componentDidMount() {
-
+        Flickr(this.props.name).then(uri => {
+            console.log(uri);
+            this.setState({ uri })
+        });
     }
 
     render() {
@@ -42,7 +51,7 @@ class Genres extends Component {
         const cellViews = rowData.map((genre, id) => (
             <TouchableOpacity key={id} styleName="flexible">
                 <View>
-                    <GenreArt />
+                    <GenreArt name={genre.name} />
                     <View styleName="content">
                         <Subtitle numberOfLines={1}>{genre.name}</Subtitle>
                     </View>
