@@ -5,7 +5,7 @@ import { ListView, GridView, GridRow, TouchableOpacity, Card, Image, View, Subti
 
 const Flickr = function (search) {
     return fetch(
-        `https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=true&api_key=8dacb3c2a9b8ff4016fab4a76df1441c&text=${search} music&license=2&sort=interestingness-desc`
+        `https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=true&api_key=8dacb3c2a9b8ff4016fab4a76df1441c&license=1&safe_search=1&content_type=1&text=${search} music`
     ).then(res => res.json())
      .then(json => {
          return new Promise((resolve, reject) => {

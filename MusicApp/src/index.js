@@ -11,7 +11,11 @@ const Radio = () => (
            style={{width: 64, height: 64 }} />
 );
 
-const genres = ["Alternative Rock", "Ambient", "Classical", "Country"].map(name => (
+const genres = ["Alternative Rock", "Ambient", "Classical", "Country", "Dance & EDM",
+                "Dancehall", "Deep House", "Disco", "Drum & Bass", "Dubstep", "Electronic",
+                "Folk", "Singer-Songwriter", "Hip-Hop & Rap", "House", "Indie", "Jazz & Blues",
+                "Latin", "Metal", "Piano", "Pop", "R&B & Soul", "Reggae", "Reggaeton",
+                "Rock", "Soundtrack", "Techno", "Trance", "Trap", "Triphop", "World"].map(name => (
     {name: name}
 ));
 
