@@ -10,6 +10,7 @@
     "@shoutem/ui": "^0.14.2",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.0",
+    "react-native-audio-streaming": "^2.3.2",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
