@@ -9,3 +9,5 @@ export const search = (query, limit = 10, page = 0) => {
          resolve(json);
      }));
 };
+
+export const streamUrl = (trackUrl) => `${trackUrl}/stream?client_id=${SC_KEY}`;
