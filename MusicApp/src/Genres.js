@@ -21,10 +21,7 @@ class GenreArt extends Component {
     }
 
     componentDidMount() {
-        Flickr(this.props.name).then(uri => {
-            console.log(uri);
-            this.setState({ uri })
-        });
+        Flickr(this.props.name).then(uri => this.setState({ uri }));
     }
 
     render() {
@@ -34,12 +31,15 @@ class GenreArt extends Component {
             return (
                 <Card styleName="flexible">
                     <Image source={{uri: uri}} styleName="medium-wide" />
+                    <Subtitle numberOfLines={1}>{this.props.name}</Subtitle>
                 </Card>
             );
         }else{
             return (
                 <Card styleName="flexible">
-                    <Spinner />
+                    <Spinner styleName="large" style={{paddingTop: 30,
+                                                       paddingBottom: 30}}/>
+                    <Subtitle numberOfLines={1}>{this.props.name}</Subtitle>
                 </Card>
             );
         }
@@ -52,9 +52,6 @@ class Genres extends Component {
             <TouchableOpacity key={id} styleName="flexible">
                 <View>
                     <GenreArt name={genre.name} />
-                    <View styleName="content">
-                        <Subtitle numberOfLines={1}>{genre.name}</Subtitle>
-                    </View>
                 </View>
             </TouchableOpacity>
         ));
