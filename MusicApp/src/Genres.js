@@ -1,18 +1,24 @@
 
 import React, { Component } from 'react';
-import { ListView, GridView, GridRow, TouchableOpacity, Card, Image, View, Subtitle, Spinner } from '@shoutem/ui';
+import { ListView, GridView, GridRow, TouchableOpacity, Card, View, Subtitle, Spinner } from '@shoutem/ui';
 import { connect } from 'react-redux';
 
 import { playGenre } from './actions';
 import GenreArt from './GenreArt';
+import Playing from './Playing';
 
 
 const GenreButton = connect(
-    (state) => ({})
-)(({ genre, dispatch }) => (
+    (state) => ({
+        currentlyPlaying: state.currentlyPlaying
+    })
+)(({ genre, currentlyPlaying, dispatch }) => (
     <TouchableOpacity styleName="flexible" onPress={() => dispatch(playGenre(genre))}>
         <View>
-            <GenreArt name={genre.name} />
+            <Card styleName="flexible">
+                {currentlyPlaying.id === genre.id ? <Playing /> : <GenreArt name={genre.name} />}
+                <Subtitle numberOfLines={1}>{genre.name}</Subtitle>
+            </Card>
         </View>
     </TouchableOpacity>
 ));
@@ -20,7 +26,7 @@ const GenreButton = connect(
 class Genres extends Component {
     renderRow(rowData, sectionId, index) {
         const cellViews = rowData.map((genre, id) => (
-            <GenreButton  key={id} genre={genre} />
+            <GenreButton key={id} genre={genre} />
         ));
 
         return (
