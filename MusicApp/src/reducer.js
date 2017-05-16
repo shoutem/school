@@ -15,7 +15,8 @@ const initialState = {
     currentlyPlaying: {
         id: null,
         name: null
-    }
+    },
+    songs: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -24,6 +25,15 @@ const rootReducer = (state = initialState, action) => {
             return Object.assign({}, state,
                                  {
                                      currentlyPlaying: action.genre
+                                 });
+        case 'FOUND_SONGS':
+            const { songs, genre } = action;
+            return Object.assign({}, state,
+                                 {
+                                     songs: Object.assign({}, state.songs,
+                                                          {
+                                                              [genre.id]: songs
+                                                          })
                                  })
         default:
             return state;
