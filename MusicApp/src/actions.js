@@ -1,5 +1,11 @@
 
-import { search } from './soundcloudHelper';
+import { ReactNativeAudioStreaming } from 'react-native-audio-streaming';
+import { DeviceEventEmitter } from 'react-native';
+
+const Sound = require('react-native-sound');
+
+import { search, streamUrl } from './soundcloudHelper';
+
 
 export const playingGenre = (genre) => ({
     type: 'PLAYING_GENRE',
@@ -11,7 +17,11 @@ export const playGenre = (genre) => {
         dispatch(playingGenre(genre));
 
         search(genre.name)
-          .then(result => dispatch(foundSongs(result.collection, genre)));
+          .then(result => {
+              dispatch(foundSongs(result.collection, genre));
+
+              dispatch(playSong(result.collection[0]));
+          });
     }
 };
 
@@ -20,3 +30,27 @@ export const foundSongs = (songs, genre) => ({
     songs,
     genre
 });
+
+const testAudio = require('./media/advertising.mp3');
+
+export const playSong = (song) => {
+    return function (dispatch) {
+        //const url = streamUrl(song.uri);
+
+        Sound.setCategory('Ambient', true);
+
+        //console.log(testAudio);
+
+        const playSoundLooped = () => {
+            const s = new Sound(testAudio, (e) => {
+                if (e) {
+                    console.log('error', e);
+                }
+                s.setNumberOfLoops(-1);
+                s.play();
+            });
+        };
+
+        playSoundLooped();
+    }
+}
