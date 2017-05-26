@@ -16,7 +16,7 @@ const GenreButton = connect(
     <TouchableOpacity styleName="flexible" onPress={() => dispatch(playGenre(genre))}>
         <View>
             <Card styleName="flexible">
-                {currentlyPlaying.id === genre.id ? <Playing /> : <GenreArt name={genre.name} />}
+                {currentlyPlaying.genre.id === genre.id ? <Playing /> : <GenreArt name={genre.name} />}
                 <Subtitle numberOfLines={1}>{genre.name}</Subtitle>
             </Card>
         </View>

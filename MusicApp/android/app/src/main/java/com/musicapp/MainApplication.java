@@ -3,6 +3,8 @@ package com.musicapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.tanguyantoine.react.MusicControl;
+import com.audioStreaming.ReactNativeAudioStreamingPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import com.reactnative.photoview.PhotoViewPackage;
 import cl.json.RNSharePackage;
@@ -28,6 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new MusicControl(),
+            new ReactNativeAudioStreamingPackage(),
             new RNSoundPackage(),
             new PhotoViewPackage(),
             new RNSharePackage(),

@@ -1,43 +1,62 @@
 
 import { combineReducers } from 'redux';
 
-const initialState = {
-    genres: ["Alternative Rock", "Ambient", "Classical", "Country", "EDM",
-             "Dancehall", "Deep House", "Disco", "Drum & Bass", "Dubstep", "Electronic",
-             "Folk", "Singer-Songwriter", "Rap", "House", "Indie", "Jazz & Blues",
-             "Latin", "Metal", "Piano", "Pop", "R&B & Soul", "Reggae", "Reggaeton",
-             "Rock", "Soundtrack", "Techno", "Trance", "Trap", "Triphop"].map(
-                 (name, i) => ({
-                     id: i,
-                     name
-                 })
-             ),
-    currentlyPlaying: {
-        id: null,
-        name: null
-    },
-    songs: {}
-};
+const initialGenres = ["Alternative Rock", "Ambient", "Classical", "Country", "EDM",
+                       "Dancehall", "Deep House", "Disco", "Drum & Bass", "Dubstep", "Electronic",
+                       "Folk", "Singer-Songwriter", "Rap", "House", "Indie", "Jazz & Blues",
+                       "Latin", "Metal", "Piano", "Pop", "R&B & Soul", "Reggae", "Reggaeton",
+                       "Rock", "Soundtrack", "Techno", "Trance", "Trap", "Triphop"].map(
+                           (name, i) => ({
+                               id: i,
+                               name
+                           }));
 
-const rootReducer = (state = initialState, action) => {
+const initialCurrentlyPlaying = {
+    genre: {},
+    songIndex: -1
+}
+
+const currentlyPlaying = (state = initialCurrentlyPlaying, action) => {
     switch (action.type) {
         case 'PLAYING_GENRE':
             return Object.assign({}, state,
                                  {
-                                     currentlyPlaying: action.genre
+                                     genre: action.genre
                                  });
-        case 'FOUND_SONGS':
-            const { songs, genre } = action;
+        case 'SET_CURRENT_SONG':
             return Object.assign({}, state,
                                  {
-                                     songs: Object.assign({}, state.songs,
-                                                          {
-                                                              [genre.id]: songs
-                                                          })
+                                     songIndex: action.index
+                                 });
+        default:
+            return state;
+    }
+}
+
+const songs = (state = {}, action) => {
+    switch (action.type) {
+        case 'FOUND_SONGS':
+            const { songs, genre } = action;
+            return Object.assign({}, state.songs,
+                                 {
+                                     [genre.id]: songs
                                  })
         default:
             return state;
     }
 };
+
+const genres = (state = initialGenres, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+
+const rootReducer = combineReducers({
+    currentlyPlaying,
+    songs,
+    genres
+});
 
 export default rootReducer;

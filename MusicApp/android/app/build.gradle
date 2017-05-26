@@ -126,6 +126,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-music-control')
+    compile project(':react-native-audio-streaming')
     compile project(':react-native-sound')
     compile project(':react-native-photo-view')
     compile project(':react-native-share')

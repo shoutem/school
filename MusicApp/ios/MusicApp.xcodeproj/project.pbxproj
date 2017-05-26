@@ -62,6 +62,7 @@
 		E7897C6630ED43DFACE51C0E /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECE98F7043E24FEC91E8FA4E /* Rubik-MediumItalic.ttf */; };
 		F32E5E7B72094A27A5081E9A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5551CE1F6841422F845A1010 /* MaterialIcons.ttf */; };
 		25CF4EC5F3D743038065A2F3 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB708FCDAAA436290E2836B /* libRNSound.a */; };
+		0E578F444EBD44A6B3B94B60 /* libMusicControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E468FBD719494295B215802F /* libMusicControl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +355,8 @@
 		FEEA7DE2DD6745589ADE3451 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		08B163F16FAF4FD2BB986358 /* RNSound.xcodeproj */ = {isa = PBXFileReference; name = "RNSound.xcodeproj"; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		4AB708FCDAAA436290E2836B /* libRNSound.a */ = {isa = PBXFileReference; name = "libRNSound.a"; path = "libRNSound.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		491BDC43FC334FA3AB078F21 /* MusicControl.xcodeproj */ = {isa = PBXFileReference; name = "MusicControl.xcodeproj"; path = "../node_modules/react-native-music-control/ios/MusicControl.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		E468FBD719494295B215802F /* libMusicControl.a */ = {isa = PBXFileReference; name = "libMusicControl.a"; path = "libMusicControl.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +389,7 @@
 				47A314CD83604D8BAFC4E213 /* libBVLinearGradient.a in Frameworks */,
 				2A33319E5BD04F629A184A3D /* libRNShare.a in Frameworks */,
 				25CF4EC5F3D743038065A2F3 /* libRNSound.a in Frameworks */,
+				0E578F444EBD44A6B3B94B60 /* libMusicControl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +603,7 @@
 				3917CEA3650C477DB70EC928 /* BVLinearGradient.xcodeproj */,
 				1677840743054FC8B1B0EFC6 /* RNShare.xcodeproj */,
 				08B163F16FAF4FD2BB986358 /* RNSound.xcodeproj */,
+				491BDC43FC334FA3AB078F21 /* MusicControl.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1233,12 +1238,14 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-music-control/ios",
 				);
 				INFOPLIST_FILE = MusicAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1264,12 +1271,14 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-music-control/ios",
 				);
 				INFOPLIST_FILE = MusicAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1297,6 +1306,7 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-audio-streaming/ios",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-music-control/ios",
 				);
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1322,6 +1332,7 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-audio-streaming/ios",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-music-control/ios",
 				);
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1353,11 +1364,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-music-control/ios",
 				);
 				INFOPLIST_FILE = "MusicApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1393,11 +1406,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-music-control/ios",
 				);
 				INFOPLIST_FILE = "MusicApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1434,6 +1449,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MusicApp-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1458,6 +1474,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

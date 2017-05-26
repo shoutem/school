@@ -8,10 +8,17 @@ import { streamUrl } from './soundcloudHelper';
 
 export default Playing = connect(
     (state) => ({
-        song: state.songs[state.currentlyPlaying.id] ? state.songs[state.currentlyPlaying.id][0] : {}
+        currentlyPlaying: state.currentlyPlaying,
+        songs: state.songs
     })
-)(({ song, dispatch }) => {
-    if (song.uri) {
+)(({ songs, currentlyPlaying, dispatch }) => {
+    let song = null;
+
+    if (currentlyPlaying.genre && currentlyPlaying.songIndex >= 0) {
+        song = songs[currentlyPlaying.genre.id][currentlyPlaying.songIndex];
+    }
+
+    if (song && song.uri) {
         return (
             <Text>
                 Playing {song.title}
