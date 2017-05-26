@@ -84,16 +84,25 @@ export const playCurrentSong = () => {
         const { songIndex, genre } = getState().currentlyPlaying;
         const { song } = getState().songs[genre.id][songIndex];
 
-        console.log(song);
-
         dispatch(playSong(song));
     }
 }
 
 export const playNextSong = () => {
-    console.log('play next');
-}
+    return function (dispatch, getState) {
+        const { songIndex, genre } = getState().currentlyPlaying,
+              { songs } = getState().songs[genre.id];
 
+        dispatch(setCurrentSong((songIndex+1)%songs.length));
+        dispatch(playCurrentSong());
+    }
+};
 export const playPreviousSong = () => {
-    console.log('play previous');
+    return function (dispatch, getState) {
+        const { songIndex } = getState().currentlyPlaying,
+              newIndex = songIndex - 1;
+
+        dispatch(setCurrentSong(newIndex < 0 ? 0 : newIndex));
+        dispatch(playCurrentSong());
+    }
 }
