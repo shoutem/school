@@ -56,6 +56,8 @@ export const playSong = (song, genre) => {
 
         playSoundLooped();
 
+        console.log(song);
+
         MusicControl.setNowPlaying({
             title: song.title || "",
             artwork: song.artwork_url || "",
@@ -72,17 +74,13 @@ export const playSong = (song, genre) => {
         MusicControl.enableControl('skipForward', false);
         MusicControl.enableControl('skipBackward', false);
         MusicControl.enableBackgroundMode(true);
-
-        MusicControl.on('pause', () => dispatch(pauseSong()));
-        MusicControl.on('nextTrack', () => dispatch(playNextSong()));
-        MusicControl.on('previousTrack', () => dispatch(playPreviousSong()));
     }
 }
 
 export const playCurrentSong = () => {
     return function (dispatch, getState) {
         const { songIndex, genre } = getState().currentlyPlaying;
-        const { song } = getState().songs[genre.id][songIndex];
+        const song = getState().songs[genre.id][songIndex];
 
         dispatch(playSong(song));
     }
