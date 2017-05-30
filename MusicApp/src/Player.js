@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, Spinner, Card, Subtitle, Icon, View } from '@shoutem/ui';
-import MusicControl from 'react-native-music-control';
 import Video from 'react-native-video';
 
-import { updatePlayTime } from './actions';
+import { updatePlayTime, playNextSong } from './actions';
 import { streamUrl } from './soundcloudHelper';
 import SoundCloudWave from './SoundCloudWave';
 import Controls from './Controls';
@@ -31,40 +30,6 @@ class Player extends Component {
 
         return currentTime / (this.song.full_duration/1000);
 
-    }
-
-    componentDidMount() {
-        const { dispatch } = this.props;
-
-        MusicControl.enableControl('seekForward', false);
-        MusicControl.enableControl('seekBackward', false);
-        MusicControl.enableControl('skipForward', false);
-        MusicControl.enableControl('skipBackward', false);
-        MusicControl.enableBackgroundMode(true);
-
-        MusicControl.on('play', () => dispatch(playCurrentSong()));
-        MusicControl.on('pause', () => dispatch(pauseCurrentSong()));
-        MusicControl.on('nextTrack', () => dispatch(playNextSong()));
-        MusicControl.on('previousTrack', () => dispatch(playPreviousSong()));
-    }
-
-    componentDidUpdate() {
-        const { dispatch } = this.props,
-              song = this.song;
-
-        if (song) {
-            MusicControl.setNowPlaying({
-                title: song.title || "",
-                artwork: song.artwork_url || "",
-                artist: song.user.username || "",
-                genre: song.genre || "",
-                duration: song.duration/1000,
-                description: song.description || "",
-                color: 0xFFFFFFF,
-                date: song.created_at,
-                rating: true
-            });
-        }
     }
 
     onPlayProgress = ({ currentTime }) => {

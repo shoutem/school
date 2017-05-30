@@ -34,13 +34,46 @@ export const setCurrentSong = (index) => ({
     index
 });
 
-const testAudio = require('./media/advertising.mp3');
-
 export const playCurrentSong = () => {
-    return function (dispatch) {
-        MusicControl.updatePlayback({
-            state: MusicControl.STATE_PLAYING
-        });
+    return function (dispatch, getState) {
+        const { songs, currentlyPlaying } = getState();
+
+        let song = null;
+
+        if (currentlyPlaying.genre && currentlyPlaying.songIndex >= 0) {
+            if (songs[currentlyPlaying.genre.id]) {
+                song = songs[currentlyPlaying.genre.id][currentlyPlaying.songIndex];
+            }
+        }
+
+        MusicControl.enableControl('seekForward', false);
+        MusicControl.enableControl('seekBackward', false);
+        MusicControl.enableControl('skipForward', false);
+        MusicControl.enableControl('skipBackward', false);
+        MusicControl.enableBackgroundMode(true);
+
+        MusicControl.on('play', () => dispatch(playCurrentSong()));
+        MusicControl.on('pause', () => dispatch(pauseCurrentSong()));
+        MusicControl.on('nextTrack', () => dispatch(playNextSong()));
+        MusicControl.on('previousTrack', () => dispatch(playPreviousSong()));
+
+        if (song) {
+            MusicControl.setNowPlaying({
+                title: song.title || "",
+                artwork: song.artwork_url || "",
+                artist: song.user.username || "",
+                genre: song.genre || "",
+                duration: song.duration/1000,
+                description: song.description || "",
+                color: 0xFFFFFFF,
+                date: song.created_at,
+                rating: true
+            });
+
+            MusicControl.updatePlayback({
+                state: MusicControl.STATE_PLAYING
+            });
+        }
 
         dispatch(_updatePaused(false));
     }
