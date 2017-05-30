@@ -5,14 +5,8 @@ import { Text, Spinner, Card, Subtitle, Icon, View } from '@shoutem/ui';
 import MusicControl from 'react-native-music-control';
 import Video from 'react-native-video';
 
+import { updatePlayTime } from './actions';
 import { streamUrl } from './soundcloudHelper';
-import {
-    playCurrentSong,
-    pauseCurrentSong,
-    playNextSong,
-    playPreviousSong,
-    updatePlayTime
-} from './actions';
 import SoundCloudWave from './SoundCloudWave';
 import Controls from './Controls';
 import Timer from './Timer';
@@ -74,11 +68,11 @@ class Player extends Component {
     }
 
     onPlayProgress = ({ currentTime }) => {
-        dispatch(updatePlayTime(currentTime))
+        this.props.dispatch(updatePlayTime(currentTime))
     }
 
     onPlayEnd = () => {
-        dispatch(playNextSong())
+        this.props.dispatch(playNextSong())
     }
 
     render() {
@@ -114,7 +108,6 @@ class Player extends Component {
 
                 <View style={{position: 'absolute', top: 0, height: 85, alignItems: 'center'}}>
                     <Controls />
-
                     <Timer currentTime={currentTime} />
                 </View>
             </Card>

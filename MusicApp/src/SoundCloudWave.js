@@ -38,8 +38,6 @@ class SoundCloudWave extends Component {
             height = scaleLinear().domain([0, waveform.height])
                                   .range([0, this.props.height]);
 
-        console.log(this.props.song);
-
         return (
             <View styleName="horizontal" style={{width: this.props.width, height: this.props.height}}>
                 {chunks.map((chunk, i) => (
