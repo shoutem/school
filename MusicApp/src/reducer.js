@@ -13,7 +13,8 @@ const initialGenres = ["Alternative Rock", "Ambient", "Classical", "Country", "E
 
 const initialCurrentlyPlaying = {
     genre: {},
-    songIndex: -1
+    songIndex: -1,
+    paused: false
 }
 
 const currentlyPlaying = (state = initialCurrentlyPlaying, action) => {
@@ -21,12 +22,18 @@ const currentlyPlaying = (state = initialCurrentlyPlaying, action) => {
         case 'PLAYING_GENRE':
             return Object.assign({}, state,
                                  {
-                                     genre: action.genre
+                                     genre: action.genre,
+                                     paused: false
                                  });
         case 'SET_CURRENT_SONG':
             return Object.assign({}, state,
                                  {
                                      songIndex: action.index
+                                 });
+        case 'UPDATE_PAUSED':
+            return Object.assign({}, state,
+                                 {
+                                     paused: action.paused
                                  });
         default:
             return state;
