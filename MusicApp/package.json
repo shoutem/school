@@ -7,21 +7,20 @@
     "test": "jest"
   },
   "dependencies": {
-    "@shoutem/ui": "^0.14.2",
+    "@shoutem/ui": "^0.14.3",
     "react": "16.0.0-alpha.6",
-    "react-native": "0.43.0",
-    "react-native-audio-streaming": "^2.3.2",
+    "react-native": "0.43.3",
     "react-native-music-control": "^0.4.4",
-    "react-native-sound": "^0.10.1",
-    "react-redux": "^5.0.4",
+    "react-native-video": "^1.0.0",
+    "react-redux": "^5.0.5",
     "redux": "^3.6.0",
-    "redux-logger": "^3.0.1",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "babel-jest": "20.0.1",
-    "babel-preset-react-native": "1.9.1",
-    "jest": "20.0.1",
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "1.9.2",
+    "jest": "20.0.4",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {

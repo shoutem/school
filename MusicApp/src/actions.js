@@ -1,9 +1,8 @@
 
-import { ReactNativeAudioStreaming } from 'react-native-audio-streaming';
 import { DeviceEventEmitter } from 'react-native';
 import MusicControl from 'react-native-music-control';
 
-const Sound = require('react-native-sound');
+//const Sound = require('react-native-sound');
 
 import { search, streamUrl } from './soundcloudHelper';
 
@@ -42,38 +41,37 @@ const testAudio = require('./media/advertising.mp3');
 
 export const playSong = (song, genre) => {
     return function (dispatch) {
-        Sound.setCategory('Playback');
+        /* Sound.setCategory('Playback');
 
-        const playSoundLooped = () => {
-            const s = new Sound(testAudio, (e) => {
-                if (e) {
-                    console.log('error', e);
-                }
-                s.setNumberOfLoops(3);
-                s.play();
-            });
-        };
+           const playSound = () => {
+           console.log(streamUrl(song.uri));
+           //const s = new Sound(streamUrl(song.uri), (e) => {
+           const s = new Sound(testAudio, (e) => {
+           if (e) {
+           console.log('error', e);
+           }
+           s.play();
+           });
+           };
 
-        playSoundLooped();
+           playSound();
 
-        console.log(song);
-
-        MusicControl.setNowPlaying({
-            title: song.title || "",
-            artwork: song.artwork_url || "",
-            artist: song.user.username || "",
-            genre: song.genre || genre.name,
-            duration: song.duration,
-            description: song.description || "",
-            color: 0xFFFFFFF,
-            date: song.created_at,
-            rating: true
-        });
-        MusicControl.enableControl('seekForward', false);
-        MusicControl.enableControl('seekBackward', false);
-        MusicControl.enableControl('skipForward', false);
-        MusicControl.enableControl('skipBackward', false);
-        MusicControl.enableBackgroundMode(true);
+           MusicControl.setNowPlaying({
+           title: song.title || "",
+           artwork: song.artwork_url || "",
+           artist: song.user.username || "",
+           genre: song.genre || genre.name,
+           duration: song.duration,
+           description: song.description || "",
+           color: 0xFFFFFFF,
+           date: song.created_at,
+           rating: true
+           });
+           MusicControl.enableControl('seekForward', false);
+           MusicControl.enableControl('seekBackward', false);
+           MusicControl.enableControl('skipForward', false);
+           MusicControl.enableControl('skipBackward', false);
+           MusicControl.enableBackgroundMode(true); */
     }
 }
 

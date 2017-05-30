@@ -3,12 +3,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, Spinner } from '@shoutem/ui';
 import MusicControl from 'react-native-music-control';
+import Video from 'react-native-video';
 
 import { streamUrl } from './soundcloudHelper';
 
 class Playing extends Component {
     componentDidMount() {
         const { dispatch } = this.props;
+
+        console.log('Hai');
 
         MusicControl.on('pause', () => dispatch(pauseSong()));
         MusicControl.on('nextTrack', () => { console.log('HELLO'); dispatch(playNextSong()) });
@@ -26,9 +29,17 @@ class Playing extends Component {
 
         if (song && song.uri) {
             return (
-                <Text>
-                    Playing {song.title}
-                </Text>
+                <Video source={{uri: streamUrl(song.uri) }}
+                       ref="audio"
+                       volume={1.0}
+                       muted={false}
+                       paused={false}
+                       playInBackground={true}
+                       onLoad={() => console.log('loaded') }
+                       onProgress={() => console.log('progress') }
+                       onEnd={() => console.log('end') }
+                       resizeMode="cover"
+                       repeat={false}/>
             )
         }else{
             return (<Spinner />);
