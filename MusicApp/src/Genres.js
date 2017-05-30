@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { playGenre } from './actions';
 import GenreArt from './GenreArt';
-import Playing from './Playing';
+import Player from './Player';
 
 
 const GenreButton = connect(
@@ -16,7 +16,7 @@ const GenreButton = connect(
     <TouchableOpacity styleName="flexible" onPress={() => dispatch(playGenre(genre))}>
         <View>
             <Card styleName="flexible">
-                {currentlyPlaying.genre.id === genre.id ? <Playing /> : <GenreArt name={genre.name} />}
+                {currentlyPlaying.genre.id === genre.id ? <Player /> : <GenreArt name={genre.name} />}
                 <Subtitle numberOfLines={1}>{genre.name}</Subtitle>
             </Card>
         </View>

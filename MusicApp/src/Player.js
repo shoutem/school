@@ -14,8 +14,10 @@ import {
     updatePlayTime
 } from './actions';
 import SoundCloudWave from './SoundCloudWave';
+import Controls from './Controls';
+import Timer from './Timer';
 
-class Playing extends Component {
+class Player extends Component {
     get song() {
         const { songs, currentlyPlaying } = this.props;
 
@@ -40,6 +42,12 @@ class Playing extends Component {
     componentDidMount() {
         const { dispatch } = this.props;
 
+        MusicControl.enableControl('seekForward', false);
+        MusicControl.enableControl('seekBackward', false);
+        MusicControl.enableControl('skipForward', false);
+        MusicControl.enableControl('skipBackward', false);
+        MusicControl.enableBackgroundMode(true);
+
         MusicControl.on('play', () => dispatch(playCurrentSong()));
         MusicControl.on('pause', () => dispatch(pauseCurrentSong()));
         MusicControl.on('nextTrack', () => dispatch(playNextSong()));
@@ -62,64 +70,55 @@ class Playing extends Component {
                 date: song.created_at,
                 rating: true
             });
-            MusicControl.enableControl('seekForward', false);
-            MusicControl.enableControl('seekBackward', false);
-            MusicControl.enableControl('skipForward', false);
-            MusicControl.enableControl('skipBackward', false);
-            MusicControl.enableBackgroundMode(true);
         }
+    }
+
+    onPlayProgress = ({ currentTime }) => {
+        dispatch(updatePlayTime(currentTime))
+    }
+
+    onPlayEnd = () => {
+        dispatch(playNextSong())
     }
 
     render() {
         const { currentlyPlaying: { paused, currentTime } } = this.props,
               { dispatch } = this.props;
 
-        if (this.song) {
-            return (
-                <Card style={{height: 85, alignItems: 'center'}}>
-                    <Video source={{uri: streamUrl(this.song.uri) }}
-                           ref="audio"
-                           volume={1.0}
-                           muted={false}
-                           paused={paused}
-                           playInBackground={true}
-                           playWhenInactive={true}
-                           onLoad={() => console.log('loaded') }
-                           onProgress={({ currentTime }) => dispatch(updatePlayTime(currentTime))}
-                           onEnd={() => dispatch(playNextSong())}
-                           resizeMode="cover"
-                           repeat={false}/>
-
-                    <View style={{position: 'absolute', top: 0, height: 85}}>
-                        <SoundCloudWave song={this.song} width={180} height={85}
-                                        percent={this.percentPlayed}/>
-                    </View>
-
-                    <View style={{position: 'absolute', top: 0, height: 85, alignItems: 'center'}}>
-                        <View styleName="horizontal space-between" style={{paddingTop: 30}}>
-                            <Icon name="left-arrow" onPress={() => dispatch(playPreviousSong())} />
-
-                            {paused
-                             ? <Icon name="play" onPress={() => dispatch(playCurrentSong())}/>
-                             : <Icon name="pause" onPress={() => dispatch(pauseCurrentSong())} />
-                             }
-
-                            <Icon name="right-arrow" onPress={() => dispatch(playNextSong())} />
-                        </View>
-
-                        <View styleName="horizontal h-end">
-                            <Text>{Math.floor(currentTime/60)} : {Math.floor(currentTime%60)}</Text>
-                        </View>
-                    </View>
-                </Card>
-            )
-        }else{
+        if (!this.song) {
             return (
                 <Card style={{height: 85, alignItems: "center"}}>
                     <Spinner />
                 </Card>
             );
         }
+
+        return (
+            <Card style={{height: 85, alignItems: 'center'}}>
+                <Video source={{uri: streamUrl(this.song.uri) }}
+                       ref="audio"
+                       volume={1.0}
+                       muted={false}
+                       paused={paused}
+                       playInBackground={true}
+                       playWhenInactive={true}
+                       onProgress={this.onPlayProgress}
+                       onEnd={this.onPlayEnd}
+                       resizeMode="cover"
+                       repeat={false}/>
+
+                <View style={{position: 'absolute', top: 0, height: 85}}>
+                    <SoundCloudWave song={this.song} width={180} height={85}
+                                    percent={this.percentPlayed}/>
+                </View>
+
+                <View style={{position: 'absolute', top: 0, height: 85, alignItems: 'center'}}>
+                    <Controls />
+
+                    <Timer currentTime={currentTime} />
+                </View>
+            </Card>
+        );
     }
 }
 
@@ -128,4 +127,4 @@ export default connect(
         currentlyPlaying: state.currentlyPlaying,
         songs: state.songs
     })
-)(Playing);
+)(Player);
