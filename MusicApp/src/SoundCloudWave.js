@@ -6,6 +6,9 @@ import _ from 'lodash';
 import { scaleLinear } from 'd3-scale';
 import { mean } from 'd3-array';
 
+const ACTIVE = 'rgba(255, 85, 0, 0.6)',
+      INACTIVE = 'rgba(85, 85, 85, 0.3)';
+
 class SoundCloudWave extends Component {
     state = {
         waveform: null
@@ -21,21 +24,27 @@ class SoundCloudWave extends Component {
           }));
     }
 
+    color(bars, bar_n) {
+        return bar_n/bars.length < this.props.percent ? ACTIVE : INACTIVE;
+    }
+
     render() {
         if (!this.state.waveform) return null;
 
-        const { waveform } = this.state;
+        const { waveform } = this.state,
+              { percent } = this.props;
 
-        let chunks = _.chunk(waveform.samples, waveform.width/(this.props.width/4)),
+        let chunks = _.chunk(waveform.samples, waveform.width/(this.props.width/3)),
             height = scaleLinear().domain([0, waveform.height])
                                   .range([0, this.props.height]);
+
+        console.log(this.props.song);
 
         return (
             <View styleName="horizontal" style={{width: this.props.width, height: this.props.height}}>
                 {chunks.map((chunk, i) => (
-                    <View style={{backgroundColor: '#f50',
-                                  backgroundOpacity: 0.8,
-                                  width: 3,
+                    <View style={{backgroundColor: this.color(chunks, i),
+                                  width: 2,
                                   marginRight: 1,
                                   height: height(mean(chunk))}}
                     key={i}/>

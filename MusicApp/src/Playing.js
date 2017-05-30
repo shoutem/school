@@ -30,6 +30,13 @@ class Playing extends Component {
         return song;
     }
 
+    get percentPlayed() {
+        const { currentlyPlaying: { currentTime } } = this.props;
+
+        return currentTime / (this.song.full_duration/1000);
+
+    }
+
     componentDidMount() {
         const { dispatch } = this.props;
 
@@ -48,8 +55,8 @@ class Playing extends Component {
                 title: song.title || "",
                 artwork: song.artwork_url || "",
                 artist: song.user.username || "",
-                genre: song.genre || genre.name,
-                duration: song.duration,
+                genre: song.genre || "",
+                duration: song.duration/1000,
                 description: song.description || "",
                 color: 0xFFFFFFF,
                 date: song.created_at,
@@ -84,7 +91,8 @@ class Playing extends Component {
                            repeat={false}/>
 
                     <View style={{position: 'absolute', top: 0, height: 85}}>
-                        <SoundCloudWave song={this.song} width={180} height={85} />
+                        <SoundCloudWave song={this.song} width={180} height={85}
+                                        percent={this.percentPlayed}/>
                     </View>
 
                     <View style={{position: 'absolute', top: 0, height: 85, alignItems: 'center'}}>
