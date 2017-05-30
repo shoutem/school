@@ -15,12 +15,23 @@ class SoundCloudWave extends Component {
     }
 
     componentDidMount () {
+        this.fetchWaveForm();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.state.waveform_url !== nextProps.song.waveform_url) {
+            this.fetchWaveForm();
+        }
+    }
+
+    fetchWaveForm() {
         const { waveform_url } = this.props.song;
 
         fetch(waveform_url)
           .then(res => res.json())
           .then(json => this.setState({
-              waveform: json
+              waveform: json,
+              waveform_url: waveform_url
           }));
     }
 
