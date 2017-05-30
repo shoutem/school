@@ -10,8 +10,10 @@ import {
     playCurrentSong,
     pauseCurrentSong,
     playNextSong,
-    playPreviousSong
+    playPreviousSong,
+    updatePlayTime
 } from './actions';
+import SoundCloudWave from './SoundCloudWave';
 
 class Playing extends Component {
     get song() {
@@ -61,20 +63,13 @@ class Playing extends Component {
         }
     }
 
-    onProgress = ({ currentTime }) => {
-        MusicControl.updatePlayback({
-            state: MusicControl.STATE_PLAYING,
-            elapsedTime: currentTime
-        })
-    }
-
     render() {
-        const { currentlyPlaying: { paused } } = this.props,
+        const { currentlyPlaying: { paused, currentTime } } = this.props,
               { dispatch } = this.props;
 
         if (this.song) {
             return (
-                <Card style={{height: 85, alignItems: "center"}}>
+                <Card style={{height: 85, alignItems: 'center'}}>
                     <Video source={{uri: streamUrl(this.song.uri) }}
                            ref="audio"
                            volume={1.0}
@@ -83,20 +78,30 @@ class Playing extends Component {
                            playInBackground={true}
                            playWhenInactive={true}
                            onLoad={() => console.log('loaded') }
-                           onProgress={this.onProgress}
+                           onProgress={({ currentTime }) => dispatch(updatePlayTime(currentTime))}
                            onEnd={() => dispatch(playNextSong())}
                            resizeMode="cover"
                            repeat={false}/>
 
-                    <View styleName="horizontal space-between">
-                        <Icon name="left-arrow" onPress={() => dispatch(playPreviousSong())} />
+                    <View style={{position: 'absolute', top: 0, height: 85}}>
+                        <SoundCloudWave song={this.song} width={180} height={85} />
+                    </View>
 
-                        {paused
-                         ? <Icon name="play" onPress={() => dispatch(playCurrentSong())}/>
-                         : <Icon name="pause" onPress={() => dispatch(pauseCurrentSong())} />
-                         }
+                    <View style={{position: 'absolute', top: 0, height: 85, alignItems: 'center'}}>
+                        <View styleName="horizontal space-between" style={{paddingTop: 30}}>
+                            <Icon name="left-arrow" onPress={() => dispatch(playPreviousSong())} />
 
-                        <Icon name="right-arrow" onPress={() => dispatch(playNextSong())} />
+                            {paused
+                             ? <Icon name="play" onPress={() => dispatch(playCurrentSong())}/>
+                             : <Icon name="pause" onPress={() => dispatch(pauseCurrentSong())} />
+                             }
+
+                            <Icon name="right-arrow" onPress={() => dispatch(playNextSong())} />
+                        </View>
+
+                        <View styleName="horizontal h-end">
+                            <Text>{Math.floor(currentTime/60)} : {Math.floor(currentTime%60)}</Text>
+                        </View>
                     </View>
                 </Card>
             )

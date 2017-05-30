@@ -36,14 +36,29 @@ export const setCurrentSong = (index) => ({
 
 const testAudio = require('./media/advertising.mp3');
 
-export const playCurrentSong = () => ({
-    type: 'UPDATE_PAUSED',
-    paused: false
-});
+export const playCurrentSong = () => {
+    return function (dispatch) {
+        MusicControl.updatePlayback({
+            state: MusicControl.STATE_PLAYING
+        });
 
-export const pauseCurrentSong = () => ({
+        dispatch(_updatePaused(false));
+    }
+};
+
+export const pauseCurrentSong = () => {
+    return function (dispatch) {
+        MusicControl.updatePlayback({
+            state: MusicControl.STATE_PAUSED
+        });
+
+        dispatch(_updatePaused(true));
+    }
+};
+
+const _updatePaused = (paused) => ({
     type: 'UPDATE_PAUSED',
-    paused: true
+    paused
 });
 
 export const playNextSong = () => {
@@ -55,6 +70,7 @@ export const playNextSong = () => {
         dispatch(playCurrentSong());
     }
 };
+
 export const playPreviousSong = () => {
     return function (dispatch, getState) {
         const { songIndex } = getState().currentlyPlaying,
@@ -64,3 +80,19 @@ export const playPreviousSong = () => {
         dispatch(playCurrentSong());
     }
 }
+
+export const updatePlayTime = (currentTime) => {
+    return function (dispatch) {
+        MusicControl.updatePlayback({
+            state: MusicControl.STATE_PLAYING,
+            elapsedTime: currentTime
+        });
+
+        dispatch(_setPlayTime(currentTime));
+    }
+}
+
+const _setPlayTime = (currentTime) => ({
+    type: 'SET_PLAY_TIME',
+    currentTime
+});

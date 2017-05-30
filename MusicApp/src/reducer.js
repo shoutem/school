@@ -23,7 +23,8 @@ const currentlyPlaying = (state = initialCurrentlyPlaying, action) => {
             return Object.assign({}, state,
                                  {
                                      genre: action.genre,
-                                     paused: false
+                                     paused: false,
+                                     currentTime: 0
                                  });
         case 'SET_CURRENT_SONG':
             return Object.assign({}, state,
@@ -35,6 +36,12 @@ const currentlyPlaying = (state = initialCurrentlyPlaying, action) => {
                                  {
                                      paused: action.paused
                                  });
+        case 'SET_PLAY_TIME':
+            return Object.assign({}, state,
+                                 {
+                                     currentTime: action.currentTime
+                                 });
+
         default:
             return state;
     }

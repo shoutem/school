@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "@shoutem/ui": "^0.14.3",
+    "d3-array": "^1.2.0",
+    "d3-scale": "^1.0.6",
+    "lodash": "^4.17.4",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.3",
     "react-native-music-control": "^0.4.4",
