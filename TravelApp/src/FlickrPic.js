@@ -4,7 +4,7 @@ import { Image, View } from 'react-native';
 
 import Flickr from './flickrHelper';
 
-export default class GenreArt extends Component {
+export default class FlickrPic extends Component {
     state = {
         uri: null
     }
@@ -14,12 +14,11 @@ export default class GenreArt extends Component {
     }
 
     render() {
-        const { uri } = this.state;
-
-        console.log(uri);
+        const { uri } = this.state,
+              { blurRadius } = this.props;
 
         return uri
-             ? (<Image source={{uri: uri}} style={this.props.style} />)
+             ? (<Image source={{uri: uri}} style={this.props.style} blurRadius={blurRadius || 0}  />)
              : (<Image style={this.props.style} />);
     }
 }
