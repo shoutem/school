@@ -8,16 +8,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
+  bigButtonText: {
+    fontSize: 25,
     textAlign: 'center',
     margin: 10,
+    fontWeight: '700',
+    backgroundColor: 'rgba(0, 0, 0, 0)'
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
+  backgroundImage: {
+      flex: 1,
+      resizeMode: 'cover',
+      justifyContent: 'flex-end',
+      opacity: .7
+  }
 });
 
 export default styles;
