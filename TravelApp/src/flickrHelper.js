@@ -2,7 +2,7 @@
 
 export default Flickr = function (search) {
     return fetch(
-        `https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=true&api_key=8dacb3c2a9b8ff4016fab4a76df1441c&safe_search=1&content_type=1&text=${search}`
+        `https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=true&api_key=8dacb3c2a9b8ff4016fab4a76df1441c&safe_search=1&sort=relevance&content_type=1&text=${search}`
     ).then(res => res.json())
      .then(json => new Promise((resolve, reject) => {
          const { farm, server, id, secret } = json.photos.photo[Math.round(Math.random()*10)];

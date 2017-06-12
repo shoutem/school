@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   },
   bigButtonText: {
     fontSize: 25,
@@ -14,7 +14,10 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: '700',
     backgroundColor: 'rgba(0, 0, 0, 0)',
-    color: 'white'
+    color: 'white',
+    textShadowColor: 'black',
+    textShadowRadius: 2,
+    textShadowOffset: { width: 1, height: 1 }
   },
   instructions: {
     textAlign: 'center',

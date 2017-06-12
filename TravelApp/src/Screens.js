@@ -5,15 +5,15 @@ import ListScreen from './ListScreen';
 
 export class ClimatesScreen extends Component {
     static navigationOptions = {
-        title: "Where you goin?"
+        title: "Going somewhere?"
     }
 
-    static Climates = ["Tropical", "Dry", "Temperate", "Continental", "Polar"]
+    static Climates = ["Tropical", "Arid", "Temperate", "Continental", "Arctic"]
 
-    navigate = (name) => {
+    navigate = (climate) => {
         const { navigate } = this.props.navigation;
 
-        navigate('Areas', { name });
+        navigate('Areas', { climate });
     }
 
     render() {
@@ -21,28 +21,30 @@ export class ClimatesScreen extends Component {
 
         return (
             <ListScreen choices={Climates} navigate={this.navigate}
-                        flickrSearch={(name) => `${name} scene`} />
+                        flickrSearch={(name) => `${name} landscape`} />
         );
     }
 }
 
 export class AreasScreen extends Component {
     static navigationOptions = ({ navigation }) => ({
-        title: `What type of ${navigation.state.params.name}?`
+        title: `A ${navigation.state.params.climate.toLowerCase()} what?`
     })
 
-    static Areas = ["Mountains", "Lowlands", "Inland", "Coastal"]
+    static Areas = ["Mountain", "Forest", "City", "Town", "Coast"]
 
-    navigate = (name) => {
-        const { navigate } = this.props.navigation;
+    navigate = (area) => {
+        const { navigate } = this.props.navigation,
+              { climate } = this.props.navigation.state.params;
 
-        //navigate('Areas', { name });
+        navigate('Accomodations', { climate, area });
     }
 
-    flickrSearch = (name) => {
-        const { navigation } = this.props;
+    flickrSearch = (area) => {
+        const { navigation } = this.props,
+              { climate } = this.props.navigation.state.params;
 
-        return `${navigation.state.params.name} ${name} area`;
+        return `${climate} ${area}`;
     }
 
     render() {
@@ -50,6 +52,36 @@ export class AreasScreen extends Component {
 
         return (
             <ListScreen choices={Areas} navigate={this.navigate}
+                        flickrSearch={this.flickrSearch} />
+        );
+    }
+}
+
+export class AccomodationsScreen extends Component {
+    static navigationOptions = {
+        title: "Where are you staying?"
+    }
+
+    static Accomodations = ["Hotel", "Camping", "Glamping", "Hostel", "AirBnB"]
+
+    navigate = (name) => {
+        const { navigate } = this.props.navigation;
+
+
+    }
+
+    flickrSearch = (accomodation) => {
+        const { navigation } = this.props,
+              { climate, area } = navigation.state.params;
+
+        return `${climate} ${area} ${accomodation}`;
+    }
+
+    render() {
+        const { Accomodations } = this.constructor;
+
+        return (
+            <ListScreen choices={Accomodations} navigate={this.navigate}
                         flickrSearch={this.flickrSearch} />
         );
     }

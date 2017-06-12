@@ -5,11 +5,12 @@ import {
     StackNavigator
 } from 'react-navigation';
 
-import { ClimatesScreen, AreasScreen } from './Screens';
+import { ClimatesScreen, AreasScreen, AccomodationsScreen } from './Screens';
 
 const App = StackNavigator({
     Climates: { screen: ClimatesScreen },
-    Areas: { screen: AreasScreen }
+    Areas: { screen: AreasScreen },
+    Accomodations: { screen: AccomodationsScreen }
 });
 
 export default App
