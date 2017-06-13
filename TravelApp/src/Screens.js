@@ -64,10 +64,11 @@ export class AccomodationsScreen extends Component {
 
     static Accomodations = ["Hotel", "Camp", "Glamp", "Apartment", "Couch"]
 
-    navigate = (name) => {
-        const { navigate } = this.props.navigation;
+    navigate = (accomodation) => {
+        const { navigate } = this.props.navigation,
+              { climate, area } = this.props.navigation.state.params;
 
-
+        navigate('PackingList', { climate, area, accomodation });
     }
 
     flickrSearch = (accomodation) => {
