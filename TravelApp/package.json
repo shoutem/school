@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "querystring": "^0.2.0",
     "react": "16.0.0-alpha.12",
     "react-native": "0.45.1",
     "react-navigation": "^1.0.0-beta.11"

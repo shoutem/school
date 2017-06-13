@@ -44,7 +44,7 @@ export class AreasScreen extends Component {
         const { navigation } = this.props,
               { climate } = this.props.navigation.state.params;
 
-        return `${climate} ${area}`;
+        return `${climate}+${area}`;
     }
 
     render() {
@@ -62,7 +62,7 @@ export class AccomodationsScreen extends Component {
         title: "Where are you staying?"
     }
 
-    static Accomodations = ["Hotel", "Camping", "Glamping", "Hostel", "AirBnB"]
+    static Accomodations = ["Hotel", "Camp", "Glamp", "Apartment", "Couch"]
 
     navigate = (name) => {
         const { navigate } = this.props.navigation;
@@ -74,7 +74,7 @@ export class AccomodationsScreen extends Component {
         const { navigation } = this.props,
               { climate, area } = navigation.state.params;
 
-        return `${climate} ${area} ${accomodation}`;
+        return `${area}+${accomodation}`;
     }
 
     render() {
