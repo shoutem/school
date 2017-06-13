@@ -7,8 +7,12 @@ import Store from './store';
 import AddItem from './AddItem';
 
 class ListItem extends PureComponent {
-    _onValueChange = () => {
+    _toggle = () => {
         this.props.onItemToggle(this.props.id)
+    }
+
+    _remove = () => {
+        this.props.onRemoveItem(this.props.id);
     }
 
     render() {
@@ -17,8 +21,13 @@ class ListItem extends PureComponent {
         return (
             <View style={styles.listItem}>
                 <Switch value={value}
-                        onValueChange={this._onValueChange} />
+                        onValueChange={this._toggle} />
                 <Text style={styles.listItemText}>{name}</Text>
+                <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                    <Button title="Remove"
+                            onPress={this._remove}
+                            style={{textAlign: 'right'}}/>
+                </View>
             </View>
         )
     }
@@ -80,9 +89,18 @@ class PackingList extends PureComponent {
         });
     }
 
+    _onRemoveItem = (id) => {
+        const { navigation } = this.props;
+
+        Store.removeItem({ navigation, id })
+             .then(this.getItems);
+    }
+
     _renderItem = ({ item }) => (
         <ListItem id={item.id}
                   onItemToggle={this._onItemToggle}
+                  onRemoveItem={this._onRemoveItem}
+                  navigation={this.props.navigation}
                   {...item} />
 
     );

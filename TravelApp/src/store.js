@@ -81,6 +81,16 @@ class Store {
                        return this.saveItems({ navigation, items });
                    });
     }
+
+    removeItem({ navigation, id }) {
+        const key = this.makeKey({ navigation });
+
+        return this.getItems({ navigation })
+                   .then(items => {
+                       items = items.filter(item => item.id !== id);
+                       return this.saveItems({ navigation, items });
+                   });
+    }
 }
 
 export default new Store();
