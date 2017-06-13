@@ -1,5 +1,16 @@
 
 import { AsyncStorage } from 'react-native';
+import * as firebase from 'firebase';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBr0vNOfIeX7rmvFnUhHol44RIY5opsvG4",
+    authDomain: "travelapp-aff43.firebaseapp.com",
+    databaseURL: "https://travelapp-aff43.firebaseio.com",
+    projectId: "travelapp-aff43",
+    storageBucket: "travelapp-aff43.appspot.com",
+    messagingSenderId: "971673915374"
+}
+firebase.initializeApp(firebaseConfig);
 
 const ITEMS = {
     Toiletries: [
@@ -27,6 +38,16 @@ class Store {
 
         return `@MySuperItemsStore:${climate}/${area}/${accomodation}/${routeName}`;
     }
+
+    firebaseKey({ navigation }) {
+        const { climate, area, accomodation } = navigation.state.params,
+              { routeName } = navigation.state;
+
+        return `${climate}:${area}:${accomodation}:${routeName}`;
+    }
+
+    fireb
+
 
     getItems({ navigation }) {
         const key = this.makeKey({ navigation });
@@ -70,16 +91,27 @@ class Store {
     addItem({ navigation, text }) {
         const key = this.makeKey({ navigation });
 
-        const item = {
-            id: new Date().getTime(),
-            name: text
-        };
+        return firebase.auth()
+                       .signInAnonymously()
+                       .then(() => {
+                           const itemRef = firebase.database()
+                                                   .ref(this.firebaseKey({ navigation }))
+                                                   .push();
 
-        return this.getItems({ navigation })
-                   .then(items => {
-                       items = items.concat(item);
-                       return this.saveItems({ navigation, items });
-                   });
+                           const item = {
+                               id: itemRef.key,
+                               name: text
+                           };
+
+                           itemRef.set(item);
+
+                           return this.getItems({ navigation })
+                               .then(items => {
+                                   items = items.concat(item);
+                                   return this.saveItems({ navigation, items });
+                               });
+                       })
+
     }
 
     removeItem({ navigation, id }) {
