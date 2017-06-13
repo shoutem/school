@@ -49,6 +49,19 @@ const styles = StyleSheet.create({
   listItemText: {
       fontSize: 15,
       margin: 10
+  },
+  addItemContainer: {
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      width: Dimensions.get('window').width
+  },
+  addItemInput: {
+      height: 40,
+      borderColor: 'lightgray',
+      borderWidth: 1,
+      flex: 1,
+      padding: 5
   }
 });
 

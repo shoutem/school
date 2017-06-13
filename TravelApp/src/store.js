@@ -56,7 +56,30 @@ class Store {
     clearItems({ navigation }) {
         const key = this.makeKey({ navigation });
 
-        return AsyncStorage.removeItem(key);
+        return this.getItems({ navigation })
+                   .then(items => {
+                       items = items.map(item => {
+                           item.value = false;
+                           return item;
+                       });
+
+                       return this.saveItems({ navigation, items });
+                   });
+    }
+
+    addItem({ navigation, text }) {
+        const key = this.makeKey({ navigation });
+
+        const item = {
+            id: new Date().getTime(),
+            name: text
+        };
+
+        return this.getItems({ navigation })
+                   .then(items => {
+                       items = items.concat(item);
+                       return this.saveItems({ navigation, items });
+                   });
     }
 }
 

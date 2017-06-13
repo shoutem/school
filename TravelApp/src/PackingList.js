@@ -1,9 +1,10 @@
 
-import React, { PureComponent } from 'react';
-import { View, Text, FlatList, Switch, Button } from 'react-native';
+import React, { Component, PureComponent } from 'react';
+import { View, Text, FlatList, Switch, Button, TextInput } from 'react-native';
 
 import styles from './styles';
 import Store from './store';
+import AddItem from './AddItem';
 
 class ListItem extends PureComponent {
     _onValueChange = () => {
@@ -34,7 +35,7 @@ class PackingList extends PureComponent {
         this.getItems();
     }
 
-    getItems() {
+    getItems = () => {
         const { navigation } = this.props;
 
         Store.getItems({ navigation })
@@ -98,6 +99,8 @@ class PackingList extends PureComponent {
                           renderItem={this._renderItem}
                           keyExtractor={this._keyExtractor}
                           contentContainerStyle={styles.packingList} />
+                <AddItem navigation={navigation}
+                         onAdd={this.getItems} />
                 <Button title="Clear packing list"
                         onPress={this._clearItems} />
             </View>
