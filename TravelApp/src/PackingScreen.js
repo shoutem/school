@@ -30,10 +30,17 @@ class ListItem extends PureComponent {
 
 class PackingList extends PureComponent {
     state = {
-        items: [
-            {value: false, id: 0, name: 'Toothbrush'},
-            {value: false, id: 1, name: 'Toothpaste'}
-        ]
+    }
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            items: props.items.map(item => {
+                item.value = false;
+                return item;
+            })
+        };
     }
 
     _keyExtractor = (item, index) => item.id;
@@ -49,6 +56,8 @@ class PackingList extends PureComponent {
                     return item;
                 }
             );
+
+            console.log(items);
 
             return { items };
         });
@@ -78,24 +87,41 @@ class PackingList extends PureComponent {
     }
 }
 
+const ITEMS = {
+    Toiletries: [
+        {id: 0, name: 'Toothbrush'},
+        {id: 1, name: 'Toothpaste'},
+        {id: 2, name: 'Facewash'}
+    ],
+    Clothes: [
+        {id: 0, name: 'Jacket'},
+        {id: 1, name: 'T-Shirts'},
+        {id: 2, name: 'Underpants'}
+    ],
+    Gear: [
+        {id: 0, name: 'Laptop'},
+        {id: 1, name: 'Book'},
+        {id: 2, name: 'Phone Charger'}
+    ]
+}
 
 const PackingScreen = TabNavigator({
     Toiletries: {
-        screen: PackingList,
+        screen: ({ navigation }) => <PackingList navigation={navigation} items={ITEMS.Toiletries} />,
         navigationOptions: {
             tabBarLabel: 'Toiletries',
             tabBarIcon: tabBarIcon(require('./images/toothbrush.png'))
         }
     },
     Clothes: {
-        screen: PackingList,
+        screen: ({ navigation }) => <PackingList navigation={navigation} items={ITEMS.Clothes} />,
         navigationOptions: {
             tabBarLabel: 'Clothes',
             tabBarIcon: tabBarIcon(require('./images/shirt.png'))
         }
     },
     Gear: {
-        screen: PackingList,
+        screen: ({ navigation }) => <PackingList navigation={navigation} items={ITEMS.Gear} />,
         navigationOptions: {
             tabBarLabel: 'Gear',
             tabBarIcon: tabBarIcon(require('./images/headphones.png'))
