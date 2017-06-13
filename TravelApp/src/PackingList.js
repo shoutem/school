@@ -1,6 +1,6 @@
 
 import React, { PureComponent } from 'react';
-import { View, Text, FlatList, Switch } from 'react-native';
+import { View, Text, FlatList, Switch, Button } from 'react-native';
 
 import styles from './styles';
 import Store from './store';
@@ -31,7 +31,11 @@ class PackingList extends PureComponent {
     constructor(props) {
         super(props);
 
-        const { navigation } = props;
+        this.getItems();
+    }
+
+    getItems() {
+        const { navigation } = this.props;
 
         Store.getItems({ navigation })
              .then(items => {
@@ -44,6 +48,13 @@ class PackingList extends PureComponent {
                      })
                  });
              });
+    }
+
+    _clearItems = () => {
+        const { navigation } = this.props;
+
+        Store.clearItems({ navigation })
+             .then(() => this.getItems());
     }
 
     _keyExtractor = (item, index) => item.id;
@@ -87,6 +98,8 @@ class PackingList extends PureComponent {
                           renderItem={this._renderItem}
                           keyExtractor={this._keyExtractor}
                           contentContainerStyle={styles.packingList} />
+                <Button title="Clear packing list"
+                        onPress={this._clearItems} />
             </View>
         )
     }

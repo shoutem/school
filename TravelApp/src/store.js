@@ -52,6 +52,12 @@ class Store {
 
         return AsyncStorage.setItem(key, JSON.stringify(items));
     }
+
+    clearItems({ navigation }) {
+        const key = this.makeKey({ navigation });
+
+        return AsyncStorage.removeItem(key);
+    }
 }
 
 export default new Store();
