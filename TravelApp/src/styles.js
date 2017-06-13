@@ -1,5 +1,5 @@
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +29,26 @@ const styles = StyleSheet.create({
       resizeMode: 'cover',
       justifyContent: 'flex-end',
       opacity: .7
+  },
+  header: {
+      fontSize: 15,
+      padding: 15,
+      textAlign: 'center',
+      fontWeight: '500'
+  },
+  packingList: {
+      justifyContent: 'flex-start'
+  },
+  listItem: {
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      width: Dimensions.get('window').width,
+      padding: 10
+  },
+  listItemText: {
+      fontSize: 15,
+      margin: 10
   }
 });
 

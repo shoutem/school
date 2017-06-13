@@ -17,7 +17,6 @@ export default Flickr = function (search) {
         `https://api.flickr.com/services/rest/?${query}`
     ).then(res => res.json())
      .then(json => new Promise((resolve, reject) => {
-         console.log(json.photos);
          const N = json.photos.photo.length,
                index = Math.round(Math.random()*(N > 10 ? 10 : N));
          const { farm, server, id, secret } = json.photos.photo[index];
