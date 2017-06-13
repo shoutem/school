@@ -30,6 +30,8 @@ const ITEMS = {
     ]
 }
 
+//AsyncStorage.clear();
+
 
 class Store {
     makeKey({ navigation }) {
@@ -46,26 +48,42 @@ class Store {
         return `${climate}:${area}:${accomodation}:${routeName}`;
     }
 
-    fireb
-
-
     getItems({ navigation }) {
         const key = this.makeKey({ navigation });
 
-        return AsyncStorage.getItem(key)
-                           .then(value => {
-                               return new Promise((resolve, reject) => {
+        return firebase.auth()
+                       .signInAnonymously()
+                       .then(() => new Promise((resolve, reject) => {
+                           firebase.database()
+                                   .ref(this.firebaseKey({ navigation }))
+                                   .once('value', (snapshot) => {
+                                       const val = snapshot.val();
+
+                                       if (val === null) {
+                                           resolve([]);
+                                       }else{
+                                           resolve(val);
+                                       }
+                                   })
+                       }))
+                       .then(firebaseItems =>
+                           AsyncStorage.getItem(key).then(
+                               value => new Promise((resolve, reject) => {
                                    let items = ITEMS[navigation.state.routeName];
 
                                    if (value !== null) {
                                        items = JSON.parse(value);
-                                       resolve(items);
-                                   }else{
-                                       AsyncStorage.setItem(key, JSON.stringify(items))
-                                                   .then(() => resolve(items));
                                    }
-                               })
-                           });
+
+                                   Object.keys(firebaseItems).forEach(id => {
+                                       if (!items.find(i => i.id === id)) {
+                                           items.push(firebaseItems[id]);
+                                       }
+                                   });
+
+                                   AsyncStorage.setItem(key, JSON.stringify(items))
+                                               .then(() => resolve(items));
+                               })));
     }
 
     saveItems({ navigation, items }) {
