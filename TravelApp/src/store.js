@@ -123,11 +123,7 @@ class Store {
 
                            itemRef.set(item);
 
-                           return this.getItems({ navigation })
-                               .then(items => {
-                                   items = items.concat(item);
-                                   return this.saveItems({ navigation, items });
-                               });
+                           return this.getItems({ navigation });
                        })
 
     }

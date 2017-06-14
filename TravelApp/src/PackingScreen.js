@@ -13,21 +13,21 @@ const tabBarIcon = (icon) => ({ tintColor }) => (
 
 const PackingScreen = TabNavigator({
     Toiletries: {
-        screen: ({ navigation }) => <PackingList navigation={navigation} />,
+        screen: PackingList,
         navigationOptions: {
             tabBarLabel: 'Toiletries',
             tabBarIcon: tabBarIcon(require('./images/toothbrush.png'))
         }
     },
     Clothes: {
-        screen: ({ navigation }) => <PackingList navigation={navigation} />,
+        screen: PackingList,
         navigationOptions: {
             tabBarLabel: 'Clothes',
             tabBarIcon: tabBarIcon(require('./images/shirt.png'))
         }
     },
     Gear: {
-        screen: ({ navigation }) => <PackingList navigation={navigation} />,
+        screen: PackingList,
         navigationOptions: {
             tabBarLabel: 'Gear',
             tabBarIcon: tabBarIcon(require('./images/headphones.png'))
