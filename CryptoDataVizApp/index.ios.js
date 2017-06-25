@@ -12,12 +12,12 @@ import {
   View
 } from 'react-native';
 
-import { Examples } from '@shoutem/ui';
+import App from './src';
 
 export default class CryptoDataVizApp extends Component {
   render() {
     return (
-      <Examples />
+      <App />
     );
   }
 }
