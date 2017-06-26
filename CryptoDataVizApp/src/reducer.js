@@ -18,7 +18,7 @@ const prices = (state = {}, action) => {
                 ])));
         case 'ADD_PRICE':
             const { product, price } = action;
-            console.log(state, product);
+
             return Object.assign({}, state, {
                 [product]: Object.assign({}, state[product], {
                     values: state[product].values.concat(Number(price))

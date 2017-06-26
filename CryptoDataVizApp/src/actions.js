@@ -27,11 +27,6 @@ export const connectSocket = () => {
                   product_ids = Object.keys(state.prices)
                                       .map(k => state.prices[k].id);
 
-            console.log('subscribing', JSON.stringify({
-                type: 'subscribe',
-                product_ids
-            }));
-
             ws.send(JSON.stringify({
                 type: 'subscribe',
                 product_ids
@@ -41,7 +36,7 @@ export const connectSocket = () => {
         ws.onmessage = (msg) => {
             const { type, price, product_id, reason } = JSON.parse(msg.data);
 
-            if (type === 'done' && reason === 'filled') {
+            if (type === 'done' && reason === 'filled' && price) {
                 dispatch(addPrice(product_id, price));
             }
         }

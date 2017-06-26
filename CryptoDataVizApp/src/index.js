@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Screen, Heading, Divider } from '@shoutem/ui';
+import { Screen, Subtitle, Divider } from '@shoutem/ui';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -21,7 +21,7 @@ const App = () => (
     <Provider store={store}>
         <Screen>
             <Divider />
-            <Heading styleName="h-center">Cryptocurrency Market Cap</Heading>
+            <Subtitle styleName="h-center">Current Crypto Value</Subtitle>
 
             <MarketCapGraph />
         </Screen>

@@ -126,6 +126,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-svg')
     compile project(':react-native-photo-view')
     compile project(':react-native-share')
     compile project(':react-native-linear-gradient')
