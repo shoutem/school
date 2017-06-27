@@ -9,7 +9,7 @@ import { Provider, connect } from 'react-redux';
 import rootReducer from './reducer';
 import { initData } from './actions';
 import CurrentValue from './CurrentValue';
-import TransactionVolumeGraph from './TransactionVolumeGraph';
+import TransactionVolumeGraph, { Description } from './TransactionVolumeGraph';
 
 const store = createStore(
     rootReducer,
@@ -34,6 +34,8 @@ class App extends Component {
                 <Divider />
                 <Divider />
                 <TransactionVolumeGraph />
+                <Divider />
+                <Description />
             </Screen>
         )
     }
