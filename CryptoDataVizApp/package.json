@@ -11,6 +11,7 @@
     "better-fetch": "^1.1.2",
     "d3": "^4.9.1",
     "lodash.frompairs": "^4.0.1",
+    "lodash.last": "^3.0.0",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.3",
     "react-native-svg": "^4.5.0",
