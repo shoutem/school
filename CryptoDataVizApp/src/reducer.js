@@ -16,12 +16,12 @@ const prices = (state = {}, action) => {
                         values: []
                     }
                 ])));
-        case 'ADD_PRICE':
-            const { product, price } = action;
+        case 'ADD_VALUE':
+            const { product, value } = action;
 
             return Object.assign({}, state, {
                 [product]: Object.assign({}, state[product], {
-                    values: state[product].values.concat(price)
+                    values: state[product].values.concat(value)
                 })
             });
         default:

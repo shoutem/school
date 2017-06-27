@@ -10,7 +10,7 @@ const StreamGraph = ({ keys, values, width, height }) => {
                     .offset(d3.stackOffsetSilhouette),
           series = stack(values);
 
-    console.log(series);
+    //console.log(series);
 
     if (!series.length) {
         return null;

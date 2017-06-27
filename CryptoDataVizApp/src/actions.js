@@ -33,14 +33,14 @@ export const connectSocket = () => {
         }
 
         ws.onmessage = (msg) => {
-            const { type, price, product_id, reason, time } = JSON.parse(msg.data);
+            const { type, price, product_id, reason, size } = JSON.parse(msg.data);
             const value = {
-                time: new Date(time),
+                time: new Date(),
                 price: Number(price)
             }
 
-            if (type === 'done' && reason === 'filled' && price) {
-                dispatch(addPrice(product_id, value));
+            if (type === 'match' && price) {
+                dispatch(addValue(product_id, value));
             }
         }
 
@@ -59,8 +59,8 @@ export const setProducts = (products) => ({
     products: products.filter(({ quote_currency }) => quote_currency === 'USD')
 });
 
-export const addPrice = (product, price) => ({
-    type: 'ADD_PRICE',
+export const addValue = (product, value) => ({
+    type: 'ADD_VALUE',
     product,
-    price
+    value
 });
