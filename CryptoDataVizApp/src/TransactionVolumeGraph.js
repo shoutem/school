@@ -27,7 +27,8 @@ class TransactionVolumeGraph extends Component {
                            products[0].values
                        ).map((_, i) =>
                            fromPairs(keys.map(
-                               k => [k, prices[k].values[i] || 0]
+                               k => [k,
+                                     ({price = 0} = prices[k].values[i] || {}).price || 0]
                            ))
                        );
     }
