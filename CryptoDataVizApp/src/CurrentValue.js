@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import { View, Subtitle, Heading, Text } from '@shoutem/ui';
 import last from 'lodash.last';
 
+import { lastValueOrZero } from './helpers';
+
 const CurrentValue = connect(state => ({
     all: Object.values(state.prices)
                .map(({ values }) => last(values) || {price: 0})
                .reduce((sum, { price }) => sum+price, 0),
-    btc: last(({ values = [] } = state.prices['BTC-USD'] || {}).values) || {price: 0},
-    eth: last(({ values = [] } = state.prices['ETH-USD'] || {}).values) || {price: 0},
-    ltc: last(({ values = [] } = state.prices['LTC-USD'] || {}).values) || {price: 0}
+    btc: lastValueOrZero(state.prices['BTC-USD']),
+    eth: lastValueOrZero(state.prices['ETH-USD']),
+    ltc: lastValueOrZero(state.prices['LTC-USD'])
 }))(({ all, btc, eth, ltc }) => (
     <View>
         <Subtitle styleName="h-center">Current Crypto Value</Subtitle>

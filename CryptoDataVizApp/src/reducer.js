@@ -22,8 +22,8 @@ const prices = (state = {}, action) => {
 
             let values = state[product].values.concat(value);
 
-            if (values.length > 1000) {
-                values = takeRight(values, 1000);
+            if (values.length > 500) {
+                values = takeRight(values, 500);
             }
 
             return Object.assign({}, state, {
