@@ -34,11 +34,6 @@ function chartValues(prices) {
               .map(t => new Date(Number(t)))
     );
 
-    // only show data up to 3min old
-    if (t0 < new Date() - 1000*60*3) {
-        t0 = new Date() - 1000*60*3;
-    }
-
     return d3.timeSeconds(t0, t1, 3)
              .map(t => fromPairs(
                  Object.keys(chunked)

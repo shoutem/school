@@ -1,6 +1,7 @@
 
 import { combineReducers } from 'redux';
 import fromPairs from 'lodash.frompairs';
+import takeRight from 'lodash.takeright';
 
 
 const prices = (state = {}, action) => {
@@ -19,9 +20,15 @@ const prices = (state = {}, action) => {
         case 'ADD_VALUE':
             const { product, value } = action;
 
+            let values = state[product].values.concat(value);
+
+            if (values.length > 1000) {
+                values = takeRight(values, 1000);
+            }
+
             return Object.assign({}, state, {
                 [product]: Object.assign({}, state[product], {
-                    values: state[product].values.concat(value)
+                    values: values
                 })
             });
         default:
