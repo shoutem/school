@@ -12,7 +12,6 @@ export const initData = () => {
           .then(res => res.json())
           .then(json => {
               dispatch(setProducts(json));
-              //dispatch(fetchAllBooks());
               dispatch(connectSocket());
           });
     };
@@ -34,10 +33,14 @@ export const connectSocket = () => {
         }
 
         ws.onmessage = (msg) => {
-            const { type, price, product_id, reason } = JSON.parse(msg.data);
+            const { type, price, product_id, reason, time } = JSON.parse(msg.data);
+            const value = {
+                time: new Date(time),
+                price: Number(price)
+            }
 
             if (type === 'done' && reason === 'filled' && price) {
-                dispatch(addPrice(product_id, price));
+                dispatch(addPrice(product_id, value));
             }
         }
 
@@ -50,43 +53,6 @@ export const connectSocket = () => {
         }
     }
 }
-
-export const fetchProductOrderBook = (key) => {
-    return function (dispatch, getState) {
-        const { id } = getState().prices[key];
-
-        fetch(`${URL}products/${id}/book`)
-          .then(fetch.throwErrors)
-          .then(res => res.json())
-          .then(json => {
-              console.log(json);
-          });
-    }
-}
-
-export const fetch24hrPrices = () => {
-    return function (dispatch, getState) {
-        const state = getState();
-
-        Object.keys(state.prices).map(currency => {
-            dispatch(fetch24hrPrice(currency));
-        });
-    };
-}
-
-export const fetch24hrPrice = (currency) => {
-    return function (dispatch, getState) {
-        const state = getState(),
-              { id } = state.prices[currency];
-
-        fetch(`${URL}products/${id}/stats`)
-   .then(fetch.throwErrors)
-   .then(res => res.json())
-   .then(json => {
-       console.log(json);
-   });
-    };
-};
 
 export const setProducts = (products) => ({
     type: 'SET_PRODUCTS',

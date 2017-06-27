@@ -21,7 +21,7 @@ const prices = (state = {}, action) => {
 
             return Object.assign({}, state, {
                 [product]: Object.assign({}, state[product], {
-                    values: state[product].values.concat(Number(price))
+                    values: state[product].values.concat(price)
                 })
             });
         default:
