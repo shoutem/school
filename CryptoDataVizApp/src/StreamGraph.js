@@ -10,8 +10,6 @@ const StreamGraph = ({ keys, values, width, height }) => {
                     .offset(d3.stackOffsetSilhouette),
           series = stack(values);
 
-    //console.log(series);
-
     if (!series.length) {
         return null;
     }
@@ -24,13 +22,13 @@ const StreamGraph = ({ keys, values, width, height }) => {
                 ])
                 .range([0, height]),
           x = d3.scaleLinear()
-                .domain([0, series[0].length])
+                .domain(d3.extent(values.map(v => v.time)))
                 .range([0, width]);
 
     const area = d3.area()
-                   .y0(([y0, y1]) => 150+y(y0))
-                   .y1(([y0, y1]) => 150+y(y1))
-                   .x((d, i) => x(i));
+                   .y0(([y0, y1]) => y(y0))
+                   .y1(([y0, y1]) => y(y1))
+                   .x(({ data }) => x(data.time));
 
     return (
         <G>

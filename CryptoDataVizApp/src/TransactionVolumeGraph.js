@@ -41,19 +41,20 @@ class TransactionVolumeGraph extends Component {
                  .map(t => fromPairs(
                      Object.keys(chunked)
                            .map(k => [k, (chunked[k][t.getTime()] || []).length])
+                           .concat([['time', t]])
                  ))
     }
 
     render() {
-        const { width } = Dimensions.get('window'),
+        const { height, width } = Dimensions.get('window'),
               prices = this.props.prices;
 
         return (
-            <Svg height="500" width={width}>
+            <Svg height={height/2} width={width}>
                 <StreamGraph keys={Object.keys(prices)}
                              values={this.chartValues}
                              width={width}
-                             height={300} />
+                             height={height/2} />
             </Svg>
         );
     }

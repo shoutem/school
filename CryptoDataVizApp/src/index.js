@@ -31,6 +31,8 @@ class App extends Component {
             <Screen>
                 <Divider />
                 <CurrentValue />
+                <Divider />
+                <Divider />
                 <TransactionVolumeGraph />
             </Screen>
         )
