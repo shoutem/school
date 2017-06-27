@@ -7,7 +7,9 @@ import { createLogger } from 'redux-logger';
 import { Provider, connect } from 'react-redux';
 
 import rootReducer from './reducer';
-import MarketCapGraph from './MarketCapGraph';
+import { initData } from './actions';
+import CurrentValue from './CurrentValue';
+import TransactionVolumeGraph from './TransactionVolumeGraph';
 
 const store = createStore(
     rootReducer,
@@ -17,15 +19,28 @@ const store = createStore(
     )
 );
 
-const App = () => (
+class App extends Component {
+    componentDidMount() {
+        const { dispatch } = this.props;
+
+        dispatch(initData());
+    }
+
+    render() {
+        return (
+            <Screen>
+                <Divider />
+                <CurrentValue />
+                <TransactionVolumeGraph />
+            </Screen>
+        )
+    }
+}
+
+const ConnectedApp = connect(state => state)(App);
+
+export default () => (
     <Provider store={store}>
-        <Screen>
-            <Divider />
-            <Subtitle styleName="h-center">Current Crypto Value</Subtitle>
-
-            <MarketCapGraph />
-        </Screen>
+        <ConnectedApp />
     </Provider>
-);
-
-export default App;
+)
