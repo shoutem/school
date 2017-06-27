@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dimensions } from 'react-native';
 import Svg from 'react-native-svg';
-import * as d3 from 'd3';
 
 import StreamGraph from './StreamGraph';
 import { chartValues } from './helpers';

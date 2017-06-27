@@ -13,7 +13,8 @@ export const initData = () => {
           .then(json => {
               dispatch(setProducts(json));
               dispatch(connectSocket());
-          });
+          })
+          .catch(e => console.error(e.message));
     };
 }
 

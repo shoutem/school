@@ -7,7 +7,7 @@ import last from 'lodash.last';
 import { lastValueOrZero } from './helpers';
 
 const CurrentValue = connect(state => ({
-    all: Object.values(state.prices)
+    sum: Object.values(state.prices)
                .map(({ values }) => last(values) || {price: 0})
                .reduce((sum, { price }) => sum+price, 0),
     btc: lastValueOrZero(state.prices['BTC-USD']),
@@ -17,7 +17,7 @@ const CurrentValue = connect(state => ({
     <View>
         <Subtitle styleName="h-center">Current Crypto Value</Subtitle>
         <Heading styleName="h-center" style={{paddingTop: 10}}>
-            ${all.toFixed(2)}
+            ${sum.toFixed(2)}
         </Heading>
         <View styleName="horizontal h-center space-between" style={{paddingLeft: 20,
                                                                    paddingRight: 20}}>

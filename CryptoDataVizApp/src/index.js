@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Screen, Subtitle, Divider } from '@shoutem/ui';
+import { Screen, Divider } from '@shoutem/ui';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
