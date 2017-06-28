@@ -13,7 +13,7 @@ const CurrentValue = connect(state => ({
     btc: lastValueOrZero(state.prices['BTC-USD']),
     eth: lastValueOrZero(state.prices['ETH-USD']),
     ltc: lastValueOrZero(state.prices['LTC-USD'])
-}))(({ all, btc, eth, ltc }) => (
+}))(({ sum, btc, eth, ltc }) => (
     <View>
         <Subtitle styleName="h-center">Current Crypto Value</Subtitle>
         <Heading styleName="h-center" style={{paddingTop: 10}}>
