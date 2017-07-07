@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@shoutem/ui": "^0.15.0",
+    "babel-preset-latest": "^6.24.1",
     "better-fetch": "^1.1.2",
     "d3": "^4.9.1",
     "lodash.frompairs": "^4.0.1",
