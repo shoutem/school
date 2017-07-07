@@ -30,7 +30,6 @@ class Store {
         firebase.database()
                 .ref(`v0/item/${id}`)
                 .on('value', snapshot => {
-                    console.log(id);
                     this.updateItem(id, snapshot.val());
                 });
     }

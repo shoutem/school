@@ -2,6 +2,7 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { View, ListView, Title, Tile, Subtitle } from '@shoutem/ui';
+import moment from 'moment';
 
 const Story =
 inject('store')(observer(function Story({ store, id }) {
@@ -13,7 +14,7 @@ inject('store')(observer(function Story({ store, id }) {
                 <Tile>
                     <Title>{item.title}</Title>
                     <Subtitle styleName="sm-gutter-horizontal">
-                        {item.score}
+                        {item.score} {moment.unix(item.time).fromNow()}
                     </Subtitle>
                 </Tile>
             </View>
@@ -21,7 +22,9 @@ inject('store')(observer(function Story({ store, id }) {
     }else{
         return (
             <View>
-                <Title>Loading ... ({id})</Title>
+                <Tile>
+                    <Subtitle>Loading ... ({id})</Subtitle>
+                </Tile>
             </View>
         )
     }
