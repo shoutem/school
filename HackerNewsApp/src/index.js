@@ -5,6 +5,7 @@ import { useStrict } from 'mobx';
 import { Provider, observer } from 'mobx-react/native';
 
 import Store from './Store';
+import StoriesList from './StoriesList';
 
 useStrict(true);
 
@@ -16,7 +17,7 @@ class App extends Component {
 
     render() {
         return (
-            <Provider stor={Store}>
+            <Provider store={Store}>
                 <Screen>
                     <StoriesList />
                 </Screen>
