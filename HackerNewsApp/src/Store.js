@@ -9,13 +9,13 @@ firebase.initializeApp({
 
 class Store {
     @observable topStories = [];
-    @observable items = {};
+    @observable items = observable.map();
 
     @action listenForTopStories() {
         firebase.database()
                 .ref('v0/topstories')
                 .on('value', snapshot => {
-                    const ids = take(snapshot.val(), 50);
+                    const ids = take(snapshot.val(), 10);
 
                     this.updateTopStories(ids);
                     ids.forEach(id => this.listenToItem(id));
@@ -30,12 +30,13 @@ class Store {
         firebase.database()
                 .ref(`v0/item/${id}`)
                 .on('value', snapshot => {
+                    console.log(id);
                     this.updateItem(id, snapshot.val());
                 });
     }
 
     @action updateItem(id, val) {
-        this.items[id] = val;
+        this.items.set(id, val);
     }
 }
 

@@ -1,16 +1,21 @@
 
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { View, ListView, Title } from '@shoutem/ui';
+import { View, ListView, Title, Tile, Subtitle } from '@shoutem/ui';
 
 const Story =
 inject('store')(observer(function Story({ store, id }) {
-    const item = store.items[id];
+    const item = store.items.get(id);
 
     if (item) {
         return (
             <View>
-                <Title>{item.title}</Title>
+                <Tile>
+                    <Title>{item.title}</Title>
+                    <Subtitle styleName="sm-gutter-horizontal">
+                        {item.score}
+                    </Subtitle>
+                </Tile>
             </View>
         )
     }else{
