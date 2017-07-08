@@ -12,14 +12,14 @@ useStrict(true);
 @observer
 class App extends Component {
     componentDidMount() {
-        Store.listenForTopStories();
+        Store.listenForStories(Store.currentStoryType);
     }
 
     render() {
         return (
             <Provider store={Store}>
                 <Screen>
-                    <StoriesList />
+                    <StoriesList storyType={Store.currentStoryType} />
                 </Screen>
             </Provider>
         )

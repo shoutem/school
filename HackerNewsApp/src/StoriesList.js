@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { View, ListView, Title, Tile, Subtitle } from '@shoutem/ui';
+import { View, ListView, Title, Tile, Subtitle, Spinner } from '@shoutem/ui';
 import moment from 'moment';
 
 const Story =
@@ -31,11 +31,17 @@ inject('store')(observer(function Story({ store, id }) {
 }));
 
 const StoriesList =
-inject('store')(observer(function StoriesList ({ store }) {
-    return (
-        <ListView data={store.topStories.slice()}
-                  renderRow={id => <Story id={id} />} />
-    )
+inject('store')(observer(function StoriesList ({ store, storyType }) {
+    const stories = store.stories.get(storyType);
+
+    if (stories) {
+        return (
+            <ListView data={stories.slice()}
+                      renderRow={id => <Story id={id} />} />
+        )
+    }else{
+        return <Spinner />
+    }
 }));
 
 export default StoriesList;

@@ -8,22 +8,23 @@ firebase.initializeApp({
 });
 
 class Store {
-    @observable topStories = [];
+    @observable stories = observable.map();
+    @observable currentStoryType = "topstories";
     @observable items = observable.map();
 
-    @action listenForTopStories() {
+    @action listenForStories(storyType) {
         firebase.database()
-                .ref('v0/topstories')
+                .ref(`v0/${storyType}`)
                 .on('value', snapshot => {
                     const ids = take(snapshot.val(), 10);
 
-                    this.updateTopStories(ids);
+                    this.updateStories(storyType, ids);
                     ids.forEach(id => this.listenToItem(id));
                 })
     }
 
-    @action updateTopStories(ids) {
-        this.topStories.replace(ids);
+    @action updateStories(storyType, ids) {
+        this.stories.set(storyType, ids);
     }
 
     @action listenToItem(id) {
