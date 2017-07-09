@@ -10,7 +10,6 @@ firebase.initializeApp({
 class Store {
     @observable stories = observable.map();
     @observable items = observable.map();
-    @observable currentStoryType = "topstories";
     @observable storyTypes = [
         {name: 'Top', value: 'topstories'},
         {name: 'Ask HN', value: 'askstories'},
@@ -18,11 +17,35 @@ class Store {
         {name: 'Jobs', value: 'jobstories'}
     ];
     @observable alreadyListening = observable.map();
+    @observable _navigationState = {
+        index: 0,
+        routes: [
+            {key: 'topstories'}
+        ]
+    };
+
+    @computed get currentRoute() {
+        return this._navigationState.routes[this._navigationState.index];
+    }
 
     @computed get selectedStoryOption() {
+        const { key } = this.currentRoute;
+
         return this.storyTypes.find(
-            ({ name, value }) => value === this.currentStoryType
+            ({ name, value }) => value === key
         );
+    }
+
+    @computed get navigationState() {
+        return {
+            index: this._navigationState.index,
+            routes: this._navigationState.routes.slice()
+        };
+    }
+
+    @action navigateBack() {
+        this._navigationState.index -= 1;
+        this._navigationState.routes.pop();
     }
 
     @action listenForStories(storyType) {
@@ -56,8 +79,16 @@ class Store {
     }
 
     @action pickStoryType({ value }) {
-        this.currentStoryType = value;
         this.listenForStories(value);
+
+        this._navigationState.routes.push({
+            key: value
+        });
+        this._navigationState.index += 1;
+    }
+
+    @action openStory(id) {
+        console.log(id);
     }
 }
 
