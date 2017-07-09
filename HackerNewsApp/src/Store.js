@@ -88,7 +88,11 @@ class Store {
     }
 
     @action openStory(id) {
-        console.log(id);
+        this._navigationState.routes.push({
+            key: String(id),
+            id: id
+        });
+        this._navigationState.index += 1;
     }
 }
 
