@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Screen } from '@shoutem/ui';
+import { Screen, NavigationBar, DropDownMenu, Divider, View } from '@shoutem/ui';
 import { useStrict } from 'mobx';
 import { Provider, observer } from 'mobx-react/native';
 
@@ -15,11 +15,25 @@ class App extends Component {
         Store.listenForStories(Store.currentStoryType);
     }
 
+    get centerMenu() {
+        return (
+            <DropDownMenu options={Store.storyTypes.slice()}
+                          titleProperty="name"
+                          valueProperty="value"
+                          selectedOption={Store.selectedStoryOption}
+                          onOptionSelected={storyType => Store.pickStoryType(storyType)} />
+        );
+    }
+
     render() {
         return (
             <Provider store={Store}>
                 <Screen>
-                    <StoriesList storyType={Store.currentStoryType} />
+                    <View style={{paddingTop: 75}}>
+                        <StoriesList storyType={Store.currentStoryType} />
+                    </View>
+
+                    <NavigationBar centerComponent={this.centerMenu} />
                 </Screen>
             </Provider>
         )

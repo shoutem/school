@@ -9,18 +9,34 @@ firebase.initializeApp({
 
 class Store {
     @observable stories = observable.map();
-    @observable currentStoryType = "topstories";
     @observable items = observable.map();
+    @observable currentStoryType = "topstories";
+    @observable storyTypes = [
+        {name: 'Top', value: 'topstories'},
+        {name: 'Ask HN', value: 'askstories'},
+        {name: 'Show HN', value: 'showstories'},
+        {name: 'Jobs', value: 'jobstories'}
+    ];
+    @observable alreadyListening = observable.map();
+
+    @computed get selectedStoryOption() {
+        return this.storyTypes.find(
+            ({ name, value }) => value === this.currentStoryType
+        );
+    }
 
     @action listenForStories(storyType) {
-        firebase.database()
-                .ref(`v0/${storyType}`)
-                .on('value', snapshot => {
-                    const ids = take(snapshot.val(), 10);
+        if (!this.alreadyListening.get(storyType)) {
+            this.alreadyListening.set(storyType, true);
+            firebase.database()
+                    .ref(`v0/${storyType}`)
+                    .on('value', snapshot => {
+                        const ids = take(snapshot.val(), 10);
 
-                    this.updateStories(storyType, ids);
-                    ids.forEach(id => this.listenToItem(id));
-                })
+                        this.updateStories(storyType, ids);
+                        ids.forEach(id => this.listenToItem(id));
+                    })
+        }
     }
 
     @action updateStories(storyType, ids) {
@@ -37,6 +53,11 @@ class Store {
 
     @action updateItem(id, val) {
         this.items.set(id, val);
+    }
+
+    @action pickStoryType({ value }) {
+        this.currentStoryType = value;
+        this.listenForStories(value);
     }
 }
 
