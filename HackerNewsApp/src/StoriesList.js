@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { View, ListView, Title, Tile, Subtitle, Spinner } from '@shoutem/ui';
+import { View, ListView, Subtitle, Tile, Caption, Spinner, Row, Icon } from '@shoutem/ui';
 import moment from 'moment';
 
 const Story =
@@ -10,22 +10,27 @@ inject('store')(observer(function Story({ store, id }) {
 
     if (item) {
         return (
-            <View>
-                <Tile>
-                    <Title>{item.title}</Title>
-                    <Subtitle styleName="sm-gutter-horizontal">
-                        {item.score} {moment.unix(item.time).fromNow()}
-                    </Subtitle>
-                </Tile>
-            </View>
+            <Row>
+                <View styleName="vertical">
+                    <Subtitle>{item.title}</Subtitle>
+                    <View styleName="horizontal space-between">
+                        <Caption>
+                            <Icon style={{fontSize: 15}} name="like" />
+                            {item.score}
+                        </Caption>
+                        <Caption>
+                             {moment.unix(item.time).fromNow()}
+                        </Caption>
+                    </View>
+                </View>
+                <Icon styleName="disclosure" name="right-arrow" />
+            </Row>
         )
     }else{
         return (
-            <View>
-                <Tile>
-                    <Subtitle>Loading ... ({id})</Subtitle>
-                </Tile>
-            </View>
+            <Row styleName="small">
+                <Caption>Loading ... ({id})</Caption>
+            </Row>
         )
     }
 }));
