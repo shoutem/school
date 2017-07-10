@@ -78,6 +78,20 @@ class Store {
         this.items.set(id, val);
     }
 
+    @action loadItem(id) {
+        firebase.database()
+                .ref(`v0/item/${id}`)
+                .once('value', snapshot => {
+                    const val = snapshot.val();
+
+                    this.updateItem(id, val);
+
+                    if (val.kids) {
+                        val.kids.forEach(id => this.loadItem(id));
+                    }
+                });
+    }
+
     @action pickStoryType({ value }) {
         this.listenForStories(value);
 
@@ -95,6 +109,9 @@ class Store {
             type: 'story'
         });
         this._navigationState.index += 1;
+
+        // recursively walk through kids
+        this.loadItem(id);
     }
 }
 

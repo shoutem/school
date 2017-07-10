@@ -7,6 +7,7 @@ import { Provider, observer } from 'mobx-react/native';
 
 import Store from './Store';
 import StoriesList from './StoriesList';
+import HNItem from './HNItem';
 
 useStrict(true);
 
@@ -59,7 +60,7 @@ class App extends Component {
         }else{
             return (
                 <Screen style={{paddingTop: 75}}>
-                    <Text>Story: {route.key}</Text>
+                    <HNItem id={route.id} />
                 </Screen>
             );
         }
