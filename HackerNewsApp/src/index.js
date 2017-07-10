@@ -16,14 +16,6 @@ class App extends Component {
         Store.listenForStories(Store.currentRoute.key);
     }
 
-    _isStoryList(route) {
-        const isStoryList = Store.storyTypes
-                                  .map(({ name, value }) => value)
-                                  .includes(route.key);
-
-        return isStoryList;
-    }
-
     renderDropDown() {
         return (
             <DropDownMenu options={Store.storyTypes.slice()}
@@ -38,13 +30,14 @@ class App extends Component {
         const route = navigationState.routes[navigationState.index];
         let centerComponent = null;
 
-        console.log('story list?', this._isStoryList(route));
-
-        if (this._isStoryList(route)) {
+        if (route.type === 'storylist') {
             centerComponent = this.renderDropDown();
         }else{
-            console.log(route.id);
-            centerComponent = <Text>{Store.items.get(route.id).title}</Text>
+            centerComponent = (
+                <Text ellipsizeMode="tail" numberOfLines={1}>
+                    {Store.items.get(route.id).title}
+                </Text>
+            );
         }
 
         return (
@@ -57,7 +50,7 @@ class App extends Component {
     renderScene({ scene }) {
         const { route } = scene;
 
-        if (this._isStoryList(route)) {
+        if (route.type === 'storylist') {
             return (
                 <Screen style={{paddingTop: 75}}>
                     <StoriesList storyType={route.key} />

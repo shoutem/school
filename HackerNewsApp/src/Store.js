@@ -20,7 +20,7 @@ class Store {
     @observable _navigationState = {
         index: 0,
         routes: [
-            {key: 'topstories'}
+            {key: 'topstories', type: 'storylist'}
         ]
     };
 
@@ -82,7 +82,8 @@ class Store {
         this.listenForStories(value);
 
         this._navigationState.routes.push({
-            key: value
+            key: value,
+            type: 'storylist'
         });
         this._navigationState.index += 1;
     }
@@ -90,7 +91,8 @@ class Store {
     @action openStory(id) {
         this._navigationState.routes.push({
             key: String(id),
-            id: id
+            id: id,
+            type: 'story'
         });
         this._navigationState.index += 1;
     }
