@@ -1,12 +1,14 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { View, Text, Heading, Icon, Subtitle, Caption, ListView } from '@shoutem/ui';
 import moment from 'moment';
+import HTMLView from 'react-native-htmlview';
 
 const Story = observer(({ item }) => (
     <View style={{paddingLeft: 14, paddingRight: 14}}>
         <Heading>{item.title}</Heading>
+
         <View styleName="horizontal space-between" style={{paddingLeft: 5,
                                                            paddingRight: 5}}>
             <Subtitle>
@@ -17,39 +19,68 @@ const Story = observer(({ item }) => (
                 {moment.unix(item.time).fromNow()}
             </Subtitle>
         </View>
+
         <View>
             <Text>{item.text}</Text>
         </View>
-        <View>
-             <ListView data={item.kids.slice()}
-                       renderRow={id => <HNItem id={id} />} />
-        </View>
+
+        <Children item={item} />
     </View>
 ));
 
-const Comment = observer(({ item }) => (
-    <View style={{paddingBottom: 20}}>
-        <Text>{item.text}</Text>
+const Children = observer(({ item }) => {
+    if (item.kids) {
+        return (
+            <View style={{paddingLeft: 7}}>
+                <ListView data={item.kids.slice()}
+                          renderRow={id => <HNItem id={id} />} />
+            </View>
+        )
+    }else{
+        return null;
+    }
+});
 
-        <View styleName="horizontal space-between" style={{paddingLeft: 5,
+@observer
+class Comment extends Component {
+    state = {
+        expanded: false
+    }
+
+    expand = () => this.setState({
+        expanded: true
+    });
+
+    unexpand = () => this.setState({
+        expanded: false
+    });
+
+    render() {
+        const { item } = this.props,
+              { expanded } = this.state;
+
+        return (
+            <View style={{paddingBottom: 20}}>
+                {expanded
+                 ? <HTMLView onPress={this.unexpand} value={item.text} />
+                 : <HTMLView onPress={this.expand} numberOfLines={2} ellipsizeMode="tail" value={item.text} />}
+
+                <View styleName="horizontal space-between" style={{paddingLeft: 5,
                                                            paddingRight: 5}}>
-            <Caption>
-                <Icon style={{fontSize: 15}} name="comment" />
-                {item.by}
-            </Caption>
-            <Caption>
-                {moment.unix(item.time).fromNow()}
-            </Caption>
-        </View>
+                    <Caption>
+                        <Icon style={{fontSize: 15}} name="comment" />
+                        {item.by}
+                    </Caption>
+                    <Caption>
+                        {moment.unix(item.time).fromNow()}
+                    </Caption>
+                </View>
 
-        {item.kids ?
-         <View style={{paddingLeft: 10, paddingTop: 5}}>
-             <ListView data={item.kids.slice()}
-                       renderRow={id => <HNItem id={id} />} />
-         </View>
-         : null}
-    </View>
-));
+                {expanded ? <Children item={item} /> : null}
+            </View>
+        );
+    }
+};
 
 const HNItem =
 inject('store')(observer(function HNItem({ store, id }) {
