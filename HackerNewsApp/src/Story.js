@@ -4,8 +4,16 @@ import { Linking } from 'react-native';
 import { observer } from 'mobx-react';
 import { TouchableOpacity, Heading, View, Subtitle, Icon, Text } from '@shoutem/ui';
 import moment from 'moment';
+import HTMLView from 'react-native-htmlview';
 
 import { Children } from './HNItem';
+
+const Story = observer(({ item }) => (
+    <View style={{paddingLeft: 14, paddingRight: 14}}>
+        <Children item={item}
+                  renderHeader={() => <StoryHeader item={item} />}/>
+    </View>
+));
 
 const StoryHeader = observer(({ item }) => (
     <View>
@@ -27,17 +35,12 @@ const StoryHeader = observer(({ item }) => (
             </Subtitle>
         </View>
 
-        <View>
-            <Text>{item.text}</Text>
-        </View>
+        {item.text ? <StoryText item={item} /> : null}
     </View>
 ));
 
-const Story = observer(({ item }) => (
-    <View style={{paddingLeft: 14, paddingRight: 14}}>
-        <Children item={item}
-                  renderHeader={() => <StoryHeader item={item} />}/>
-    </View>
+const StoryText = observer(({ item }) => (
+    <HTMLView value={item.text} style={{paddingBottom: 10, paddingTop: 5}} addLineBreaks={false} />
 ));
 
 export default Story;

@@ -26,14 +26,6 @@ class Comment extends Component {
         expanded: false
     }
 
-    expand = () => this.setState({
-        expanded: true
-    });
-
-    unexpand = () => this.setState({
-        expanded: false
-    });
-
     toggleChildren = () => this.setState({
         showChildren: !this.state.showChildren
     });
@@ -55,9 +47,7 @@ class Comment extends Component {
                     </Caption>
                 </View>
 
-                {expanded
-                 ? <HTMLView onPress={this.unexpand} value={item.text} />
-                 : <HTMLView onPress={this.expand} value={item.text} />}
+                <HTMLView value={item.text} paragraphBreak={'\n'} lineBreak={null} />
 
                 {kids.length ? <ChildrenToggle item={item} showChildren={showChildren} onPress={this.toggleChildren} /> : null}
 
