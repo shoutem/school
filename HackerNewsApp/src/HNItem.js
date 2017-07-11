@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { View, ListView, Text } from '@shoutem/ui';
+import { View, ListView, Text, Spinner } from '@shoutem/ui';
 
 import Comment from './Comment';
 import Story from './Story';
@@ -17,7 +17,7 @@ const Children = observer(({ item, renderHeader = () => null }) => {
             </View>
         )
     }else{
-        return null;
+        return <Spinner />;
     }
 });
 
@@ -26,14 +26,18 @@ const HNItem =
 inject('store')(observer(function HNItem({ store, id }) {
     const item = store.items.get(id);
 
-    if (!item) {
-        return (<Text>Loading ...</Text>);
+    if (!item || item.type === 'comment' && !item.sentiment.fetched) {
+        return (<Spinner />);
     }
 
     if (item.type === 'story') {
         return (<Story item={item} />);
     }else if (item.type === 'comment') {
-        return (<Comment item={item} />);
+        if (item.sentiment.score < 0) {
+            return null;
+        }else{
+            return (<Comment item={item} />);
+        }
     }
 }));
 

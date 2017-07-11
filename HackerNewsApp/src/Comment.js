@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { TouchableOpacity, View, Caption, Icon, Text } from '@shoutem/ui';
 import moment from 'moment';
 import HTMLView from 'react-native-htmlview';
@@ -19,7 +19,7 @@ const ChildrenToggle = observer(({ item, showChildren, onPress }) => (
     </TouchableOpacity>
 ));
 
-@observer
+@observer @inject('store')
 class Comment extends Component {
     state = {
         showChildren: false,
@@ -31,9 +31,9 @@ class Comment extends Component {
     });
 
     render() {
-        const { item } = this.props,
-              { showChildren, expanded } = this.state,
-              { kids = [] } = item;
+        const { item, store } = this.props,
+              { showChildren, expanded } = this.state;
+        let { kids = [] } = item;
 
         return (
             <View style={{paddingBottom: 20}}>
@@ -44,6 +44,9 @@ class Comment extends Component {
                     </Caption>
                     <Caption>
                         {moment.unix(item.time).fromNow()}
+                    </Caption>
+                    <Caption>
+                        {item.sentiment.score > 0 ? 'positive' : 'neutral'}
                     </Caption>
                 </View>
 
