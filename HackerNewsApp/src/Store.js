@@ -110,11 +110,9 @@ class Store {
     }
 
     @action updateSentiment(id, { documentSentiment }) {
-        console.log('updating sentiment', id, documentSentiment);
         if (documentSentiment) {
             extendObservable(this.items.get(id).sentiment, documentSentiment);
             this.items.get(id).sentiment.fetched = true;
-            console.log(this.items.get(id));
         }
     }
 
