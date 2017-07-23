@@ -8,6 +8,7 @@ import { Provider, observer } from 'mobx-react/native';
 import Store from './Store';
 import StoriesList from './StoriesList';
 import HNItem from './HNItem';
+import Login from './Login';
 
 useStrict(true);
 
@@ -69,12 +70,14 @@ class App extends Component {
     render() {
         return (
             <Provider store={Store}>
-                <CardStack navigationState={Store.navigationState}
-                           renderNavBar={this.renderNavBar.bind(this)}
-                           renderScene={this.renderScene.bind(this)} />
+                <Login />
             </Provider>
         )
     }
 }
 
 export default App;
+
+ /* <CardStack navigationState={Store.navigationState}
+                   renderNavBar={this.renderNavBar.bind(this)}
+                   renderScene={this.renderScene.bind(this)} /> */
