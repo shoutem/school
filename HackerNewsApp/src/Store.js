@@ -54,6 +54,7 @@ class Store {
     @action listenForStories(storyType) {
         if (!this.alreadyListening.get(storyType)) {
             this.alreadyListening.set(storyType, true);
+
             firebase.database()
                     .ref(`v0/${storyType}`)
                     .on('value', snapshot => {
@@ -70,11 +71,15 @@ class Store {
     }
 
     @action listenToStory(id) {
-        firebase.database()
-                .ref(`v0/item/${id}`)
-                .on('value', snapshot => {
-                    this.updateItem(id, snapshot.val());
-                });
+        if (!this.alreadyListening.set(id, true)) {
+            this.alreadyListening.set(id, true);
+
+            firebase.database()
+                    .ref(`v0/item/${id}`)
+                    .on('value', snapshot => {
+                        this.updateItem(id, snapshot.val());
+                    });
+        }
     }
 
     @action updateItem(id, val) {
