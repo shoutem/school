@@ -31,6 +31,8 @@ class Login extends Component {
             this.setState({
                 error: 'Missing info'
             });
+        }else{
+            this.props.store.login(username, password);
         }
     }
 

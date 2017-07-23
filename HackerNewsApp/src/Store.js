@@ -157,6 +157,43 @@ class Store {
         // recursively walk through kids
         this.loadItem(id);
     }
+
+    @action login(username, password) {
+        let data = new FormData();
+        data.append('acct', username);
+        data.append('pw', password);
+        data.append('goto', 'news');
+
+        let headers = new Headers();
+        headers.append("Content-Type", "application/x-www-form-urlencoded");
+        headers.append("origin", "https://news.ycombinator.com");
+        headers.append("referer", "https://news.ycombinator.com/");
+        headers.append("Access-Control-Allow-Origin", "*");
+
+        const convertRequestBodyToFormUrlEncoded = (data) => {
+            const bodyKeys = Object.keys(data);
+            const str = [];
+            for (let i = 0; i < bodyKeys.length; i += 1) {
+                const thisKey = bodyKeys[i];
+                const thisValue = data[thisKey];
+                str.push(`${encodeURIComponent(thisKey)}=${encodeURIComponent(thisValue)}`);
+            }
+            return str.join('&');
+        };
+
+        fetch('https://news.ycombinator.com/login',
+              {
+                  method: "POST",
+                  headers: headers,
+                  body: convertRequestBodyToFormUrlEncoded({
+                      acct: username,
+                      pw: password,
+                      goto: 'news'
+                  }),
+                  mode: 'no-cors'
+              }).then(res => res.text())
+                .then(body => console.log(body));
+    }
 }
 
 export default new Store();
