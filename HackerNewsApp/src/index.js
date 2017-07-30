@@ -34,6 +34,8 @@ class App extends Component {
 
         if (route.type === 'storylist') {
             centerComponent = this.renderDropDown();
+        }else if (route.type === 'loginform') {
+            centerComponent = (<Text>Login</Text>);
         }else{
             centerComponent = (
                 <Text ellipsizeMode="tail" numberOfLines={1}>
@@ -52,25 +54,29 @@ class App extends Component {
     renderScene({ scene }) {
         const { route } = scene;
 
+        let screen = null;
+
         if (route.type === 'storylist') {
-            return (
-                <Screen style={{paddingTop: 75}}>
-                    <StoriesList storyType={route.key} />
-                </Screen>
-            )
+            screen = (<StoriesList storyType={route.key} />)
+        }else if (route.type === 'loginform') {
+            screen = (<Login />);
         }else{
-            return (
-                <Screen style={{paddingTop: 75}}>
-                    <HNItem id={route.id} />
-                </Screen>
-            );
+            screen = (<HNItem id={route.id} />);
         }
+
+        return (
+            <Screen style={{paddingTop: 75}}>
+                {screen}
+            </Screen>
+        );
     }
 
     render() {
         return (
             <Provider store={Store}>
-                <Login />
+                <CardStack navigationState={Store.navigationState}
+                           renderNavBar={this.renderNavBar.bind(this)}
+                           renderScene={this.renderScene.bind(this)} />
             </Provider>
         )
     }
@@ -78,6 +84,4 @@ class App extends Component {
 
 export default App;
 
- /* <CardStack navigationState={Store.navigationState}
-                   renderNavBar={this.renderNavBar.bind(this)}
-                   renderScene={this.renderScene.bind(this)} /> */
+ /*  */

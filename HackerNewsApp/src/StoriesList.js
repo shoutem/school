@@ -16,7 +16,8 @@ inject('store')(observer(function Story({ store, id }) {
                         <Subtitle>{item.title}</Subtitle>
                         <View styleName="horizontal space-between">
                             <Caption>
-                                <Icon style={{fontSize: 15}} name="like" />
+                                <Icon style={{fontSize: 15}} name="like"
+                                      onPress={() => store.upvote(id)} />
                                 {item.score}
                             </Caption>
                             <Caption>

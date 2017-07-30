@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { Heading, Screen, TextInput, Button, Text } from '@shoutem/ui';
+import { Heading, Screen, TextInput, Button, Text, Spinner } from '@shoutem/ui';
 
 
 @inject('store') @observer
@@ -9,7 +9,8 @@ class Login extends Component {
     state = {
         username: '',
         password: '',
-        error: ''
+        error: '',
+        loggingIn: false
     }
 
     changeUsername = (username) => {
@@ -25,21 +26,36 @@ class Login extends Component {
     }
 
     submit = () => {
-        const { username, password } = this.state;
+        const { username, password, loggingIn } = this.state,
+              { store } = this.props;
+
+        if (loggingIn) return;
 
         if (!username || !password) {
             this.setState({
                 error: 'Missing info'
             });
         }else{
-            this.props.store.login(username, password);
+            this.setState({ loggingIn: true });
+            store.login(username, password).then(success => {
+                if (success) {
+                    store.navigateBack();
+                }else{
+                    this.setState({
+                        loggingIn: false,
+                        error: "Bad login"
+                    });
+                }
+            });
         }
     }
 
     render() {
         return (
-            <Screen>
-                <Heading styleName="h-center">Login to HackerNews</Heading>
+            <Screen styleName="fill-parent v-center">
+                <Heading styleName="h-center" style={{paddingBottom: 10}}>
+                    Login to HackerNews
+                </Heading>
 
                 <TextInput placeholder="Username"
                            onChangeText={this.changeUsername}
@@ -55,7 +71,7 @@ class Login extends Component {
                            autoCorrect={false}
                            blurOnSubmit />
                 <Button onPress={this.submit}>
-                    <Text>LOGIN</Text>
+                    {this.state.loggingIn ? <Spinner /> : <Text>LOGIN</Text>}
                 </Button>
 
                 <Text styleName="h-center"

@@ -10,6 +10,17 @@ firebase.initializeApp({
 const N_STORIES = 30,
       LANG_API_KEY = 'AIzaSyCSE5mekK1XxfDMQde8bywlaOMIdN5L7ug';
 
+const convertRequestBodyToFormUrlEncoded = (data) => {
+    const bodyKeys = Object.keys(data);
+    const str = [];
+    for (let i = 0; i < bodyKeys.length; i += 1) {
+        const thisKey = bodyKeys[i];
+        const thisValue = data[thisKey];
+        str.push(`${encodeURIComponent(thisKey)}=${encodeURIComponent(thisValue)}`);
+    }
+    return str.join('&');
+};
+
 class Store {
     @observable stories = observable.map();
     @observable items = observable.map();
@@ -25,6 +36,11 @@ class Store {
         routes: [
             {key: 'topstories', type: 'storylist'}
         ]
+    };
+    @observable user = {
+        username: null,
+        loggedIn: false,
+        actionAfterLogin: false
     };
 
     @computed get currentRoute() {
@@ -71,7 +87,7 @@ class Store {
     }
 
     @action listenToStory(id) {
-        if (!this.alreadyListening.set(id, true)) {
+        if (!this.alreadyListening.get(id)) {
             this.alreadyListening.set(id, true);
 
             firebase.database()
@@ -158,41 +174,60 @@ class Store {
         this.loadItem(id);
     }
 
+    @action showLoginForm() {
+        this._navigationState.routes.push({
+            key: 'loginform',
+            type: 'loginform'
+        });
+        this._navigationState.index += 1;
+    }
+
     @action login(username, password) {
         let data = new FormData();
         data.append('acct', username);
         data.append('pw', password);
         data.append('goto', 'news');
 
-        let headers = new Headers();
-        headers.append("Content-Type", "application/x-www-form-urlencoded");
-        headers.append("origin", "https://news.ycombinator.com");
-        headers.append("referer", "https://news.ycombinator.com/");
-        headers.append("Access-Control-Allow-Origin", "*");
+        let headers = new Headers({
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Access-Control-Allow-Origin": "*"
+        });
 
-        const convertRequestBodyToFormUrlEncoded = (data) => {
-            const bodyKeys = Object.keys(data);
-            const str = [];
-            for (let i = 0; i < bodyKeys.length; i += 1) {
-                const thisKey = bodyKeys[i];
-                const thisValue = data[thisKey];
-                str.push(`${encodeURIComponent(thisKey)}=${encodeURIComponent(thisValue)}`);
-            }
-            return str.join('&');
-        };
+        return fetch('https://news.ycombinator.com/login',
+                     {
+                         method: "POST",
+                         headers: headers,
+                         body: convertRequestBodyToFormUrlEncoded({
+                             acct: username,
+                             pw: password,
+                             goto: 'news'
+                         }),
+                         mode: 'no-cors',
+                         credentials: 'include'
+                     }).then(res => res.text())
+                       .then(body => {
+                           if (body.match(/Bad Login/i)) {
+                               return false;
+                           }else{
+                               this.user.username = username;
+                               this.user.loggedIn = true;
 
-        fetch('https://news.ycombinator.com/login',
-              {
-                  method: "POST",
-                  headers: headers,
-                  body: convertRequestBodyToFormUrlEncoded({
-                      acct: username,
-                      pw: password,
-                      goto: 'news'
-                  }),
-                  mode: 'no-cors'
-              }).then(res => res.text())
-                .then(body => console.log(body));
+                               if (this.user.actionAfterLogin) {
+                                   this.user.actionAfterLogin();
+                               }
+
+                               return true;
+                           }
+                       });
+    }
+
+    @action upvote(id) {
+        if (!this.user.loggedIn) {
+            this.user.actionAfterLogin = () => this.upvote(id);
+            this.showLoginForm();
+        }else{
+            console.log('upvoting', id);
+        }
     }
 }
 
