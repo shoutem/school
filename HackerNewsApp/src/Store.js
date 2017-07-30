@@ -2,6 +2,7 @@
 import { action, computed, observable, extendObservable } from 'mobx';
 import * as firebase from 'firebase';
 import take from 'lodash/take';
+import HN from './HNApi';
 
 firebase.initializeApp({
     databaseURL: 'https://hacker-news.firebaseio.com'
@@ -9,17 +10,6 @@ firebase.initializeApp({
 
 const N_STORIES = 30,
       LANG_API_KEY = 'AIzaSyCSE5mekK1XxfDMQde8bywlaOMIdN5L7ug';
-
-const convertRequestBodyToFormUrlEncoded = (data) => {
-    const bodyKeys = Object.keys(data);
-    const str = [];
-    for (let i = 0; i < bodyKeys.length; i += 1) {
-        const thisKey = bodyKeys[i];
-        const thisValue = data[thisKey];
-        str.push(`${encodeURIComponent(thisKey)}=${encodeURIComponent(thisValue)}`);
-    }
-    return str.join('&');
-};
 
 class Store {
     @observable stories = observable.map();
@@ -40,7 +30,8 @@ class Store {
     @observable user = {
         username: null,
         loggedIn: false,
-        actionAfterLogin: false
+        actionAfterLogin: false,
+        auth: null
     };
 
     @computed get currentRoute() {
@@ -183,42 +174,19 @@ class Store {
     }
 
     @action login(username, password) {
-        let data = new FormData();
-        data.append('acct', username);
-        data.append('pw', password);
-        data.append('goto', 'news');
+        return HN.login(username, password)
+                 .then(success => {
+                     if (success) {
+                         this.user.username = username;
+                         this.user.loggedIn = true;
 
-        let headers = new Headers({
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Access-Control-Allow-Origin": "*"
-        });
+                         if (this.user.actionAfterLogin) {
+                             this.user.actionAfterLogin();
+                         }
+                     }
 
-        return fetch('https://news.ycombinator.com/login',
-                     {
-                         method: "POST",
-                         headers: headers,
-                         body: convertRequestBodyToFormUrlEncoded({
-                             acct: username,
-                             pw: password,
-                             goto: 'news'
-                         }),
-                         mode: 'no-cors',
-                         credentials: 'include'
-                     }).then(res => res.text())
-                       .then(body => {
-                           if (body.match(/Bad Login/i)) {
-                               return false;
-                           }else{
-                               this.user.username = username;
-                               this.user.loggedIn = true;
-
-                               if (this.user.actionAfterLogin) {
-                                   this.user.actionAfterLogin();
-                               }
-
-                               return true;
-                           }
-                       });
+                     return success;
+                 });
     }
 
     @action upvote(id) {
@@ -226,7 +194,22 @@ class Store {
             this.user.actionAfterLogin = () => this.upvote(id);
             this.showLoginForm();
         }else{
-            console.log('upvoting', id);
+            HN.getUpvoteURL(id).then(url => console.log(url));
+
+            /* let headers = new Headers({
+               "Access-Control-Allow-Origin": "*"
+               });
+
+               fetch(`https://news.ycombinator.com/vote?vote=${id}&how=up`,
+               {
+               method: "GET",
+               headers: headers,
+               mode: 'no-cors',
+               credentials: 'include'
+               }).then(res => res.text())
+               .then(body => {
+               console.log(body)
+               }); */
         }
     }
 }
