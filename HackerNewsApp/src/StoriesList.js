@@ -4,6 +4,8 @@ import { observer, inject } from 'mobx-react';
 import { View, ListView, Subtitle, Caption, Spinner, Row, Icon, TouchableOpacity } from '@shoutem/ui';
 import moment from 'moment';
 
+import Upvote from './Upvote';
+
 const Story =
 inject('store')(observer(function Story({ store, id }) {
     const item = store.items.get(id);
@@ -16,8 +18,7 @@ inject('store')(observer(function Story({ store, id }) {
                         <Subtitle>{item.title}</Subtitle>
                         <View styleName="horizontal space-between">
                             <Caption>
-                                <Icon style={{fontSize: 15}} name="like"
-                                      onPress={() => store.upvote(id)} />
+                                <Upvote id={id} />
                                 {item.score}
                             </Caption>
                             <Caption>

@@ -190,13 +190,16 @@ class Store {
     }
 
     @action upvote(id) {
-        if (!this.user.loggedIn) {
-            this.user.actionAfterLogin = () => this.upvote(id);
-            this.showLoginForm();
-        }else{
-            HN.upvote(id)
-              .then(success => console.log('upvoted',success));
-        }
+        return new Promise((resolve, reject) => {
+            if (!this.user.loggedIn) {
+                this.user.actionAfterLogin = () => this.upvote(id)
+                                                       .then(success => resolve(success));
+                this.showLoginForm();
+            }else{
+                HN.upvote(id)
+                  .then(success => resolve(success));
+            }
+        });
     }
 }
 
