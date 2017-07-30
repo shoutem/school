@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@shoutem/ui": "github:shoutem/ui",
+    "@shoutem/ui": "^0.19.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "cheerio-without-node-native": "^0.20.2",
     "firebase": "^4.1.3",
