@@ -6,6 +6,7 @@ import moment from 'moment';
 import HTMLView from 'react-native-htmlview';
 
 import { Children } from './HNItem';
+import Upvote from './Upvote';
 
 const ChildrenToggle = observer(({ item, showChildren, onPress }) => (
     <TouchableOpacity onPress={onPress}>
@@ -52,7 +53,10 @@ class Comment extends Component {
 
                 <HTMLView value={item.text} paragraphBreak={'\n'} lineBreak={null} />
 
-                {kids.length ? <ChildrenToggle item={item} showChildren={showChildren} onPress={this.toggleChildren} /> : null}
+                <View styleName="horizontal space-between">
+                    <Upvote id={item.id} />
+                    {kids.length ? <ChildrenToggle item={item} showChildren={showChildren} onPress={this.toggleChildren} /> : null}
+                </View>
 
                 {showChildren ? <Children item={item} /> : null}
             </View>

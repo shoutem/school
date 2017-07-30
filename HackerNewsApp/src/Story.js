@@ -7,6 +7,7 @@ import moment from 'moment';
 import HTMLView from 'react-native-htmlview';
 
 import { Children } from './HNItem';
+import Upvote from './Upvote';
 
 const Story = observer(({ item }) => (
     <View style={{paddingLeft: 14, paddingRight: 14}}>
@@ -23,7 +24,7 @@ const StoryHeader = observer(({ item }) => (
 
         <View styleName="horizontal space-between" style={{paddingTop: 5}}>
             <Subtitle>
-                <Icon style={{fontSize: 15}} name="like" />
+                <Upvote id={item.id} />
                 {item.score}
             </Subtitle>
             <Subtitle>
