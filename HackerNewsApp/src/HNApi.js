@@ -57,8 +57,29 @@ class HN {
                        .then(body => {
                            const doc = cheerio.load(body);
 
-                           console.log(doc(`#up_${id}`));
+                           return doc(`#up_${id}`).attr('href');
                        });
+    }
+
+    upvote(id) {
+        return this.getUpvoteURL(id)
+                   .then(url => {
+                       if (url) {
+                           return fetch(`${this.BaseURL}/${url}`, {
+                               mode: 'no-cors',
+                               credentials: 'include'
+                           })
+                                        .catch(error => console.log(error));
+                       }
+                   })
+                   .then(res => res.text())
+                   .then(body => {
+                       return true;
+                   })
+                   .catch(error => {
+                       console.log(error);
+                       return false;
+                   });
     }
 }
 

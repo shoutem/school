@@ -194,22 +194,8 @@ class Store {
             this.user.actionAfterLogin = () => this.upvote(id);
             this.showLoginForm();
         }else{
-            HN.getUpvoteURL(id).then(url => console.log(url));
-
-            /* let headers = new Headers({
-               "Access-Control-Allow-Origin": "*"
-               });
-
-               fetch(`https://news.ycombinator.com/vote?vote=${id}&how=up`,
-               {
-               method: "GET",
-               headers: headers,
-               mode: 'no-cors',
-               credentials: 'include'
-               }).then(res => res.text())
-               .then(body => {
-               console.log(body)
-               }); */
+            HN.upvote(id)
+              .then(success => console.log('upvoted',success));
         }
     }
 }
