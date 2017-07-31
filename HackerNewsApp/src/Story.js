@@ -8,6 +8,7 @@ import HTMLView from 'react-native-htmlview';
 
 import { Children } from './HNItem';
 import Upvote from './Upvote';
+import Reply from './Reply';
 
 const Story = observer(({ item }) => (
     <View style={{paddingLeft: 14, paddingRight: 14}}>
@@ -37,6 +38,8 @@ const StoryHeader = observer(({ item }) => (
         </View>
 
         {item.text ? <StoryText item={item} /> : null}
+
+        <Reply id={item.id} />
     </View>
 ));
 

@@ -54,8 +54,8 @@ class Reply extends Component {
         if (replied) return (<Text>{text}</Text>);
 
         return (
-            <View styleName="vertical" style={{paddingTop: 5}}>
-                <TextInput placeholder="Write something insightful"
+            <View styleName="vertical" style={{paddingTop: 5, paddingBottom: 10}}>
+                <TextInput placeholder="Say something insightful"
                            onChangeText={this.changeText}
                            onSubmitEditing={this.submit}
                            value={text}
