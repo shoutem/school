@@ -8,7 +8,8 @@ class Reply extends Component {
     state = {
         text: "",
         submitting: false,
-        error: null
+        error: null,
+        replied: false
     }
 
     changeText = (text) => this.setState({
@@ -31,6 +32,7 @@ class Reply extends Component {
 
                  this.setState({
                      error: result.error,
+                     replied: true,
                      submitting: false
                  });
              });
@@ -47,7 +49,9 @@ class Reply extends Component {
     }
 
     render() {
-        const { submitting, text, error } = this.state;
+        const { submitting, text, error, replied } = this.state;
+
+        if (replied) return (<Text>{text}</Text>);
 
         return (
             <View styleName="vertical" style={{paddingTop: 5}}>

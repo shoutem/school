@@ -17,11 +17,6 @@ class HN {
     BaseURL = 'https://news.ycombinator.com';
 
     login(username, password) {
-        let data = new FormData();
-        data.append('acct', username);
-        data.append('pw', password);
-        data.append('goto', 'news');
-
         let headers = new Headers({
             "Content-Type": "application/x-www-form-urlencoded",
             "Access-Control-Allow-Origin": "*"
@@ -61,17 +56,25 @@ class HN {
                        });
     }
 
+    getHmac(id) {
+        return fetch(`${this.BaseURL}/item?id=${id}`,
+                     {
+                         mode: 'no-cors',
+                         credentials: 'include'
+                     }).then(res => res.text())
+                       .then(body => {
+                           const doc = cheerio.load(body);
+
+                           return doc('input[name=hmac]').attr('value');
+                       });
+    }
+
     upvote(id) {
         return this.getUpvoteURL(id)
-                   .then(url => {
-                       if (url) {
-                           return fetch(`${this.BaseURL}/${url}`, {
-                               mode: 'no-cors',
-                               credentials: 'include'
-                           })
-                                        .catch(error => console.log(error));
-                       }
-                   })
+                   .then(url => fetch(`${this.BaseURL}/${url}`, {
+                       mode: 'no-cors',
+                       credentials: 'include'
+                   }))
                    .then(res => res.text())
                    .then(body => {
                        return true;
@@ -79,6 +82,36 @@ class HN {
                    .catch(error => {
                        console.log(error);
                        return false;
+                   });
+    }
+
+    reply(id, text) {
+        return this.getHmac(id)
+                   .then(hmac => {
+                       let headers = new Headers({
+                           "Content-Type": "application/x-www-form-urlencoded",
+                           "Access-Control-Allow-Origin": "*"
+                       });
+
+                       return fetch(`${this.BaseURL}/comment`,
+                                    {
+                                        method: "POST",
+                                        headers: headers,
+                                        body: convertRequestBodyToFormUrlEncoded({
+                                            parent: id,
+                                            goto: `item?id=${id}`,
+                                            hmac: hmac,
+                                            text: text
+                                        }),
+                                        mode: 'no-cors',
+                                        credentials: 'include'
+                                    })
+                   }).then(res => res.text())
+                   .then(body => {
+                       return {
+                           success: true,
+                           error: null
+                       }
                    });
     }
 }

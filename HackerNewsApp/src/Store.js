@@ -220,7 +220,8 @@ class Store {
                                 error: 'Stay positive!'
                             });
                         }else{
-                            console.log("replying");
+                            HN.reply(id, text)
+                              .then(result => resolve(result));
                         }
                     });
             }
