@@ -7,6 +7,7 @@ import HTMLView from 'react-native-htmlview';
 
 import { Children } from './HNItem';
 import Upvote from './Upvote';
+import Reply from './Reply';
 
 const ChildrenToggle = observer(({ item, showChildren, onPress }) => (
     <TouchableOpacity onPress={onPress}>
@@ -24,16 +25,20 @@ const ChildrenToggle = observer(({ item, showChildren, onPress }) => (
 class Comment extends Component {
     state = {
         showChildren: false,
-        expanded: false
+        showReply: false
     }
 
     toggleChildren = () => this.setState({
         showChildren: !this.state.showChildren
     });
 
+    toggleReply = () => this.setState({
+        showReply: !this.state.showReply
+    });
+
     render() {
         const { item, store } = this.props,
-              { showChildren, expanded } = this.state;
+              { showChildren, showReply } = this.state;
         let { kids = [] } = item;
 
         return (
@@ -54,10 +59,17 @@ class Comment extends Component {
                 <HTMLView value={item.text} paragraphBreak={'\n'} lineBreak={null} />
 
                 <View styleName="horizontal space-between">
-                    <Upvote id={item.id} />
+                    <View styleName="horizontal">
+                        <Upvote id={item.id} />
+                        <Text style={{fontSize: 12, paddingLeft: 5}}
+                              onPress={this.toggleReply}>
+                            Reply
+                        </Text>
+                    </View>
                     {kids.length ? <ChildrenToggle item={item} showChildren={showChildren} onPress={this.toggleChildren} /> : null}
                 </View>
 
+                {showReply ? <Reply id={item.id} /> : null}
                 {showChildren ? <Children item={item} /> : null}
             </View>
         );

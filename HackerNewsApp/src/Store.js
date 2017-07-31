@@ -100,25 +100,29 @@ class Store {
         console.log('analyzing sentiment', id);
 
         if (!sentiment.fetched) {
-            fetch(`https://language.googleapis.com/v1/documents:analyzeSentiment?key=${LANG_API_KEY}`,
-                  {
-                      method: "POST",
-                      headers: {
-                          'Accept': 'application/json',
-                          'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({
-                          "encodingType": "UTF8",
-                          "document": {
-                              "type": "PLAIN_TEXT",
-                              "content": text
-                          }
-                      })
-                  }).then(res => res.json())
-                    .then(json => {
-                        this.updateSentiment(id, json);
-                    });
+            this.getSentiment(text)
+                .then(json => {
+                    this.updateSentiment(id, json);
+                });
         }
+    }
+
+    getSentiment(text) {
+        return fetch(`https://language.googleapis.com/v1/documents:analyzeSentiment?key=${LANG_API_KEY}`,
+                     {
+                         method: "POST",
+                         headers: {
+                             'Accept': 'application/json',
+                             'Content-Type': 'application/json'
+                         },
+                         body: JSON.stringify({
+                             "encodingType": "UTF8",
+                             "document": {
+                                 "type": "PLAIN_TEXT",
+                                 "content": text
+                             }
+                         })
+                     }).then(res => res.json())
     }
 
     @action updateSentiment(id, { documentSentiment }) {
@@ -198,6 +202,27 @@ class Store {
             }else{
                 HN.upvote(id)
                   .then(success => resolve(success));
+            }
+        });
+    }
+
+    @action reply(id, text) {
+        return new Promise((resolve, reject) => {
+            if (!this.user.loggedIn) {
+                this.user.actionAfterLogin = () => this.reply(id, text)
+                                                       .then(result => resolve(result));
+                this.showLoginForm();
+            }else{
+                this.getSentiment(text)
+                    .then(json => {
+                        if (json.documentSentiment.score < 0) {
+                            resolve({
+                                error: 'Stay positive!'
+                            });
+                        }else{
+                            console.log("replying");
+                        }
+                    });
             }
         });
     }
