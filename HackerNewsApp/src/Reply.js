@@ -32,7 +32,7 @@ class Reply extends Component {
 
                  this.setState({
                      error: result.error,
-                     replied: true,
+                     replied: !result.error,
                      submitting: false
                  });
              });
