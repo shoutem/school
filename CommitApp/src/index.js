@@ -5,22 +5,42 @@ import { StatusBar } from 'react-native';
 import { Screen, View, Image } from '@shoutem/ui';
 import UITheme from '@shoutem/ui/theme';
 import { StyleProvider } from '@shoutem/theme';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import { Provider, connect } from 'react-redux';
 
 import Commitment from './Commitment';
 
-class App extends Component {
-    render() {
-        return (
-            <StyleProvider style={theme}>
-                <Screen>
-                    <StatusBar barStyle="light-content" />
-                    <Image styleName="background" source={require('./img/background.jpg')} />
-                    <Commitment commitment={"build an app"} days={1} remindAt="4:00 PM"/>
-                </Screen>
-            </StyleProvider>
-        )
-    }
-}
+import rootReducer from './reducer';
+
+const store = createStore(
+    rootReducer,
+    applyMiddleware(
+        thunkMiddleware,
+        createLogger()
+    )
+);
+
+const App = connect(state => state)(({ commitments }) => {
+
+    return (
+        <StyleProvider style={theme}>
+            <Screen>
+                <StatusBar barStyle="light-content" />
+                <Image styleName="background" source={require('./img/background.jpg')} />
+                {Object.keys(commitments).map(key => <Commitment id={key} key={key}/>)}
+            </Screen>
+        </StyleProvider>
+    )
+});
+
+export default () => (
+    <Provider store={store}>
+        <App />
+    </Provider>
+);
+
 
 const theme = Object.assign(UITheme(), {
     'shoutem.ui.Image': {
@@ -63,7 +83,3 @@ const theme = Object.assign(UITheme(), {
         },
     }
 });
-
-
-
-export default App;

@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
 import { View, Heading, Title, TouchableOpacity, TextInput } from '@shoutem/ui';
 import { connectStyle } from '@shoutem/theme';
 import CircleButton from './CircleButton';
@@ -94,6 +95,10 @@ class EditingCommitment extends Component {
     }
 }
 
+const mapStateToProps = (state, { id }) => ({
+    commitment: state.commitments[id]
+});
+
 class Commitment extends Component {
     state = {
         editing: false
@@ -104,12 +109,13 @@ class Commitment extends Component {
     })
 
     render() {
-        const { editing } = this.state;
+        const { editing } = this.state,
+              { commitment, style } = this.props;
 
         if (editing) {
-            return (<EditingCommitment {...this.props} />)
+            return (<EditingCommitment {...commitment} style={style} />)
         }else{
-            return (<DisplayCommitment {...this.props} onEdit={this.onEdit} />)
+            return (<DisplayCommitment {...commitment} style={style} onEdit={this.onEdit} />)
         }
     }
 }
@@ -175,4 +181,4 @@ const style = {
     }
 }
 
-export default connectStyle('CommitApp.Commitment', style)(Commitment);
+export default connectStyle('CommitApp.Commitment', style)(connect(mapStateToProps)(Commitment));

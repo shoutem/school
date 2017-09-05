@@ -4,8 +4,8 @@ import React from 'react';
 import { Text, TouchableOpacity } from '@shoutem/ui';
 import { connectStyle } from '@shoutem/theme';
 
-const CircleButton = ({ text, style, styleName }) => (
-    <TouchableOpacity style={style.main}>
+const CircleButton = ({ text, style, onPress, styleName }) => (
+    <TouchableOpacity style={style.main} onPress={onPress}>
         <Text style={style.caption}>{text}</Text>
     </TouchableOpacity>
 );
