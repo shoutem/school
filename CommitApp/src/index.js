@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
 
 import { Screen, View, Image } from '@shoutem/ui';
 import UITheme from '@shoutem/ui/theme';
@@ -12,6 +13,7 @@ class App extends Component {
         return (
             <StyleProvider style={theme}>
                 <Screen>
+                    <StatusBar barStyle="light-content" />
                     <Image styleName="background" source={require('./img/background.jpg')} />
                     <Commitment commitment={"build an app"} days={1} />
                 </Screen>
