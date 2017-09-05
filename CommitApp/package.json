@@ -14,7 +14,9 @@
     "react-native": "0.43.4",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-storage": "^4.1.2",
+    "redux-storage-engine-reactnativeasyncstorage": "^1.0.5"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",

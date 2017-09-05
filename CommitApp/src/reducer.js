@@ -1,5 +1,6 @@
 
 import { combineReducers } from 'redux';
+import { LOAD } from 'redux-storage';
 
 const EmptyCommitment = {
     commitment: '',
@@ -52,6 +53,16 @@ const commitments = (state = {'ADD': EmptyCommitment}, action) => {
                                  state,
                                  {[id]: commitment(state[id], action)},
                                  {'ADD': EmptyCommitment});
+        case LOAD:
+            let commitments = action.payload.commitments,
+                ids = Object.keys(commitments);
+
+            for (let i = 0, id = ids[0]; i < ids.length; id = ids[++i]) {
+                commitments[id].doneDates = commitments[id].doneDates
+                                                           .map(d => new Date(d))
+            }
+
+            return { ...commitments };
         default:
             return state;
     }

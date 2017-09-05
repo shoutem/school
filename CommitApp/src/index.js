@@ -8,17 +8,26 @@ import { StyleProvider } from '@shoutem/theme';
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import { Provider, connect } from 'react-redux';
+import createEngine from 'redux-storage-engine-reactnativeasyncstorage';
+import * as storage from 'redux-storage';
 
 import Commitment from './Commitment';
 
 import rootReducer from './reducer';
 
+const engine = createEngine('com.school.shoutem.CommitApp');
+const storageMiddleware = storage.createMiddleware(engine);
+
 const store = createStore(
     rootReducer,
     applyMiddleware(
-        createLogger()
+        createLogger(),
+        storageMiddleware
     )
 );
+
+const load = storage.createLoader(engine);
+load(store);
 
 const App = connect(state => state)(({ commitments }) => {
     let list = Object.keys(commitments)
@@ -30,7 +39,7 @@ const App = connect(state => state)(({ commitments }) => {
                 <StatusBar barStyle="light-content" />
                 <Image styleName="background" source={require('./img/background.jpg')} />
                 <ListView data={list}
-                          renderRow={(id) => <Commitment id={id} />}
+                          renderRow={(id) => <Commitment id={id} key={id} />}
                           horizontal={true}
                           pageSize={1} />
             </Screen>
