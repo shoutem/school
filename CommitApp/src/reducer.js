@@ -57,10 +57,11 @@ const commitments = (state = {'ADD': EmptyCommitment}, action) => {
             let commitments = action.payload.commitments,
                 ids = Object.keys(commitments);
 
-            for (let i = 0, id = ids[0]; i < ids.length; id = ids[++i]) {
-                commitments[id].doneDates = commitments[id].doneDates
-                                                           .map(d => new Date(d))
-            }
+            Object.keys(commitments)
+                  .forEach(id =>
+                      commitments[id].doneDates = commitments[id].doneDates
+                                                                 .map(d => new Date(d))
+                  );
 
             return { ...commitments };
         default:
