@@ -2,11 +2,10 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 
-import { Screen, View, Image } from '@shoutem/ui';
+import { Screen, View, Image, ListView, Text } from '@shoutem/ui';
 import UITheme from '@shoutem/ui/theme';
 import { StyleProvider } from '@shoutem/theme';
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { Provider, connect } from 'react-redux';
 
@@ -17,7 +16,6 @@ import rootReducer from './reducer';
 const store = createStore(
     rootReducer,
     applyMiddleware(
-        thunkMiddleware,
         createLogger()
     )
 );
@@ -26,14 +24,15 @@ const App = connect(state => state)(({ commitments }) => {
     let list = Object.keys(commitments)
                      .sort((a, b) => a < b ? -1 : (a > b ? 1 : 0));
 
-    console.log(list);
-
     return (
         <StyleProvider style={theme}>
             <Screen>
                 <StatusBar barStyle="light-content" />
                 <Image styleName="background" source={require('./img/background.jpg')} />
-                {list.map(id => <Commitment id={id} key={id}/>)}
+                <ListView data={list}
+                          renderRow={(id) => <Commitment id={id} />}
+                          horizontal={true}
+                          pageSize={1} />
             </Screen>
         </StyleProvider>
     )
@@ -73,8 +72,9 @@ const theme = Object.assign(UITheme(), {
             color: 'white'
         }
     },
-    'CommitApp.Commitment': {
-
+    'shoutem.ui.ListView': {
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        flex: 1
     },
     'CommitApp.CircleButton': {
         '.green': {

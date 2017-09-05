@@ -44,10 +44,12 @@ const commitments = (state = {'ADD': EmptyCommitment}, action) => {
             }
 
             return Object.assign({},
+                                 state,
                                  {[id]: commitment(state[id], action)},
                                  {'ADD': EmptyCommitment});
         case "doneCommitment":
             return Object.assign({},
+                                 state,
                                  {[id]: commitment(state[id], action)},
                                  {'ADD': EmptyCommitment});
         default:

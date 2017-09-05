@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { connectStyle } from '@shoutem/theme';
+import { Dimensions } from 'react-native';
 
 import { updateCommitment, doneCommitment } from './actions';
 import EditingCommitment from './EditingCommitment';
@@ -60,7 +61,8 @@ class Commitment extends Component {
 const style = {
     main: {
         backgroundColor: 'rgba(0,0,0,0)',
-        paddingTop: 100
+        paddingTop: 100,
+        width: Dimensions.get('window').width
     },
     day: {
         height: 60,
