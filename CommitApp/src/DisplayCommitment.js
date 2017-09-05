@@ -20,9 +20,13 @@ class DisplayCommitment extends Component {
     }
 
     get doneToday() {
-        const { doneDates } = this.props;
+        const { doneDates } = this.props,
+              today = new Date();
 
-        return doneDates.length > 0 && (new Date() - last(doneDates)) / (1000*60*60) < 24;
+        return doneDates.length > 0
+            && last(doneDates).getDay() === today.getDay()
+            && last(doneDates).getMonth() === today.getMonth()
+            && last(doneDates).getYear() === today.getYear();
     }
 
     get doneList() {
