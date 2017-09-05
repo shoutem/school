@@ -15,7 +15,7 @@ class App extends Component {
                 <Screen>
                     <StatusBar barStyle="light-content" />
                     <Image styleName="background" source={require('./img/background.jpg')} />
-                    <Commitment commitment={"build an app"} days={1} />
+                    <Commitment commitment={"build an app"} days={1} remindAt="4:00 PM"/>
                 </Screen>
             </StyleProvider>
         )
@@ -50,20 +50,7 @@ const theme = Object.assign(UITheme(), {
         }
     },
     'CommitApp.Commitment': {
-        text: {
-            fontSize: 38,
-            height: 50,
-            lineHeight: 50,
-        },
-        textCommitment: {
-            borderBottomColor: 'white',
-            borderBottomWidth: 1,
-            'shoutem.ui.Heading': {
-                fontSize: 38,
-                height: 50,
-                lineHeight: 50
-            }
-        }
+
     },
     'CommitApp.CircleButton': {
         '.green': {
