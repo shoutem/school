@@ -2,120 +2,57 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { View, Heading, Title, TouchableOpacity, TextInput } from '@shoutem/ui';
 import { connectStyle } from '@shoutem/theme';
-import CircleButton from './CircleButton';
 
+import { updateCommitment, doneCommitment } from './actions';
+import EditingCommitment from './EditingCommitment';
+import DisplayCommitment from './DisplayCommitment';
 
-const CommitmentDay = ({ done, style }) => (
-    <View style={style} styleName={done ? 'done' : 'undone'}>
-
-    </View>
-);
-
-const DisplayCommitment = ({ id, commitment, days, onEdit, style }) => (
-    <View style={style.main}>
-        <View styleName="sm-gutter-top lg-gutter-left lg-gutter-right">
-            <Heading style={style.text}>Did you</Heading>
-            <TouchableOpacity style={style.textCommitment} onPress={onEdit}>
-                <Heading styleName="variable">{commitment}</Heading>
-            </TouchableOpacity>
-            <Heading style={style.text}>today?</Heading>
-        </View>
-        <View styleName="center xl-gutter-top lg-gutter-left lg-gutter-right">
-            <CircleButton styleName="green large" text="Yes" />
-        </View>
-        <View styleName="center horizontal xl-gutter-top lg-gutter-left lg-gutter-right">
-            <Title styleName="variable">{days}</Title><Title> {days === 1 ? 'day' : 'days'} in a row</Title>
-        </View>
-        <View styleName="horizontal md-gutter-top">
-            {[...Array(50).keys()].map(i => <CommitmentDay done={i < 1} style={style.day} key={i} />)}
-        </View>
-    </View>
-);
-
-class EditingCommitment extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            commitment: props.commitment,
-            remindAt: props.remindAt
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.props.commitment !== nextProps.commitment) {
-            this.setState({
-                commitment: nextProps.commitment
-            })
-        }
-        if (this.props.remindAt !== nextProps.remindAt) {
-            this.setState({
-                remindAt: nextProps.remindAt
-            })
-        }
-    }
-
-    onChangeCommitment = (commitment) => { this.setState({ commitment }) }
-    onChangeRemindAt = (remindAt) => { this.setState({ remindAt }) }
-
-    render() {
-        const { id, commitment, style } = this.props;
-
-        return (
-            <View style={style.main}>
-                <View styleName="sm-gutter-top lg-gutter-left lg-gutter-right">
-                    <Heading style={style.text}>Did you</Heading>
-                    <View style={style.textCommitment}>
-                        <TextInput value={this.state.commitment}
-                                   onChangeText={this.onChangeCommitment}
-                                   autoCapitalize="none"
-                                   style={style.input}
-                                   autoFocus={true} />
-                    </View>
-                    <Heading style={style.text}>today?</Heading>
-                </View>
-                <View styleName="lg-gutter-top lg-gutter-left lg-gutter-right">
-                    <View styleName="horizontal">
-                        <Heading style={style.smallText}>Remind me at</Heading>
-                        <View style={style.smallInput}>
-                            <TextInput value={this.state.remindAt}
-                                       onChangeText={this.onChangeRemindAt}
-                                       autoCapitalize="none" />
-                        </View>
-                    </View>
-                    <Heading style={style.smallText}>just in case I forget.</Heading>
-                </View>
-                <View styleName="center xl-gutter-top lg-gutter-left lg-gutter-right">
-                    <CircleButton styleName="green large" text="Commit" />
-                </View>
-            </View>
-        )
-    }
-}
 
 const mapStateToProps = (state, { id }) => ({
     commitment: state.commitments[id]
 });
 
+const mapDispatchToProps = (dispatch, { id }) => ({
+    update: ({ commitment, remindAt }) => dispatch(updateCommitment({ commitment, remindAt, id })),
+    done: () => dispatch(doneCommitment({ id }))
+});
+
 class Commitment extends Component {
-    state = {
-        editing: false
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            editing: props.id === 'ADD'
+        }
     }
 
-    onEdit = () => this.setState({
+    onEdit = () => { this.setState({
         editing: true
-    })
+    }) }
+
+    onCommit = ({ commitment, remindAt }) => {
+        this.props.update({ commitment, remindAt });
+        this.setState({
+            editing: false
+        });
+    }
+
+    onDone = () => {
+        this.props.done();
+    }
 
     render() {
         const { editing } = this.state,
               { commitment, style } = this.props;
 
         if (editing) {
-            return (<EditingCommitment {...commitment} style={style} />)
+            return (<EditingCommitment {...commitment} style={style} onCommit={this.onCommit} />)
         }else{
-            return (<DisplayCommitment {...commitment} style={style} onEdit={this.onEdit} />)
+            return (<DisplayCommitment {...commitment}
+                                       style={style}
+                                       onEdit={this.onEdit}
+                                       onDone={this.onDone} />)
         }
     }
 }
@@ -181,4 +118,6 @@ const style = {
     }
 }
 
-export default connectStyle('CommitApp.Commitment', style)(connect(mapStateToProps)(Commitment));
+export default connectStyle('CommitApp.Commitment', style)(
+    connect(mapStateToProps, mapDispatchToProps)(Commitment)
+);

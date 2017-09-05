@@ -9,6 +9,7 @@
   "dependencies": {
     "@shoutem/theme": "^0.10.0",
     "@shoutem/ui": "^0.21.3",
+    "lodash": "^4.17.4",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.4",
     "react-redux": "^5.0.6",

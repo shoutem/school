@@ -23,13 +23,17 @@ const store = createStore(
 );
 
 const App = connect(state => state)(({ commitments }) => {
+    let list = Object.keys(commitments)
+                     .sort((a, b) => a < b ? -1 : (a > b ? 1 : 0));
+
+    console.log(list);
 
     return (
         <StyleProvider style={theme}>
             <Screen>
                 <StatusBar barStyle="light-content" />
                 <Image styleName="background" source={require('./img/background.jpg')} />
-                {Object.keys(commitments).map(key => <Commitment id={key} key={key}/>)}
+                {list.map(id => <Commitment id={id} key={id}/>)}
             </Screen>
         </StyleProvider>
     )
@@ -81,5 +85,15 @@ const theme = Object.assign(UITheme(), {
                 color: 'white'
             }
         },
+        '.transparent': {
+            main: {
+                backgroundColor: 'rgba(255, 255, 255, .2)',
+                borderColor: 'white',
+                borderWidth: 1.5
+            },
+            caption: {
+                color: 'white'
+            }
+        }
     }
 });
