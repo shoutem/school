@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 
 import { Screen, View, Image, ListView, Text } from '@shoutem/ui';
+import { Dimensions } from 'react-native';
 import UITheme from '@shoutem/ui/theme';
 import { StyleProvider } from '@shoutem/theme';
 import { createStore, applyMiddleware } from 'redux';
@@ -41,7 +42,10 @@ const App = connect(state => state)(({ commitments }) => {
                 <ListView data={list}
                           renderRow={(id) => <Commitment id={id} key={id} />}
                           horizontal={true}
-                          pageSize={1} />
+                          pageSize={1}
+                          snapToInterval={Dimensions.get('window').width}
+                          snapToAlignment="center"
+                          decelerationRate={0}/>
             </Screen>
         </StyleProvider>
     )
