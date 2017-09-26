@@ -7,6 +7,9 @@
   "screens": [
     {
       "name": "List"
+    },
+    {
+      "name": "Details"
     }
   ],
   "shortcuts": [

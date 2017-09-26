@@ -4,12 +4,14 @@ import pack from './package.json';
 
 // screens imports
 import List from './screens/List';
+import Details from './screens/Details';
 
 // themes imports
 
 
 export const screens = {
-  List
+  List,
+  Details
 };
 
 export const themes = {
