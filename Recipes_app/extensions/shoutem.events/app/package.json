@@ -1,0 +1,9 @@
+{
+  "name": "shoutem.events",
+  "version": "1.2.3-build1505292589920",
+  "private": true,
+  "main": "index.js",
+  "peerDependencies": {
+    "@shoutem/core": "*"
+  }
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "fixVersion": "0.45",
+    "link": "https://github.com/facebook/react-native/commit/074fd33725626530c68d897150413a13715280a1",
+    "from": "scripts/fixes/symbolicate/symbolicate.js",
+    "to": "node_modules/react-native/packager/src/Server/symbolicate/symbolicate.js"
+  }
+]

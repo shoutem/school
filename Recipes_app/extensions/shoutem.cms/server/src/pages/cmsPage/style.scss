@@ -1,0 +1,30 @@
+.cms {
+  min-width: 504px;
+
+  .loader-container.is-overlay .circular-loader{
+    padding: 8px;
+  }
+}
+
+.cms__empty-placeholder {
+  margin-top: 50px;
+}
+
+.cms__header {
+  padding-top: 38px;
+  padding-bottom: 24px;
+}
+
+.cms__header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cms__content {
+  position: absolute;
+  max-height: 384px;
+  overflow: hidden;
+  padding-right: 96px;
+  width: 100%;
+}

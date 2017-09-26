@@ -1,0 +1,68 @@
+.btn-toolbar {
+  padding-top: 24px;
+}
+
+.feed-selector__table {
+  margin-bottom: 0;
+
+  > tbody > tr > td { padding: 0; }
+}
+
+.feed-preview__content {
+  margin-top: 40px;
+}
+
+.feed-preview__table > thead > tr > th {
+  width: 38%;
+
+  &:first-child:not(.feed-preview__table-date) {
+    width: 62%;
+  }
+
+  &.feed-preview__table-date {
+    width: 28%;
+  }
+
+  &.feed-preview__table-title {
+    width: 72%;
+  }
+}
+
+.feed-preview__feed-url-container {
+  height: 48px;
+  line-height: 48px;
+  background-color: rgba(228, 230, 233, 0.4);
+}
+
+.feed-preview__feed-url-text-wrapper {
+  display: "inline-block";
+  float: left;
+  width: calc(100% - 64px);
+}
+
+.feed-preview__feed-url {
+  padding-left: 20px;
+  font-family: MuseoSans;
+  font-size: 14px;
+  font-weight: normal;
+  color: #808799;
+}
+
+.feed-preview__remove {
+  position: relative;
+  float: right;
+  top: 14px;
+  right: 12px;
+  cursor: pointer;
+}
+
+.feed-preview__play-img {
+  display: inline-block;
+  float: left;
+  position: relative;
+  top: 10px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../assets/ic-descriptive-play.svg);
+}

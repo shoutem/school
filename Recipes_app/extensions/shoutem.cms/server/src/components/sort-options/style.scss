@@ -1,0 +1,23 @@
+.sort-options__field-selector {
+  min-width: 144px;
+  margin-right: 24px;
+
+  .divider {
+    margin: inherit;
+  }
+}
+
+.sort-options__order-selector {
+  .btn {
+    min-width: 84px;
+  }
+
+  .divider {
+    margin: inherit;
+  }
+
+  li > a {
+    display: flex;
+    align-items: center;
+  }
+}

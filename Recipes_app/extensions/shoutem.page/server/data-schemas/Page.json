@@ -1,0 +1,38 @@
+{
+  "title": "Page",
+  "properties": {
+    "name": {
+      "format": "single-line",
+      "title": "Title",
+      "type": "string",
+      "displayPriority": 1
+    },
+    "subtitle": {
+      "format": "single-line",
+      "title": "Subtitle",
+      "type": "string",
+      "displayPriority": 2
+    },
+     "image": {
+      "format": "attachment",
+      "title": "Image",
+      "type": "object",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 3
+    },
+    "info": {
+      "format": "html",
+      "title": "Description",
+      "type": "string",
+      "displayPriority": 4
+    },
+    "web": {
+      "format": "uri",
+      "title": "Website",
+      "type": "string",
+      "displayPriority": 5
+    }
+  },
+  "titleProperty": "name",
+  "type": "object"
+}

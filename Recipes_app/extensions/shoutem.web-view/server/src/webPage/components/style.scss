@@ -1,0 +1,41 @@
+.btn-toolbar {
+  padding-top: 24px;
+}
+
+.web-edit__content {
+  margin-top: 40px;
+}
+
+.web-edit__url-container {
+  height: 48px;
+  line-height: 48px;
+  background-color: rgba(228, 230, 233, 0.4);
+  position: relative;
+  padding: 0 40px;
+}
+
+.web-edit__url {
+  font-family: MuseoSans;
+  font-size: 14px;
+  font-weight: normal;
+  color: #808799;
+  white-space: nowrap;
+}
+
+.web-edit__remove {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  cursor: pointer;
+}
+
+.web-edit__web-img {
+  display: inline-block;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  background-image: url(./../assets/ic-descriptive-web.svg);
+}
+

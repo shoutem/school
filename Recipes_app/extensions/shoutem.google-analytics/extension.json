@@ -1,0 +1,21 @@
+{
+  "name": "google-analytics",
+  "version": "0.1.14",
+  "platform": "1.1.*",
+  "title": "Google Analytics",
+  "description": "Enable Google analytics",
+  "icon": "server/assets/add-analytics-image.png",
+  "categories": ["analytics"],
+  "settingsPages": [{
+    "page": "@.TrackersPage",
+    "title": "Trackers"
+  }],
+  "settings": {
+    "trackers": []
+  },
+  "pages": [{
+    "name": "TrackersPage",
+    "type": "native-component",
+    "path": "dummy.js"
+  }]
+}

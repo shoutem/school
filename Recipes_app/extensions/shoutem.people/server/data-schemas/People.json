@@ -1,0 +1,75 @@
+{
+  "title": "People",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "format": "single-line",
+      "title": "First name",
+      "required": true,
+      "displayPriority": 1
+    },
+    "lastName": {
+      "type": "string",
+      "format": "single-line",
+      "title": "Last name",
+      "displayPriority": 2
+    },
+    "profession": {
+      "type": "string",
+      "format": "single-line",
+      "title": "Title",
+      "displayPriority": 3
+    },
+    "biography": {
+      "type": "string",
+      "format": "html",
+      "title": "Biography",
+      "displayPriority": 4
+    },
+    "image": {
+      "type": "object",
+      "format": "attachment",
+      "title": "Image",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 5
+    },
+    "phone": {
+      "type": "string",
+      "format": "single-line",
+      "title": "Phone",
+      "displayPriority": 6
+    },
+    "email": {
+      "type": "string",
+      "format": "single-line",
+      "title": "Email",
+      "displayPriority": 7
+    },
+    "linkedinProfileUrl": {
+      "type": "string",
+      "format": "uri",
+      "title": "LinkedIn profile URL",
+      "displayPriority": 8
+    },
+    "facebookProfileUrl": {
+      "type": "string",
+      "format": "uri",
+      "title": "Facebook profile URL",
+      "displayPriority": 9
+    },
+    "twitterPageUrl": {
+      "type": "string",
+      "format": "uri",
+      "title": "Twitter page URL",
+      "displayPriority": 10
+    },
+    "websiteUrl": {
+      "type": "string",
+      "format": "uri",
+      "title": "Website URL",
+      "displayPriority": 11
+    }
+  },
+  "titleProperty": "firstName",
+  "type": "object"
+}

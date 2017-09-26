@@ -1,0 +1,15 @@
+.parent-category-selector__dropdown {
+  .dropdown-menu {
+    max-height: 504px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #d8d8d8;
+    }
+  }
+}

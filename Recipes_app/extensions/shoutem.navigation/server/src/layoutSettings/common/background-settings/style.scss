@@ -1,0 +1,20 @@
+.background-settings {
+  .image-preview-custom,
+  .image-uploader__custom {
+    background-size: contain;
+    width: 264px;
+    height: 469px;
+
+    .circular-loader {
+      padding-top: 210px;
+    }
+
+
+    &.no-img,
+    &.image-preview__delete {
+      .se-icon {
+        padding-top: 210px;
+      }
+    }
+  }
+}

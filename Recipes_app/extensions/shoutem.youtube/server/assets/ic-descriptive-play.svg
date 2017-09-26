@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>E6D61451-3BBE-4768-B21F-DD6448D27702</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#DADCE2" offset="0%"></stop>
+            <stop stop-color="#000000" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="98.7424267%" id="linearGradient-2">
+            <stop stop-color="#D0021B" stop-opacity="0.100000001" offset="0%"></stop>
+            <stop stop-color="#D1021A" stop-opacity="0.2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Y-Icons/Descriptive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/Descriptive/ic-descriptive-play">
+            <polygon id="Bounds" fill="url(#linearGradient-1)" opacity="0" points="0 0 24 0 24 24 0 24"></polygon>
+            <g id="ic_play">
+                <polygon id="Bounds" fill="url(#linearGradient-2)" opacity="0" points="0 0 24 0 24 24 0 24"></polygon>
+                <path d="M16.4,12.5 L7,18.38 L6,19 L6,6 L16.4,12.5 L16.4,12.5 Z M14.5,12.5 L7,7.8 L7,17.2 L14.5,12.5 L14.5,12.5 Z" id="Icon-Shape" fill="#BDC0CB"></path>
+            </g>
+        </g>
+    </g>
+</svg>

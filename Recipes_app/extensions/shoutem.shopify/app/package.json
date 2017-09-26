@@ -1,0 +1,21 @@
+{
+  "name": "shoutem.shopify",
+  "version": "1.2.1-build1505293019104",
+  "description": "Shopify",
+  "dependencies": {
+    "react-native-shopify": "0.2.4",
+    "world-countries": "^1.8.1"
+  },
+  "rnpm": {
+    "commands": {
+      "postlink": "node node_modules/shoutem.shopify/scripts/run.js"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "title": "Menu",
+  "properties": {
+    "name": {
+      "type": "string",
+      "format": "single-line",
+      "title": "Name",
+      "required": true,
+      "displayPriority": 1
+    },
+    "description": {
+      "type": "string",
+      "format": "multi-line",
+      "title": "Description",
+      "displayPriority": 2
+    },
+    "price": {
+      "type": "string",
+      "format": "single-line",
+      "title": "Price",
+      "displayPriority": 3
+    },
+    "image": {
+      "type": "object",
+      "format": "attachment",
+      "title": "Image",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 4
+    }
+  },
+  "titleProperty": "name",
+  "type": "object"
+}

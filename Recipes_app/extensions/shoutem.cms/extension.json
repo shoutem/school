@@ -1,0 +1,26 @@
+{
+  "name": "cms",
+  "version": "1.2.2",
+  "platform": "1.2.*",
+  "type": "system",
+  "title": "CMS",
+  "description": "Shoutem CMS extension provides the integration with the Shoutem CMS. Extensions using CMS extension are able to fetch data from CMS and use Shoutem CMS editor.",
+  "icon": "server/assets/add-cms-image.png",
+  "categories": ["content"],
+  "settingsPages": [{
+    "page": "@.CmsSettingsPage",
+    "title": "Settings"
+  }],
+  "pages": [{
+    "name": "CmsPage",
+    "type": "native-component",
+    "path": "dummy.js"
+  }, {
+    "name": "CmsSettingsPage",
+    "type": "native-component",
+    "path": "dummy.js"
+  }],
+  "settings": {
+    "apiEndpoint": "http://api.beta.shoutem.com"
+  }
+}

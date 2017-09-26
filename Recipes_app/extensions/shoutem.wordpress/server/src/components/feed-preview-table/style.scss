@@ -1,0 +1,18 @@
+.feed-preview-table__image,
+.feed-preview-table-item__image {
+  width: 64px;
+}
+
+.feed-preview-table__date,
+.feed-preview-table-item__date {
+  text-align: right;
+  width: 20%;
+}
+
+.feed-preview-table-item__image-preview {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+}

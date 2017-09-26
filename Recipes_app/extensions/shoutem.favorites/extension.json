@@ -1,0 +1,10 @@
+{
+  "name": "favorites",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "type": "system",
+  "title": "Favorites",
+  "description": "Extensions that are using Shoutem Favorites extension are able to store and retrieve user bookmarked items from local app storage. ",
+  "icon": "server/assets/add-favorites-image.png",
+  "categories": ["content", "users"]
+}

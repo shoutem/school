@@ -1,0 +1,10 @@
+{
+  "name": "shoutem.cms",
+  "version": "1.2.2-build1505292574216",
+  "description": "Shoutem CMS extension",
+  "rnpm": {
+    "commands": {
+      "postlink": "node node_modules/shoutem.cms/scripts/run.js"
+    }
+  }
+}

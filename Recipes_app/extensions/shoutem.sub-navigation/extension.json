@@ -1,0 +1,81 @@
+{
+  "name": "sub-navigation",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "title": "Navigation",
+  "description": "Shows sub-navigation for the nested screen",
+  "categories": [""],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "icon": "server/assets/add-folder-image.png",
+  "shortcuts": [{
+    "name": "icons",
+    "title": "Navigation",
+    "screen": "@.IconGrid",
+    "icon":"theme://folder.png",
+    "type": "navigation",
+    "adminPages": [
+      {
+        "page": "shoutem.layouts.LayoutPage",
+        "title": "Layout"
+      }
+    ]
+  }],
+  "screens": [{
+    "name":"IconGrid",
+    "title": "Icon grid",
+    "image": "./server/assets/screens/icon.png",
+    "settingsPage": {
+      "page": "shoutem.navigation.IconGrid"
+    },
+    "settings": {
+      "scrolling": "paged",
+      "gridAlignment": "bottomCenter",
+      "cols": 3,
+      "rows": 3,
+      "parallaxEffect": "onDeviceOrientation",
+      "backgroundImage": "",
+      "showText": true,
+      "showIcon": true,
+      "iconSize": "medium"
+    }
+  },
+  {
+    "name":"List",
+    "title": "List",
+    "image": "./server/assets/screens/list.png",
+    "extends": "@.IconGrid",
+    "settingsPage": {
+      "page": "shoutem.navigation.List"
+    },
+    "settings": {
+      "backgroundImage": "",
+      "parallaxEffect": "onScroll",
+      "inItemAlignment": "center",
+      "listAlignment": "top",
+      "topOffset": 120,
+      "showText": true,
+      "showIcon": false,
+      "itemHeight": 48
+    }
+  },
+  {
+    "name":"CardList",
+    "title": "Card list",
+    "image": "./server/assets/screens/card-list.png",
+    "extends": "@.IconGrid",
+    "settingsPage": {
+      "page": "shoutem.navigation.CardList"
+    },
+    "settings": {
+      "backgroundImage": "",
+      "parallaxEffect": "onScroll",
+      "cardHeight": "medium",
+      "itemGutter": "medium",
+      "itemText": "topLeft",
+      "isFullWidth": true
+    }
+  }]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "menu",
+  "title": "Restaurant menu",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "icon": "./server/assets/images/add-menu-items-image.png",
+  "description": "Show a restaurant menu",
+  "categories": ["content"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [
+    {
+      "title": "Menu",
+      "description": "List of menu items with description",
+      "name": "openMenuListScreen",
+      "icon":"theme://restaurant-menu.png",
+      "screen": "@.MenuListScreen",
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters": {
+            "schema": "@.Menu"
+          }
+        },
+        {
+          "page": "shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "name": "MenuListScreen",
+      "title": "List",
+      "image": "./server/assets/images/screens/large-photo-list.png"
+    },
+    {
+      "name": "MenuSmallListScreen",
+      "title": "Small list",
+      "image": "./server/assets/images/screens/small-photo-list.png",
+      "extends": "@.MenuListScreen"
+    },
+    {
+      "name": "MenuDetailsScreen"
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "Menu",
+      "path": "./server/data-schemas/Menu.json"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "shoutem.wordpress",
+  "version": "1.2.2-build1505293124403",
+  "private": true,
+  "main": "index.js",
+  "peerDependencies": {
+    "@shoutem/core": "*"
+  },
+  "dependencies": {
+    "@shoutem/redux-composers": "^0.1.5",
+    "react-redux": "^5.0.3",
+    "redux-thunk": "^2.2.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "recipes",
+  "title": "Recipes",
+  "version": "0.0.1",
+  "description": "Recipes extension",
+  "platform": "1.2.*",
+  "screens": [
+    {
+      "name": "List"
+    }
+  ],
+  "shortcuts": [
+    {
+      "title": "Recipes",
+      "name": "Recipes",
+      "screen": "@.List"
+    }
+  ]
+}

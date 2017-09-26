@@ -1,0 +1,175 @@
+{
+  "name": "loyalty",
+  "version": "1.2.3",
+  "title": "Loyalty",
+  "description": "Reward your returning customers",
+  "platform": "1.2.*",
+  "categories": ["commerce"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "icon":"server/assets/add-loyalty-image.png",
+  "shortcuts": [
+    {
+      "screen": "@.PunchCardListScreen",
+      "title": "Punch Card",
+      "name": "punch-card-shortcut",
+      "icon":"theme://gift.png",
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters":{
+            "schema": "@.punch-cards"
+          }
+        }
+      ]
+    },
+    {
+      "screen": "@.PointsCardScreen",
+      "title": "My Card",
+      "name": "points-card-shortcut",
+      "icon":"theme://loyalty-card.png",
+      "adminPages": [
+        {
+          "page": "@.PointsCardSettingsPage",
+          "title": "Settings"
+        }
+      ]
+    },
+    {
+      "screen": "@.RewardsListScreen",
+      "title": "Rewards",
+      "name": "rewards-shortcut",
+      "icon":"theme://gift.png",
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters":{
+            "schema": "@.rewards"
+          }
+        }
+      ]
+    },
+    {
+      "screen": "@.PlacesListScreen",
+      "title": "Stores",
+      "name": "stores-shortcut",
+      "icon":"theme://address-full.png",
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Stores",
+          "parameters":{
+            "schema": "@.places"
+          }
+        },
+        {
+          "page": "@.RewardsSettingsPage",
+          "title": "Rewards"
+        }
+      ]
+    },
+    {
+      "title": "My Stores",
+      "description": "List of favorited stores",
+      "name": "FavoritesList",
+      "screen": "@.FavoritesListScreen",
+      "settings": {
+        "favoritesSchemas": [
+          "@.places"
+        ]
+      }
+    }
+  ],
+  "screens": [
+    {
+      "name": "PunchCardListScreen",
+      "title": "Punch Card",
+      "image": "./server/assets/images/layout-news-grid-with-featured-selected.png"
+    },
+    {
+      "name": "PointsCardScreen",
+      "title": "Points Card",
+      "image": "./server/assets/images/layout-news-grid-with-featured-selected.png"
+    },
+    {
+      "name": "RewardsListScreen",
+      "title": "Rewards",
+      "image": "./server/assets/images/layout-news-grid-with-featured-selected.png"
+    },
+    {
+      "name": "PlacesListScreen",
+      "title": "Stores",
+      "image": "./server/assets/images/layout-news-grid-with-featured-selected.png"
+    },
+    {
+      "name": "FavoritesList",
+      "title": "Icon List",
+      "image": "./server/assets/images/layout_icon.png"
+    }
+  ],
+  "settingsPages": [
+    {
+      "page": "@.LoyaltySettingsPage",
+      "title": "Settings"
+    }
+  ],
+  "dataSchemas": [
+     {
+      "name": "punch-cards",
+      "path": "server/data-schemas/punchCards.json"
+    },
+    {
+      "name": "rewards",
+      "path": "server/data-schemas/rewards.json"
+    },
+    {
+      "name": "places",
+      "path": "server/data-schemas/places.json"
+    },
+    {
+      "name": "place-rewards",
+      "path": "server/data-schemas/placeRewards.json"
+    }
+  ],
+  "pages": [
+    {
+      "name": "LoyaltySettingsPage",
+      "path": "server/build/index.html?page=LoyaltySettingsPage",
+      "type": "html"
+    },
+    {
+      "name": "PointsCardSettingsPage",
+      "path": "server/build/index.html?page=PointsCardSettingsPage",
+      "type": "html"
+    },
+    {
+      "name": "RewardsSettingsPage",
+      "path": "server/build/index.html?page=RewardsSettingsPage",
+      "type": "html"
+    }
+  ],
+  "settings": {
+    "apiEndpoint": "loyalty.api.shoutem.com",
+    "cmsEndpoint": "v4.api.shoutem.com",
+    "rules": [{
+      "ruleType": "visit",
+      "implementationData": {
+        "pointsPerVisit": 1
+      }
+    }, {
+      "ruleType": "linearPoint",
+      "implementationData": {
+        "coefficient": 0.1
+      }
+    }],
+    "schemas": {
+      "places": "@.places",
+      "rewards": "@.rewards",
+      "placeRewards": "@.place-rewards"
+    }
+  }
+}

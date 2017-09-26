@@ -1,0 +1,166 @@
+{
+  "name": "events",
+  "version": "1.2.3",
+  "title": "Events",
+  "description": "Show items with location and time",
+  "platform": "1.2.*",
+  "categories": [
+    "content"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "icon": "server/assets/add-events-image.png",
+  "shortcuts": [
+    {
+      "screen": "@.EventsScreen",
+      "title": "Events",
+      "name": "events-shortcut",
+      "icon": "theme://events.png",
+      "settings": {
+        "sortField": "startTime",
+        "sortOrder": "ascending"
+      },
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters": {
+            "schema": "@.events"
+          }
+        },
+        {
+          "page": "shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "name": "EventsScreen",
+      "title": "Fixed grid",
+      "image": "./server/assets/images/fixed-grid.png",
+      "navigatesTo": [
+        "@.EventDetailsScreen",
+        "@.SingleEventMapScreen"
+      ],
+      "settings": {
+        "listType": "grid-list",
+        "hasFeaturedItem": false
+      }
+    },
+    {
+      "name": "CompactListEventsScreen",
+      "title": "Compact list",
+      "image": "./server/assets/images/compact-list.png",
+      "extends": "@.EventsScreen",
+      "settings": {
+        "listType": "compact-list",
+        "hasFeaturedItem": false
+      }
+    },
+    {
+      "name": "ClearNavbarMediumEventDetailsScreen",
+      "title": "Medium photo with transparent navbar",
+      "image": "./server/assets/images/details-medium-transparent.png",
+      "extends": "@.EventDetailsScreen",
+      "settings": {
+        "navigationBarStyle": "clear"
+      }
+    },
+    {
+      "name": "EventDetailsScreen",
+      "title": "Large photo with transparent navbar",
+      "image": "./server/assets/images/details-large-transparent.png",
+      "settings": {
+        "navigationBarStyle": "clear"
+      }
+    },
+    {
+      "name": "SolidNavbarLargeEventDetailsScreen",
+      "title": "Large photo with solid navbar",
+      "image": "./server/assets/images/details-large-solid.png",
+      "extends": "@.EventDetailsScreen",
+      "settings": {
+        "navigationBarStyle": "solid"
+      }
+    },
+    {
+      "name": "SolidNavbarMediumEventDetailsScreen",
+      "title": "Medium photo with solid navbar",
+      "image": "./server/assets/images/details-medium-solid.png",
+      "extends": "@.EventDetailsScreen",
+      "settings": {
+        "navigationBarStyle": "solid"
+      }
+    },
+    {
+      "name": "FixedGridEventsScreen",
+      "title": "Fixed grid with featured item",
+      "image": "./server/assets/images/fixed-grid-featured.png",
+      "extends": "@.EventsScreen",
+      "settings": {
+        "listType": "grid-list",
+        "hasFeaturedItem": true
+      }
+    },
+    {
+      "name": "FeaturedCompactListEventsScreen",
+      "title": "Compact list with featured item",
+      "image": "./server/assets/images/compact-list-featured.png",
+      "extends": "@.EventsScreen",
+      "settings": {
+        "listType": "compact-list",
+        "hasFeaturedItem": true
+      }
+    },
+    {
+      "name": "MediumListEventsScreen",
+      "title": "Medium list",
+      "image": "./server/assets/images/medium-list.png",
+      "extends": "@.EventsScreen",
+      "settings": {
+        "listType": "medium-list",
+        "hasFeaturedItem": false
+      }
+    },
+    {
+      "name": "FeaturedMediumListEventsScreen",
+      "title": "Medium list with featured item",
+      "image": "./server/assets/images/medium-list-featured.png",
+      "extends": "@.EventsScreen",
+      "settings": {
+        "listType": "medium-list",
+        "hasFeaturedItem": true
+      }
+    },
+    {
+      "name": "TileListEventsScreen",
+      "title": "Tile list",
+      "image": "./server/assets/images/tile-list.png",
+      "extends": "@.EventsScreen",
+      "settings": {
+        "listType": "tile-list",
+        "hasFeaturedItem": false
+      }
+    },
+    {
+      "name": "LargeListEventsScreen",
+      "title": "Large list",
+      "image": "./server/assets/images/large-list.png",
+      "extends": "@.EventsScreen",
+      "settings": {
+        "listType": "large-list",
+        "hasFeaturedItem": false
+      }
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "events",
+      "path": "server/data-schemas/events.json"
+    }
+  ]
+}

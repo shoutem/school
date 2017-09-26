@@ -1,0 +1,22 @@
+.rule-table-row {
+  input {
+    width: 80px;
+    display: inline;
+    margin-right: 12px;
+  }
+
+  &.disabled {
+    opacity: 0.7;
+  }
+
+  .switch {
+    margin-left: 28px;
+    vertical-align: middle;
+  }
+}
+
+.rule-table-row__unit {
+  max-width: 82px;
+  vertical-align: middle;
+  margin-bottom: 0;
+}

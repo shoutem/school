@@ -1,0 +1,89 @@
+{
+  "name": "about",
+  "version": "1.2.0",
+  "title": "About",
+  "description": "Show info about your app or your business",
+  "platform": "1.2.*",
+  "icon": "server/assets/add-about-image.png",
+  "categories": [
+    "content"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [
+    {
+      "name": "openAbout",
+      "title": "About",
+      "icon": "theme://about.png",
+      "screen": "@.AboutScreen",
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters": {
+            "schema": "@.About"
+          }
+        },
+        {
+          "page": "shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "name": "AboutScreen",
+      "title": "Large photo with transparent navbar",
+      "image": "./server/assets/images/large-photo-clear-navbar.png",
+      "settings": {
+        "navigationBarStyle": "clear",
+        "imageSize": "large-portrait"
+      }
+    },
+    {
+      "name": "SolidNavbarLargeAboutScreen",
+      "title": "Large photo with solid navbar",
+      "image": "./server/assets/images/large-photo-solid-navbar.png",
+      "extends": "@.AboutScreen",
+      "settings": {
+        "navigationBarStyle": "solid",
+        "imageSize": "large-portrait"
+      }
+    },
+    {
+      "name": "ClearNavbarMediumAboutScreen",
+      "title": "Medium photo with transparent navbar",
+      "image": "./server/assets/images/medium-photo-clear-navbar.png",
+      "extends": "@.AboutScreen"
+      ,
+      "settings": {
+        "navigationBarStyle": "clear",
+        "imageSize": "large"
+      }
+    },
+    {
+      "name": "SolidNavbarMediumAboutScreen",
+      "title": "Medium photo with solid navbar",
+      "image": "./server/assets/images/medium-photo-solid-navbar.png",
+      "extends": "@.AboutScreen"
+      ,
+      "settings": {
+        "navigationBarStyle": "solid",
+        "imageSize": "large"
+      }
+    },
+    {
+      "name": "MapScreen",
+      "title": "Map screen"
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "About",
+      "path": "server/data-schemas/About.json"
+    }
+  ]
+}

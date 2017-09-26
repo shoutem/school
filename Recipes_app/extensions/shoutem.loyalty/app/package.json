@@ -1,0 +1,13 @@
+{
+  "name": "shoutem.loyalty",
+  "version": "1.2.3-build1505292781646",
+  "private": true,
+  "main": "index.js",
+  "platform": "1.2.*",
+  "dependencies": {
+    "react-native-qrcode": "0.2.3"
+  },
+  "peerDependencies": {
+    "@shoutem/core": "*"
+  }
+}

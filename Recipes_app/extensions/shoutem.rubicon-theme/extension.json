@@ -1,0 +1,83 @@
+{
+  "name": "rubicon-theme",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "type": "system",
+  "title": "Rubicon Theme",
+  "description": "Rubicon theme",
+  "icon": "server/assets/add-rubicon-theme-image.png",
+  "categories": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "themes": [
+    {
+      "name": "Rubicon",
+      "title": "Prime",
+      "description": "Rubicon Prime is our staple theme. Created in black and white, it’s a perfect way to let your content speak or an ideal starting point for your customized theme.",
+      "showcase": [
+        "server/assets/screenshots/prime-01.jpg",
+        "server/assets/screenshots/prime-02.jpg",
+        "server/assets/screenshots/prime-03.jpg",
+        "server/assets/screenshots/prime-04.jpg",
+        "server/assets/screenshots/prime-05.jpg"
+      ],
+      "icons": "server/assets/icons/",
+      "variables": "@.PrimeVariables"
+    },
+    {
+      "name": "RubiconBleu",
+      "title": "Bleu",
+      "description": "Rubicon Bleu is our favorite theme with a touch of blue. Built to be both versatile and elegant, it smoothly transforms from a beautiful airy and spacious style to a more color dominated one.",
+      "showcase": [
+        "server/assets/screenshots/bleu-01.jpg",
+        "server/assets/screenshots/bleu-02.jpg",
+        "server/assets/screenshots/bleu-03.jpg",
+        "server/assets/screenshots/bleu-04.jpg",
+        "server/assets/screenshots/bleu-05.jpg"
+      ],
+      "icons": "server/assets/icons/",
+      "variables": "@.BleuVariables"
+    },
+    {
+      "name": "RubiconNoir",
+      "title": "Noir",
+      "description": "Rubicon Noir theme fuses seamlessly with the black bezel of the mobile device, giving way to vibrant imagery, and clearing away any distractions that may disrupt complete immersion.",
+      "showcase": [
+        "server/assets/screenshots/noir-01.jpg",
+        "server/assets/screenshots/noir-02.jpg",
+        "server/assets/screenshots/noir-03.jpg",
+        "server/assets/screenshots/noir-04.jpg",
+        "server/assets/screenshots/noir-05.jpg"
+      ],
+      "variables": "@.NoirVariables"
+    },
+    {
+      "name": "RubiconRose",
+      "title": "Rose",
+      "description": "Rubicon Rose is the gentle branch of the Rubicon family. Rosy pink and elegant, it facilitates the reading experience with a serif font that is a joy to savor with your eyes.",
+      "showcase": [
+        "server/assets/screenshots/rose-01.jpg",
+        "server/assets/screenshots/rose-02.jpg",
+        "server/assets/screenshots/rose-03.jpg",
+        "server/assets/screenshots/rose-04.jpg",
+        "server/assets/screenshots/rose-05.jpg"
+      ],
+      "variables": "@.RoseVariables"
+    }
+  ],
+  "themeVariables":[{
+    "name": "PrimeVariables",
+    "path": "server/primeThemeVariables.json"
+  }, {
+    "name": "BleuVariables",
+    "path": "server/bleuThemeVariables.json"
+  }, {
+    "name": "NoirVariables",
+    "path": "server/noirThemeVariables.json"
+  }, {
+    "name": "RoseVariables",
+    "path": "server/roseThemeVariables.json"
+  }]
+}

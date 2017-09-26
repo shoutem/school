@@ -1,0 +1,29 @@
+.btn-toolbar {
+  padding-top: 24px;
+}
+
+.shop-preview__url-container {
+  height: 48px;
+  line-height: 48px;
+  background-color: rgba(228, 230, 233, 0.4);
+  position: relative;
+  padding: 0 40px;
+}
+
+.shop-preview__url {
+  font-family: MuseoSans;
+  font-size: 14px;
+  font-weight: normal;
+  color: #808799;
+  white-space: nowrap;
+}
+
+.shop-preview__shop-img {
+  display: inline-block;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  background-image: url(../assets/ic-descriptive-flickr.svg);
+}

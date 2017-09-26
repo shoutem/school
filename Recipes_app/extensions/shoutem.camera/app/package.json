@@ -1,0 +1,13 @@
+{
+  "name": "shoutem.camera",
+  "version": "1.2.0-build1505292558468",
+  "description": "Shoutem camera extension",
+  "dependencies": {
+    "react-native-camera": "^0.7.0"
+  },
+  "rnpm": {
+    "commands": {
+      "postlink": "node node_modules/shoutem.camera/link.js"
+    }
+  }
+}

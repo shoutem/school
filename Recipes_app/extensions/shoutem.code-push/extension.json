@@ -1,0 +1,10 @@
+{
+  "name": "code-push",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "type": "system",
+  "title": "CodePush",
+  "description": "Provides CodePush support for over the air code updates",
+  "icon": "server/assets/add-code-push-image.png",
+  "categories": []
+}

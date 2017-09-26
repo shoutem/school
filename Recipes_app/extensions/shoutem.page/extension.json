@@ -1,0 +1,129 @@
+{
+  "name": "page",
+  "version": "1.2.1",
+  "platform": "1.2.*",
+  "title": "Page",
+  "description": "Show a single screen with info and child items",
+  "icon": "server/assets/add-page-image.png",
+  "categories": [
+    "content"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [
+    {
+      "name": "openPage",
+      "title": "Page",
+      "icon": "theme://folder.png",
+      "screen": "@.ClearNavbarLargePageScreen",
+      "type": "navigation",
+      "settings": {
+        "navigationLayoutType": "iconGrid"
+      },
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters": {
+            "schema": "@.Page"
+          }
+        },
+        {
+          "page": "shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "name": "ClearNavbarLargePageScreen",
+      "title": "Large photo with transparent navbar",
+      "image": "./server/assets/screens/large-transparent.png",
+      "settingsPage": {
+        "page": "@.PageSettings"
+      },
+      "settings": {
+        "iconGrid": {
+          "scrolling": "continuous",
+          "gridAlignment": "bottomCenter",
+          "cols": 3,
+          "rows": 3,
+          "parallaxEffect": "onDeviceOrientation",
+          "backgroundImage": "",
+          "showText": true,
+          "showIcon": true,
+          "iconSize": "medium",
+          "marginSize": "comfortable"
+        },
+        "list": {
+          "backgroundImage": "",
+          "parallaxEffect": "onScroll",
+          "inItemAlignment": "left",
+          "listAlignment": "top",
+          "topOffset": 0,
+          "showText": true,
+          "showIcon": false,
+          "itemHeight": 48
+        },
+        "navigationBarStyle": "clear",
+        "imageSize": "large-portrait"
+      }
+    },
+    {
+      "name": "SolidNavbarLargePageScreen",
+      "title": "Large photo with solid navbar",
+      "image": "./server/assets/screens/large-solid.png",
+      "settingsPage": {
+        "page": "@.PageSettings"
+      },
+      "settings": {
+        "navigationBarStyle": "solid",
+        "imageSize": "large-portrait"
+      },
+      "extends": "@.ClearNavbarLargePageScreen"
+    },
+    {
+      "name": "ClearNavbarMediumPageScreen",
+      "title": "Medium photo with transparent navbar",
+      "image": "./server/assets/screens/medium-transparent.png",
+      "settingsPage": {
+        "page": "@.PageSettings"
+      },
+      "settings": {
+        "navigationBarStyle": "clear",
+        "imageSize": "large"
+      },
+      "extends": "@.ClearNavbarLargePageScreen"
+    },
+    {
+      "name": "SolidNavbarMediumPageScreen",
+      "title": "Medium photo with solid navbar",
+      "image": "./server/assets/screens/medium-solid.png",
+      "settingsPage": {
+        "page": "@.PageSettings"
+      },
+      "settings": {
+        "navigationBarStyle": "solid",
+        "imageSize": "large"
+      },
+      "extends": "@.ClearNavbarLargePageScreen"
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "Page",
+      "path": "server/data-schemas/Page.json"
+    }
+  ],
+  "pages": [
+    {
+      "name": "PageSettings",
+      "path": "filename_ending_in_js_indicating_component.js",
+      "type": "native-component"
+    }
+  ]
+}
+

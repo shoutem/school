@@ -1,0 +1,26 @@
+.child-category-selector {
+  .loader-container {
+    z-index: 1;
+    margin-top: 3px;
+  }
+}
+
+.child-category-selector__items {
+  max-height: 240px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #d8d8d8;
+  }
+}
+
+.dropup {
+  .child-category-selector__items {
+    max-height: 144px;
+  }
+}

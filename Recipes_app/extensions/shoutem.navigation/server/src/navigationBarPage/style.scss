@@ -1,0 +1,25 @@
+.navigation-bar-page {
+  .image-preview-custom,
+  .image-uploader__custom {
+    background-size: cover;
+    width: 100%;
+    height: 72px;
+
+    .circular-loader {
+      padding-top: 10px;
+    }
+
+
+    &.no-img,
+    &.image-preview__delete {
+      .se-icon {
+        padding-top: 10px;
+      }
+    }
+  }
+
+  .radio-inline {
+    display: inline-block;
+    width: auto;
+  }
+}

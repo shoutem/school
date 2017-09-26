@@ -1,0 +1,5 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
+    <string name="app_name">ShoutemApp</string>
+    <string name="facebook_app_id">facebook-app-id</string>
+</resources>

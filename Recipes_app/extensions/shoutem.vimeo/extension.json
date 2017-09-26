@@ -1,0 +1,55 @@
+{
+  "name": "vimeo",
+  "title": "Vimeo",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "description": "Show videos from Vimeo",
+  "icon": "server/assets/add-videos-vimeo-image.png",
+  "categories": ["media"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "dependencies": [
+    "shoutem.layouts"
+  ],
+  "shortcuts": [{
+    "name": "vimeo-shortcut",
+    "title": "Vimeo",
+    "screen": "@.VimeoList",
+    "icon": "theme://play.png",
+    "adminPages": [{
+      "page": "@.VimeoPage",
+      "title": "Content",
+      "parameters": {
+        "schema": "shoutem.proxy.videos"
+      }
+    }, {
+        "page":"shoutem.layouts.LayoutPage",
+        "title": "Layout"
+    }]
+  }],
+  "screens": [
+  {
+    "name": "VimeoList",
+    "title": "Big list",
+    "image": "server/assets/screens/big-list.png"
+  },
+    {
+    "name": "SmallVimeoList",
+    "title": "Small list",
+    "image": "server/assets/screens/small-list.png",
+    "extends":"@.VimeoList"
+  },
+  {
+    "name": "VimeoDetails"
+  }],
+  "pages": [{
+    "name": "VimeoPage",
+    "type": "native-component",
+    "path": "dummy.js"
+  }],
+  "settings": {
+    "baseApiEndpoint": "http://api.dev.sauros.hr"
+  }
+}

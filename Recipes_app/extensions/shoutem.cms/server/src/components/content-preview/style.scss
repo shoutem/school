@@ -1,0 +1,28 @@
+.content-preview {
+  padding-top: 16px;
+}
+
+.content-preview__table {
+  > thead > tr > th {
+    width: 38%;
+
+    &:first-child {
+      width: 62%;
+    }
+  }
+
+  > tbody {
+    :last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.content-preview__overlay {
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}

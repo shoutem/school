@@ -1,0 +1,62 @@
+{
+  "name": "ical-events",
+  "title": "iCal Events",
+  "version": "1.2.2",
+  "description": "Shoutem extension for managing iCal events",
+  "icon": "server/assets/add-events-image.png",
+  "categories": [
+    "content"
+  ],
+  "platform": "1.2.*",
+  "pages": [
+    {
+      "name": "IcalPage",
+      "path": "server/build/index.html?page=IcalPage",
+      "type": "html"
+    }
+  ],
+  "screens": [
+    {
+      "name": "EventsScreen",
+      "title": "Grid",
+      "image": "./server/assets/images/fixed-grid.png",
+      "navigatesTo": [
+        "@.EventDetailsScreen"
+      ]
+    },
+    {
+      "name": "EventsListScreen",
+      "title": "List",
+      "image": "./server/assets/images/compact-list.png",
+      "extends": "@.EventsScreen"
+    },
+    {
+      "name": "EventDetailsScreen",
+      "title": "Details screen with large photo",
+      "image": "./server/assets/images/details-large-solid.png"
+    },
+    {
+      "name": "EventDetailsScreenWithMediumPhoto",
+      "title": "Details screen with medium photo",
+      "extends": "@.EventDetailsScreen",
+      "image": "./server/assets/images/details-medium-solid.png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "title": "iCal Events",
+      "name": "iCal",
+      "screen": "@.EventsScreen",
+      "adminPages": [
+        {
+          "page": "@.IcalPage",
+          "title": "iCal selector"
+        },
+        {
+          "page": "shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    }
+  ]
+}

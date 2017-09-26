@@ -1,0 +1,25 @@
+.trackers-page__title {
+  h3 {
+    float: left;
+    margin-bottom: 24px;
+  }
+
+  .btn {
+    text-transform: none;
+    font-weight: normal;
+    padding-top: 48px;
+  }
+}
+
+.trackers-page__table {
+  .table {
+    thead {
+      tr {
+        th:last-child,
+        th:nth-child(3) {
+          width: 17%;
+        }
+      }
+    }
+  }
+}

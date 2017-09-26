@@ -1,0 +1,66 @@
+{
+    "version": "1.2.5",
+    "mobileAppVersion": "1.2.5",
+    "releaseNotes": "* Wordpress support, performance improvements and bug fixes",
+    "settings": {
+        "DEV-appetizeKey": "vdavzmvqgw0vz3a8wed98evwg0",
+        "QA-appetizeKey": "7xbpyp44zzwgfk06yhxfw4ukgm",
+        "Production-appetizeKey": "eahg1ye3u6bdx2zhxqnr44up68"
+    },
+    "builds": {
+        "live": {
+            "excludedPackages": []
+        },
+        "preview": {
+            "excludedPackages": [
+                "shoutem.firebase",
+                "shoutem.notification-center",
+                "shoutem.push-notifications",
+                "shoutem.shoutem-notification-center",
+                "shoutem.code-push"
+            ]
+        }
+    },
+    "dependencies": {
+        "shoutem.about": "~1.2.0",
+        "shoutem.analytics": "~1.2.0",
+        "shoutem.application": "~1.2.1",
+        "shoutem.auth": "~1.2.3",
+        "shoutem.books": "~1.2.0",
+        "shoutem.camera": "~1.2.0",
+        "shoutem.cms": "~1.2.2",
+        "shoutem.code-push": "~1.2.0",
+        "shoutem.events": "~1.2.3",
+        "shoutem.favorites": "~1.2.0",
+        "shoutem.flurry-analytics": "~1.2.2",
+        "shoutem.ical-events": "~1.2.2",
+        "shoutem.layouts": "~1.2.3",
+        "shoutem.loyalty": "~1.2.3",
+        "shoutem.menu": "~1.2.0",
+        "shoutem.navigation": "~1.2.2",
+        "shoutem.news": "~1.2.0",
+        "shoutem.notification-center": "~1.2.1",
+        "shoutem.page": "~1.2.1",
+        "shoutem.people": "~1.2.0",
+        "shoutem.persist": "~1.2.0",
+        "shoutem.photos": "~1.2.0",
+        "shoutem.places": "~1.2.1",
+        "shoutem.platform-analytics": "~1.2.0",
+        "shoutem.preview": "~1.2.0",
+        "shoutem.products": "~1.2.0",
+        "shoutem.push-notifications": "~1.2.1",
+        "shoutem.rss": "~1.2.0",
+        "shoutem.rss-news": "~1.2.0",
+        "shoutem.rss-photos": "~1.2.0",
+        "shoutem.rss-videos": "~1.2.0",
+        "shoutem.rubicon-theme": "~1.2.0",
+        "shoutem.shopify": "~1.2.1",
+        "shoutem.sub-navigation": "~1.2.0",
+        "shoutem.theme": "~1.2.0",
+        "shoutem.video": "~1.2.0",
+        "shoutem.vimeo": "~1.2.0",
+        "shoutem.web-view": "~1.2.4",
+        "shoutem.wordpress": "~1.2.2",
+        "shoutem.youtube": "~1.2.1"
+    }
+}

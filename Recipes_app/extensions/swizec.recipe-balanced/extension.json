@@ -1,0 +1,19 @@
+{
+  "name": "recipe-balanced",
+  "title": "Recipe Balanced",
+  "version": "0.0.1",
+  "description": "Balanced recipes",
+  "platform": "1.2.*",
+  "screens": [
+    {
+      "name": "List"
+    }
+  ],
+  "shortcuts": [
+    {
+      "title": "BalancedRecipes",
+      "name": "BalancedRecipes",
+      "screen": "@.List"
+    }
+  ]
+}

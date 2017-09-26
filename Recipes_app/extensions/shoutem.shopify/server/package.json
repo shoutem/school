@@ -1,0 +1,36 @@
+{
+  "name": "shoutem.shopify",
+  "version": "1.2.1-build1505293020417",
+  "description": "Shopify",
+  "scripts": {
+    "clean": "rimraf ./build/*",
+    "build": "npm run clean && webpack --config ./bin/webpack.config.js"
+  },
+  "dependencies": {
+    "validator": "^5.4.0"
+  },
+  "devDependencies": {
+    "@shoutem/webpack-prepend-append": "^1.0.1",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "node-sass": "^3.7.0",
+    "path": "^0.12.7",
+    "postcss-loader": "^0.9.1",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
+  }
+}

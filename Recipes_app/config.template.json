@@ -1,0 +1,29 @@
+{
+  "appId": 2080,
+  "serverApiEndpoint": "apps.dev.sauros.hr",
+  "legacyApiEndpoint": "api.dev.sauros.hr",
+  "authorization": "",
+  "production": false,
+  "offlineMode": false,
+  "debug": true,
+  "release": false,
+  "configurationFilePath": "./temp/configuration.json",
+  "workingDirectories": [],
+  "linkedExtensions": [
+    "./extensions/*"
+  ],
+  "linkedPackages": [
+    "./packages/*"
+  ],
+  "excludePackages": [],
+  "extensionsJsPath": "./extensions.js",
+  "baseAppId": 2470,
+  "cacheFolder": "./cached-bundles",
+  "bundleIdPrefix": "",
+  "iosBundleId": "",
+  "androidApplicationId": "",
+  "cacheBaseApp": false,
+  "binaryVersionName": null,
+  "binaryVersionCode": null,
+  "skipNativeDependencies": false
+}

@@ -1,0 +1,52 @@
+{
+  "name": "photos",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "title": "Photos",
+  "description": "Show a photo gallery",
+  "icon" : "server/assets/add-photos-image.png",
+  "dependencies": [
+    "shoutem.layouts",
+    "shoutem.cms"
+  ],
+  "categories": ["media"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [{
+      "name": "photos-shortcut",
+      "title": "Manual photos",
+      "screen": "@.PhotosList",
+      "icon": "theme://photo.png",
+      "adminPages": [{
+        "page": "shoutem.cms.CmsPage",
+        "title": "Content",
+        "parameters": {
+          "schema": "@.Photos"
+        }
+      },
+      {
+        "page": "shoutem.layouts.LayoutPage",
+        "title": "Layout"
+      }]
+  }],
+  "screens": [{
+    "name": "PhotosList",
+    "title": "List",
+    "navigatesTo":["@.PhotosList"],
+    "image":"./server/assets/screens/layout-large-list.png"
+  },{
+    "name": "PhotosGrid",
+    "title": "Grid",
+    "extends": "@.PhotosList",
+    "image":"./server/assets/screens/layout-grid.png"
+  },{
+    "name": "PhotoDetails",
+    "title": "PhotoDetails"
+  }],
+  "dataSchemas": [{
+    "name": "Photos",
+    "path": "server/schemas/photos.json"
+  }]
+}

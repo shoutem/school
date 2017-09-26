@@ -1,0 +1,63 @@
+{
+  "name": "place-rewards",
+  "title": "Place Rewards",
+  "titleProperty": "title",
+  "type": "object",
+  "properties": {
+    "title": {
+      "format": "single-line",
+      "title": "Title",
+      "type": "string",
+      "required": true,
+      "displayPriority": 1
+    },
+    "image": {
+      "type": "object",
+      "format": "attachment",
+      "title": "Image",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 2
+    },
+    "description": {
+      "title": "Description",
+      "format": "html",
+      "type": "string",
+      "displayPriority": 3
+    },
+    "startTime": {
+      "type": "object",
+      "format": "date-time",
+      "required": true,
+      "title": "Start of validity",
+      "displayPriority": 5
+    },
+    "endTime": {
+      "type": "object",
+      "format": "date-time",
+      "title": "End of validity",
+      "displayPriority": 6
+    },
+    "pointsRequired": {
+      "format": "integer",
+      "minimum": 1,
+      "title": "Points required",
+      "type": "integer",
+      "required": true,
+      "displayPriority": 7
+    },
+    "numberOfRewards": {
+      "format": "integer",
+      "title": "Number of rewards",
+      "type": "integer",
+      "displayPriority": 8
+    },
+    "place": {
+      "type": "object",
+      "format": "entity-reference",
+      "title": "Store",
+      "referencedSchema": "shoutem.loyalty.places",
+      "required": true,
+      "displayPriority": 9
+    }
+  }
+}

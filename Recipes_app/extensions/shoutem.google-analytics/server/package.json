@@ -1,0 +1,61 @@
+{
+  "name": "shoutem.google-analytics",
+  "version": "0.1.14-build1499350661837",
+  "private": true,
+  "main": "index.js",
+  "peerDependencies": {
+    "@shoutem/core": "*"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js, jsx, scss",
+      "ignore": "",
+      "quiet": true
+    }
+  },
+  "scripts": {
+    "clean": "rimraf ./build/*",
+    "build": "npm run clean && webpack --config ./bin/webpack.config.js",
+    "watch": "npm-watch",
+    "build-serve": "npm run build && http-server ./../ -p 4790",
+    "build-watch": "run-p watch build-serve",
+    "dev": "node server.js"
+  },
+  "devDependencies": {
+    "@shoutem/webpack-prepend-append": "^1.0.1",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "http-server": "^0.9.0",
+    "node-sass": "^3.7.0",
+    "npm-run-all": "^2.3.0",
+    "npm-watch": "^0.1.5",
+    "path": "^0.12.7",
+    "postcss-loader": "^0.9.1",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-plugin-react-transform": "^2.0.0-beta1",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "eslint": "^0.21.2",
+    "eslint-plugin-react": "^2.3.0",
+    "react-transform-hmr": "^1.0.1",
+    "webpack": "^1.8.4",
+    "webpack-dev-server": "^1.8.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
+  }
+}

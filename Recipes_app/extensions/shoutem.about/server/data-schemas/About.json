@@ -1,0 +1,74 @@
+{
+  "title": "About",
+  "properties": {
+    "name": {
+      "format": "single-line",
+      "title": "Name",
+      "type": "string",
+      "displayPriority": 1
+    },
+    "info": {
+      "format": "html",
+      "title": "Information",
+      "type": "string",
+      "displayPriority": 2
+    },
+    "location": {
+      "format": "geolocation",
+      "title": "Location",
+      "type": "object",
+      "displayPriority": 3
+    },
+    "hours": {
+      "format": "html",
+      "title": "Opening hours",
+      "type": "string",
+      "displayPriority": 4
+    },
+    "web": {
+      "format": "uri",
+      "title": "Website",
+      "type": "string",
+      "displayPriority": 5
+    },
+    "phone": {
+      "format": "single-line",
+      "title": "Phone",
+      "type": "string",
+      "displayPriority": 6
+    },
+    "twitter": {
+      "format": "uri",
+      "title": "Twitter",
+      "type": "string",
+      "displayPriority": 7
+    },
+    "mail": {
+      "format": "single-line",
+      "title": "E-mail",
+      "type": "string",
+      "displayPriority": 8
+    },
+    "linkedin": {
+      "format": "uri",
+      "title": "Linkedin",
+      "type": "string",
+      "displayPriority": 9
+    },
+    "facebook": {
+      "format": "uri",
+      "title": "Facebook",
+      "type": "string",
+      "displayPriority": 10
+    },
+    "image": {
+      "format": "attachment",
+      "title": "Image",
+      "type": "object",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 11
+    }
+  },
+  "titleProperty": "name",
+  "type": "object"
+}

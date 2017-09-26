@@ -1,0 +1,74 @@
+{
+  "name": "books",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "title": "Books",
+  "icon": "./server/assets/images/add-books-image.png",
+  "description": "Show books and authors",
+  "categories": ["content"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "dependencies": [
+    "shoutem.layouts",
+    "shoutem.cms"
+  ],
+  "shortcuts": [
+    {
+      "title": "Books",
+      "screen": "@.BooksListScreen",
+      "icon": "theme://books.png",
+      "name": "openBooksListScreen",
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters": {
+            "schema": "@.Books"
+          }
+        },
+        {
+          "page":"shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    },
+    {
+      "title": "My books",
+      "screen": "@.MyBooksScreen",
+      "icon": "theme://add-to-favorites-full.png",
+      "name": "openMyBooksScreen",
+      "settings": {
+        "favoritesSchemas": [
+          "@.Books"
+        ]
+      }
+    }
+  ],
+  "screens": [
+    {
+      "name": "BooksListScreen",
+      "title": "List",
+      "image": "./server/assets/images/screens/large-photo-list.png"
+    },
+    {
+      "name": "BooksSmallListScreen",
+      "title": "Small List",
+      "extends": "@.BooksListScreen",
+      "image": "./server/assets/images/screens/small-photo-list.png"
+    },
+    {
+      "name": "BooksDetailsScreen"
+    },
+    {
+      "name": "MyBooksScreen"
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "Books",
+      "path": "./server/data-schemas/Books.json"
+    }
+  ]
+}

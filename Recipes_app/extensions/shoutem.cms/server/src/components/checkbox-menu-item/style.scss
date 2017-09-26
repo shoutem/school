@@ -1,0 +1,13 @@
+.checkbox-menu-item {
+  padding: 0;
+
+  &:hover {
+    background-color: #ecf9fd;
+  }
+
+  > label {
+    padding: 14px 48px;
+    width: 100%;
+    height: 100%;
+  }
+}

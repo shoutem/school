@@ -1,0 +1,24 @@
+.cashiers-table {
+  .table {
+    margin-top: 4px;
+
+    > thead > tr {
+      > :last-child {
+        width: 90px;
+      }
+    }
+  }
+
+  .cashiers-table__title {
+    h3 {
+      float: left;
+      margin-bottom: 4px;
+    }
+
+    .icon-label {
+      text-transform: none;
+      font-weight: normal;
+      padding-top: 48px;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "name": "shopify",
+  "title": "Shopify",
+  "version": "1.2.1",
+  "platform": "1.2.*",
+  "icon": "./server/assets/add-shopify-image.png",
+  "description": "Sell from your Shopify store",
+  "dependencies": [
+    "shoutem.layouts"
+  ],
+  "categories":["commerce"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [
+    {
+      "title": "Shop",
+      "description": "Show your products and let the users buy them",
+      "icon": "theme://cart.png",
+      "name": "openProducts",
+      "screen": "@.ProductsListScreen",
+      "adminPages": [{
+        "page": "@.ShopifyPage",
+        "title": "Content"
+      },
+      {
+        "page":"shoutem.layouts.LayoutPage",
+        "title": "Layout"
+      }]
+    }
+  ],
+  "screens": [
+    {
+      "name": "ProductsGridScreen",
+      "title": "Grid",
+      "image": "./server/assets/screens/grid.png",
+      "extends": "@.ProductsListScreen"
+    },
+    {
+      "name": "ProductsListScreen",
+      "title": "List",
+      "image": "./server/assets/screens/list.png"
+    },
+    {
+      "name": "ProductDetailsScreen"
+    },
+    {
+      "name": "SearchProductsScreen"
+    },
+    {
+      "name": "CartScreen"
+    },
+    {
+      "name": "CheckoutScreen"
+    },
+    {
+      "name": "ShippingMethodScreen"
+    },
+    {
+      "name": "PaymentScreen"
+    },
+    {
+      "name": "OrderCompleteScreen"
+    }
+  ],
+  "settingsPages": [{
+    "page": "@.ShopifySettingsPage",
+    "title": "Settings"
+  }],
+  "pages": [
+    {
+      "name": "ShopifyPage",
+      "type": "native-component",
+      "path": "dummy.js"
+    },
+    {
+      "name": "ShopifySettingsPage",
+      "type": "native-component",
+      "path": "dummy.js"
+    }]
+}

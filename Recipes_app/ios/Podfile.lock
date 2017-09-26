@@ -1,0 +1,27 @@
+PODS:
+  - Flurry-iOS-SDK/FlurrySDK (7.10.0)
+  - Mobile-Buy-SDK (2.2.0)
+  - ShoutemFlurryAnalytics (0.0.1):
+    - Flurry-iOS-SDK/FlurrySDK
+  - ShoutemShopify (1.0):
+    - Mobile-Buy-SDK (= 2.2.0)
+
+DEPENDENCIES:
+  - ShoutemFlurryAnalytics (from `../node_modules/shoutem.flurry-analytics/ShoutemFlurryAnalytics.podspec`)
+  - ShoutemShopify (from `../node_modules/shoutem.shopify/ShoutemShopify.podspec`)
+
+EXTERNAL SOURCES:
+  ShoutemFlurryAnalytics:
+    :path: ../node_modules/shoutem.flurry-analytics/ShoutemFlurryAnalytics.podspec
+  ShoutemShopify:
+    :path: ../node_modules/shoutem.shopify/ShoutemShopify.podspec
+
+SPEC CHECKSUMS:
+  Flurry-iOS-SDK: e6975df9e57010d582bf9bed0f6312553cf24bc2
+  Mobile-Buy-SDK: 5c335aaa578d8424e5093b8a87ed7c8cc6ad0059
+  ShoutemFlurryAnalytics: d221e35959107eae5c1fc0b6f0a915e1b4fa0cb5
+  ShoutemShopify: b1286807bc0609a80a5245fc219ca2c9e0cd0879
+
+PODFILE CHECKSUM: 68bef02f896b3f1a4024ff750951865c102f57a6
+
+COCOAPODS: 1.3.1

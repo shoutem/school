@@ -1,0 +1,28 @@
+.cms-table {
+  .table {
+    margin-top: 4px;
+
+    > thead > tr {
+      > :last-child {
+        width: 100px;
+      }
+
+      > th {
+        padding: 0;
+      }
+    }
+  }
+
+  .cms-table__title {
+    h3 {
+      float: left;
+      margin-bottom: 4px;
+    }
+
+    .icon-label {
+      text-transform: none;
+      font-weight: normal;
+      padding-top: 48px;
+    }
+  }
+}

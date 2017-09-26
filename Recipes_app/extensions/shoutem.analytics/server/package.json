@@ -1,0 +1,9 @@
+{
+  "name": "shoutem.analytics",
+  "version": "1.2.0-build1505292505507",
+  "private": true,
+  "main": "index.js",
+  "peerDependencies": {
+    "@shoutem/core": "*"
+  }
+}

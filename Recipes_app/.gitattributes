@@ -1,0 +1,2 @@
+# without this react-native link won't work on Windows where default eol setting is crlf
+android/app/build.gradle text eol=lf

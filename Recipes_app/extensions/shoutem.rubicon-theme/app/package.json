@@ -1,0 +1,10 @@
+{
+  "name": "shoutem.rubicon-theme",
+  "description": "Rubicon theme is a...",
+  "version": "1.2.0-build1505292996047",
+  "rnpm": {
+    "assets": [
+      "fonts"
+    ]
+  }
+}

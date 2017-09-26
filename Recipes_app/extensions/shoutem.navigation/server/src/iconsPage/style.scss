@@ -1,0 +1,61 @@
+.icons-page__empty-placeholder {
+  margin-top: 50px;
+}
+
+.shortcuts-table {
+  width: 100%;
+  table-layout: fixed;
+
+  thead {
+    color: #B9BDC8;
+    font-size: 13px;
+  }
+
+  tr {
+    border-bottom: 1px solid #E4E6EA;
+  }
+
+  td {
+    color: #646E85;
+    padding: 8px 0 7px;
+  }
+
+  &.icons-page__shortcuts-table {
+    th {
+      width: 38%;
+    }
+
+    th:first-child {
+      width: 62%;
+    }
+  }
+
+  &.icon-backgrounds__shortcuts-list {
+    th {
+      width: 17%;
+    }
+
+    th:first-child {
+      width: 66%;
+    }
+  }
+}
+
+.general-settings__checkbox-container {
+  margin-top: 24px;
+}
+
+.icon-backgrounds__switch {
+  margin-top: 48px;
+  position: absolute;
+  right: 12px;
+}
+
+.shortcuts-table__label {
+  margin-right: 8px;
+
+  .se-icon {
+    margin-left: 2px;
+    margin-right: 8px;
+  }
+}

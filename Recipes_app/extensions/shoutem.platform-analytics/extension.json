@@ -1,0 +1,25 @@
+{
+  "name": "platform-analytics",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "type": "system",
+  "title": "Shoutem Platform Analytics",
+  "description": "Platform Shoutem analytics",
+  "icon": "server/assets/add-analytics-image.png",
+  "categories": ["analytics"],
+  "settingsPages": [{
+    "page": "shoutem.google-analytics.TrackersPage",
+    "title": "Trackers"
+  }],
+  "settings": {
+    "trackers": [{
+      "trackerId": "UA-85689642-1",
+      "samplingRate": 50,
+      "customDimensionsFieldIndexMap": {
+        "appId": 1,
+        "extension": 2,
+        "screen": 3
+      }
+    }]
+  }
+}

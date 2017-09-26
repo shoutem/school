@@ -1,0 +1,21 @@
+.shortcut-background-row {
+  .image-uploader__medium,
+  .image-preview.image-preview-medium {
+    height: 72px;
+  }
+
+  .image-uploader__medium {
+    .circular-loader {
+      padding-top: 12px;
+    }
+  }
+
+  .image-preview-medium {
+    &.image-preview__delete,
+    &.no-img {
+      .se-icon {
+        padding-top: 12px;
+      }
+    }
+  }
+}

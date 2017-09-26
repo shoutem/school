@@ -1,0 +1,54 @@
+{
+  "name": "events",
+  "title": "Events",
+  "titleProperty": "name",
+  "type": "object",
+  "properties": {
+    "name": {
+      "format": "single-line",
+      "title": "Name",
+      "type": "string",
+      "required": true,
+      "displayPriority": 1
+    },
+    "description": {
+      "title": "Description",
+      "format": "html",
+      "type": "string",
+      "displayPriority": 2
+    },
+    "image": {
+      "type": "object",
+      "format": "attachment",
+      "title": "Image",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 3
+    },
+    "startTime": {
+      "type": "object",
+      "format": "date-time",
+      "title": "Start time",
+      "required": true,
+      "displayPriority": 4
+    },
+    "endTime": {
+      "type": "object",
+      "format": "date-time",
+      "title": "End time",
+      "required": true,
+      "displayPriority": 5
+    },
+    "rsvpLink": {
+      "format": "uri",
+      "title": "RSVP link",
+      "type": "string",
+      "displayPriority": 6
+    },
+    "location": {
+      "format": "geolocation",
+      "title": "Location",
+      "type": "object",
+      "displayPriority": 7
+    }
+  }
+}

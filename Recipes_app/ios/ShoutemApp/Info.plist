@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.shoutem.ShoutemApp</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>News app</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>5.0.0</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleURLTypes</key>
+    <array/>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CodePushDeploymentKey</key>
+    <string>ImWEX3C5l0r1PLXGLlM3VtfB15dfVyQ9naUsl</string>
+    <key>LSApplicationCategoryType</key>
+    <string>Book</string>
+    <key>FacebookAppID</key>
+    <string>{facebook-app-id}</string>
+    <key>FacebookDisplayName</key>
+    <string>{facebook-app-name}</string>
+    <key>FacebookAutoLogAppEventsEnabled</key>
+    <false/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
+    <key>NSCalendarsUsageDescription</key>
+    <string>Used to manage events</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>The app will make use of your location to present more relevant content or provide you with directions to a certain location.</string>
+    <key>UIAppFonts</key>
+    <array>
+      <string>rubicon-icon-font.ttf</string>
+      <string>Rubik-Regular.ttf</string>
+      <string>Entypo.ttf</string>
+      <string>EvilIcons.ttf</string>
+      <string>FontAwesome.ttf</string>
+      <string>Foundation.ttf</string>
+      <string>Ionicons.ttf</string>
+      <string>MaterialIcons.ttf</string>
+      <string>Octicons.ttf</string>
+      <string>Zocial.ttf</string>
+      <string>Rubik-Medium.ttf</string>
+      <string>Rubik-Black.ttf</string>
+      <string>Rubik-BlackItalic.ttf</string>
+      <string>Rubik-Bold.ttf</string>
+      <string>Rubik-BoldItalic.ttf</string>
+      <string>Rubik-Italic.ttf</string>
+      <string>Rubik-Light.ttf</string>
+      <string>Rubik-LightItalic.ttf</string>
+      <string>Rubik-MediumItalic.ttf</string>
+      <string>MaterialCommunityIcons.ttf</string>
+      <string>SimpleLineIcons.ttf</string>
+      <string>NotoSans-Bold.ttf</string>
+      <string>NotoSans-BoldItalic.ttf</string>
+      <string>NotoSans-Italic.ttf</string>
+      <string>NotoSans-Regular.ttf</string>
+      <string>NotoSerif-Bold.ttf</string>
+      <string>NotoSerif-BoldItalic.ttf</string>
+      <string>NotoSerif-Italic.ttf</string>
+      <string>NotoSerif-Regular.ttf</string>
+    </array>
+    <key>UIBackgroundModes</key>
+    <array>
+      <string>remote-notification</string>
+    </array>
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+      <string>armv7</string>
+    </array>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Used to manage your pictures</string>
+    <key>NSCameraUsageDescription</key>
+    <string>App needs your camera to be able to scan QR codes</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>App needs your microphone to be able to scan QR codes</string>
+    <key>CFBundleDisplayName</key>
+    <string>News app</string>
+  </dict>
+</plist>

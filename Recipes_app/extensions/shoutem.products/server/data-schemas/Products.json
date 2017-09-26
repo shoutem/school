@@ -1,0 +1,52 @@
+{
+  "name": "products",
+  "title": "Products",
+  "properties": {
+    "name": {
+      "format": "single-line",
+      "title": "Name",
+      "type": "string",
+      "required": true,
+      "displayPriority": 1
+    },
+    "currentPrice": {
+      "format": "single-line",
+      "title": "Current price",
+      "type": "string",
+      "displayPriority": 2
+    },
+    "oldPrice": {
+      "format": "single-line",
+      "title": "Old price",
+      "type": "string",
+      "displayPriority": 3
+    },
+    "buyTitle": {
+      "format": "single-line",
+      "title": "Buy title",
+      "type": "string",
+      "displayPriority": 4
+    },
+    "link": {
+      "format": "uri",
+      "title": "Buy link",
+      "type": "string",
+      "displayPriority": 5
+    },
+    "description": {
+      "format": "html",
+      "title": "Description",
+      "type": "string",
+      "displayPriority": 6
+    },
+    "image": {
+      "format": "attachment",
+      "title": "Image",
+      "type": "object",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 7
+    }
+  },
+  "titleProperty": "name",
+  "type": "object"
+}

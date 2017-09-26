@@ -1,0 +1,53 @@
+{
+  "name": "video",
+  "title": "Videos",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "description": "Show a video gallery",
+  "icon": "server/assets/add-videos-image.png",
+  "categories": ["media"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [
+    {
+      "name": "openVideosList",
+      "title": "Videos",
+      "icon":"theme://play.png",
+      "screen": "@.VideosList",
+      "adminPages": [{
+        "page": "shoutem.cms.CmsPage",
+        "title": "Content",
+        "parameters": {
+          "schema": "@.Videos"
+        }
+      }, {
+          "page":"shoutem.layouts.LayoutPage",
+          "title": "Layout"
+      }]
+    }
+  ],
+  "screens": [
+    {
+      "name": "VideosSmallList",
+      "title": "Small list",
+      "image": "server/assets/screens/small-list.png",
+      "extends":"@.VideosList"
+    },
+    {
+      "name": "VideosList",
+      "title": "Big list",
+      "image": "server/assets/screens/big-list.png"
+    },
+    {
+      "name": "VideoDetails"
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "Videos",
+      "path": "server/data-schemas/Videos.json"
+    }
+  ]
+}

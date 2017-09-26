@@ -1,0 +1,26 @@
+{
+  "name": "@shoutem/app-build-script",
+  "version": "0.0.1-alpha.5",
+  "dependencies": {
+    "child-process-promise": "^2.2.1",
+    "colors": "^1.1.2",
+    "command-line-args": "^2.1.6",
+    "es6-symbol": "^3.0.2",
+    "fs-extra": "3.0.1",
+    "glob": "^7.0.3",
+    "glob-to-regexp": "^0.3.0",
+    "jimp": "^0.2.27",
+    "linklocal": "^2.8.1",
+    "lodash": "^4.10.1",
+    "node-watch": "^0.3.5",
+    "parse-gitignore": "^0.3.1",
+    "pify": "^3.0.0",
+    "plist": "^2.0.1",
+    "ps-node": "^0.1.4",
+    "request": "^2.72.0",
+    "rimraf": "^2.5.4",
+    "shelljs": "^0.7.4",
+    "superspawn": "^0.1.0",
+    "xcode": "^0.9.1"
+  }
+}

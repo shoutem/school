@@ -1,0 +1,33 @@
+.feed-preview-table > thead > tr > th {
+  width: 38%;
+
+  &:first-child:not(.feed-preview-table-item__duration) {
+    width: 62%;
+  }
+
+  &.feed-preview-table-item__duration {
+    width: 28%;
+  }
+
+  &.feed-preview-table-item__title {
+    width: 72%;
+  }
+}
+
+.feed-preview-table-item__img {
+  width: 85px;
+  height: 48px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.feed-preview-table-item__title-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feed-preview-table-item__duration {
+  text-align: right;
+  width: 100px;
+}

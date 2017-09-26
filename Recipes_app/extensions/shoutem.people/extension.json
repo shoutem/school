@@ -1,0 +1,42 @@
+{
+  "name": "people",
+  "title": "People",
+  "version": "1.2.0",
+  "platform": "1.2.*",
+  "icon": "./server/assets/images/add-people-image.png",
+  "description": "Show people and contact details",
+  "categories": ["content"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [
+    {
+      "title": "People",
+      "icon": "theme://members.png",
+      "name": "openPeopleListScreen",
+      "screen": "@.PeopleListScreen" ,
+      "adminPages": [{
+      "page": "shoutem.cms.CmsPage",
+      "title": "Content",
+      "parameters": {
+        "schema": "@.People"
+      }
+    }]
+    }
+  ],
+  "screens": [
+    {
+      "name": "PeopleListScreen"
+    },
+    {
+      "name": "PeopleDetailsScreen"
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "People",
+      "path": "server/data-schemas/People.json"
+    }
+  ]
+}

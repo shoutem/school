@@ -1,0 +1,111 @@
+{
+  "name": "places",
+  "version": "1.2.1",
+  "platform": "1.2.*",
+  "title": "Places",
+  "description": "Show items with location on list or map",
+  "icon": "./server/assets/images/add-places-image.png",
+  "categories": [
+    "content"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+  "shortcuts": [
+    {
+      "name": "places-shortcut",
+      "title": "Places",
+      "screen": "@.PlacesListScreen",
+      "settings": {
+        "sortField": "location",
+        "sortOrder": "ascending"
+      },
+      "icon": "theme://address-full.png",
+      "adminPages": [
+        {
+          "page": "shoutem.cms.CmsPage",
+          "title": "Content",
+          "parameters": {
+            "schema": "@.places"
+          }
+        },
+        {
+          "page": "shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    },
+    {
+      "title": "My Places",
+      "description": "List of favorited places",
+      "name": "FavoritesList",
+      "screen": "@.FavoritesList",
+      "settings": {
+        "favoritesSchemas": [
+          "@.places"
+        ]
+      },
+      "adminPages": [
+        {
+          "page": "shoutem.layouts.LayoutPage",
+          "title": "Layout"
+        }
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "name": "PlacesListWithIcons",
+      "title": "Icon List",
+      "extends": "@.PlacesListScreen",
+      "image": "./server/assets/images/layout_icon.png"
+    },
+    {
+      "name": "PlacesListScreen",
+      "title": "Photo List",
+      "image": "./server/assets/images/layout_photo.png",
+      "navigatesTo": [
+        "@.PlaceDetails"
+      ]
+    },
+    {
+      "name": "PlaceDetails",
+      "title": "Large photo details page",
+      "image": "./server/assets/images/details_large.png"
+    },
+    {
+      "name": "FavoritesList",
+      "title": "Photo list",
+      "image": "./server/assets/images/layout_photo.png",
+      "navigatesTo": [
+        "@.PlaceDetails"
+      ]
+    },
+    {
+      "name": "FavoritesListWithIcons",
+      "title": "Icon List",
+      "extends": "@.FavoritesList",
+      "image": "./server/assets/images/layout_icon.png"
+    },
+    {
+      "name": "MediumPlaceDetails",
+      "title": "Medium photo details page",
+      "extends": "@.PlaceDetails",
+      "image": "./server/assets/images/details_medium.png"
+    },
+    {
+      "name": "SinglePlaceMap",
+      "title": "Map View",
+      "navigatesTo": [
+        "@.PlaceDetails"
+      ]
+    }
+  ],
+  "dataSchemas": [
+    {
+      "name": "places",
+      "path": "server/data-schemas/Places.json"
+    }
+  ]
+}

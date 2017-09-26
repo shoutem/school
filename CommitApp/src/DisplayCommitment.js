@@ -39,19 +39,30 @@ class DisplayCommitment extends Component {
             return done;
         }
 
-        let daysSinceFirst = Math.ceil((new Date() - doneDates[0])/(1000*60*60*24)),
-            todayIndex = daysSinceFirst > N-3 ? N-3 : daysSinceFirst;
+        let firstDay = new Date(doneDates[0].getTime()),
+            today = new Date();
 
-        for (let i = todayIndex; i >= 0; i--) {
+        firstDay.setHours(0);
+        firstDay.setMinutes(0);
+        firstDay.setSeconds(0);
+
+        today.setHours(0);
+        today.setMinutes(0);
+        today.setSeconds(0);
+
+        const daysSinceFirst = Math.ceil((today - firstDay)/(1000*60*60*24)),
+              todayIndex = daysSinceFirst > N-3 ? N-3 : daysSinceFirst;
+
+        for (let i = todayIndex, d = 0; i >= 0; i--, d++) {
             let dayStart = new Date(),
                 dayEnd = new Date();
 
-            dayStart.setDate(dayStart.getDate()-i);
+            dayStart.setDate(dayStart.getDate()-d);
             dayStart.setHours(0);
             dayStart.setMinutes(0);
             dayStart.setSeconds(0);
 
-            dayEnd.setDate(dayEnd.getDate()-i);
+            dayEnd.setDate(dayEnd.getDate()-d);
             dayEnd.setHours(23);
             dayEnd.setMinutes(59);
             dayEnd.setSeconds(59);

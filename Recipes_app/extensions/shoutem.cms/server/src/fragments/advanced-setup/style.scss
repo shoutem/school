@@ -1,0 +1,43 @@
+.advanced-setup {
+  margin: 0 -48px;
+  padding: 48px;
+  box-shadow: inset 0 -1px 0 0 #e4e6e9, inset 0 1px 0 0 #e4e6e9;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  li.divider {
+    margin: 3px 0;
+  }
+
+  .advanced-setup__btns {
+    margin-top: 24px;
+
+    .btn,
+    .btn:first-child {
+      margin-right: 12px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.advanced-setup:before {
+  content: "";
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #e4e6e9;
+  position: absolute;
+  right: 16px;
+  top: 100px;
+}
+
+.advanced-setup:after {
+  content: "";
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #ffffff;
+  position: absolute;
+  right: 17px;
+  top: 102px;
+}

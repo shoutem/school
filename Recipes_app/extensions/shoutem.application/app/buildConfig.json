@@ -1,0 +1,29 @@
+{
+  "appId": "23690",
+  "serverApiEndpoint": "apps.beta.shoutem.com",
+  "legacyApiEndpoint": "api.beta.shoutem.com",
+  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNTVlNDgxYy04NzMzLTQzNGItOTEyOC1hMmQwN2I0YTA4ZGEiLCJpc3MiOiJzaG91dGVtIiwic3ViIjoiYXBwbGljYXRpb246MjM2OTAiLCJpYXQiOjE1MDY0MTU5OTUsInJsbSI6ImFwcC1idWlsZGVyIiwiYWNsIjpbeyJyZXNvdXJjZSI6InNob3V0ZW0uY29yZS5hcHBsaWNhdGlvbnMiLCJhY3Rpb25zIjpbImFjY2VzcyIsInJlYWQiXSwiY29uZGl0aW9uIjp7ImlkIjoiMjM2OTAifX0seyJyZXNvdXJjZSI6InNob3V0ZW0uY29yZS5jb25maWd1cmF0aW9ucyIsImFjdGlvbnMiOlsicmVhZCJdfV19.M9YV5IRgSfsnm6gf0qef43LprDeLRPczGi2pw009tf0",
+  "production": false,
+  "offlineMode": false,
+  "debug": true,
+  "release": false,
+  "configurationFilePath": "config.json",
+  "workingDirectories": [],
+  "linkedExtensions": [
+    "./extensions/*"
+  ],
+  "linkedPackages": [
+    "./packages/*"
+  ],
+  "excludePackages": [],
+  "extensionsJsPath": "./extensions.js",
+  "baseAppId": 2470,
+  "cacheFolder": "./cached-bundles",
+  "bundleIdPrefix": "",
+  "iosBundleId": "",
+  "androidApplicationId": "",
+  "cacheBaseApp": false,
+  "binaryVersionName": null,
+  "binaryVersionCode": null,
+  "skipNativeDependencies": false
+}

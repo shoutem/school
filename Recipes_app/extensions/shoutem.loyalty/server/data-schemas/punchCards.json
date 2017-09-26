@@ -1,0 +1,49 @@
+{
+  "name": "punch-cards",
+  "title": "Punch cards",
+  "titleProperty": "title",
+  "type": "object",
+  "properties": {
+    "title": {
+      "format": "single-line",
+      "title": "Title",
+      "type": "string",
+      "required": true,
+      "displayPriority": 1
+    },
+    "image": {
+      "type": "object",
+      "format": "attachment",
+      "title": "Image",
+      "referencedSchema": "shoutem.core.image-attachments",
+      "displayPriority": 2
+    },
+    "description": {
+      "title": "Description",
+      "format": "html",
+      "type": "string",
+      "displayPriority": 3
+    },
+    "startTime": {
+      "type": "object",
+      "format": "date-time",
+      "title": "Start of validity",
+      "required": true,
+      "displayPriority": 5
+    },
+    "endTime": {
+      "type": "object",
+      "format": "date-time",
+      "title": "End of validity",
+      "displayPriority": 6
+    },
+    "pointsRequired": {
+      "format": "integer",
+      "minimum": 1,
+      "required": true,
+      "title": "Stamps required",
+      "type": "integer",
+      "displayPriority": 7
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "auth",
+  "version": "1.2.3",
+  "platform": "1.2.*",
+  "title": "User Authentication",
+  "icon": "server/assets/add-authentication-image.png",
+  "description": "Show user profile, sign out user",
+  "categories": ["users"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoutem/extensions"
+  },
+    "screens": [{
+      "name": "LoginScreen"
+    }, {
+      "name": "RegisterScreen"
+    },
+     {
+      "name": "UserProfileScreen"
+    }],
+  "shortcuts": [{
+    "title": "Logout",
+    "description": "Allows user to logout from application",
+    "name": "logoutAction",
+    "action": "@.logoutAction"
+  }, {
+    "title": "My profile",
+    "description": "This screen lets users manage their user profile",
+    "icon": "theme://profile.png",
+    "name": "openUserProfile",
+    "screen": "@.UserProfileScreen"
+  }],
+  "settingsPages": [{
+    "page": "@.SettingsPage",
+    "title": "Settings"
+  }, {
+    "page": "@.ProvidersPage",
+    "title": "Authentication providers"
+  }],
+  "pages": [{
+    "name": "SettingsPage",
+    "type": "native-component",
+    "path": "dummy.js"
+  }, {
+    "name": "ProvidersPage",
+    "type": "native-component",
+    "path": "dummy.js"
+  }],
+  "settings": {
+    "signupEnabled": true,
+    "allScreensProtected": false,
+    "providers": {
+      "email": {
+        "enabled": true
+      },
+      "facebook": {
+        "enabled": false
+      },
+      "twitter": {
+        "enabled": false
+      }
+    }
+  }
+}

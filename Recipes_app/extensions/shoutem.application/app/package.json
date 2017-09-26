@@ -1,0 +1,17 @@
+{
+  "name": "shoutem.application",
+  "version": "1.2.1-build1505292514872",
+  "private": true,
+  "main": "index.js",
+  "peerDependencies": {
+    "@shoutem/core": "*"
+  },
+  "dependencies": {
+    "react-native-device-info": "git+https://github.com/shoutem/react-native-device-info.git#e3a013c1c62343303becf001b327c4cc3093950f"
+  },
+  "rnpm": {
+    "commands": {
+      "postlink": "node node_modules/shoutem.application/link.js"
+    }
+  }
+}
